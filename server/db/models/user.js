@@ -23,7 +23,15 @@ var schema = new mongoose.Schema({
     },
     google: {
         id: String
-    }
+    },
+
+    // Our Additional User requirements
+    
+    name: {
+        type: String
+          },
+    
+
 });
 
 // generateSalt, encryptPassword and the pre 'save' and 'correctPassword' operations

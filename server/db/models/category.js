@@ -8,7 +8,6 @@ var categorySchema = new mongoose.Schema({
 // add category schema here
 
     name: String,
-    _id: ObjectId
 
 });
 

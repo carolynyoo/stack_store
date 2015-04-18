@@ -9,11 +9,11 @@ var filmSchema = new mongoose.Schema({
 
 title: 
   {type: String, required: true},
-categories: [ObjectId],
+categories: [{type:mongoose.Schema.Types.ObjectId, ref: 'Category'}],
 description: String,
 price: Number,
 photo: String,
-_id: ObjectId
+
 });
 
 module.exports = {

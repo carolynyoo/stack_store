@@ -7,12 +7,11 @@ var mongoose = require('mongoose');
 var reviewSchema = new mongoose.Schema({
 // add review schema here
 
-    user_id: ObjectId,    // reference user collection
+    user_id: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},    // reference user collection
     date: {type: date},
     comment: String,
     rating: Number,
-    product_id: ObjectId, // should rename to movie_id at some point
-    _id: ObjectId
+    film_id: [{type: mongoose.Schema.Types.ObjectId, ref: 'Film'}], 
 
 });
 
