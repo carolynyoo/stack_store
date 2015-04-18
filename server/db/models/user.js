@@ -28,6 +28,12 @@ var schema = new mongoose.Schema({
     // Our Additional User requirements
     name: {
         type: String
+    }, 
+    address: {
+        street: String,
+        city: String,
+        state: String,
+        zip: Number
     }
 });
 
