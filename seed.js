@@ -54,48 +54,20 @@ var seedUsers = function () {
 
 var seedCategories = function () {
     var categories = [
-        {
-            name: 'Action'
-        }, 
-        {
-            name: 'Adventure'
-        }, 
-        {
-            name: 'Animation'
-        }, 
-        {
-            name: 'Comedy'
-        }, 
-        {
-            name: 'Documentary'
-        }, 
-        {
-            name: 'Drama'
-        }, 
-        {
-            name: 'Fantasy'
-        }, 
-        {
-            name: 'Horror'
-        },
-        {
-            name: 'Musical'
-        },
-        {
-            name: 'Mystery'
-        },
-        {
-            name: 'Romance'
-        },
-        {
-            name: 'Sci-Fi'
-        },
-        {
-            name: 'Sport'
-        },
-        {
-            name: 'Thriller'
-        }
+        { name: 'Action' }, 
+        { name: 'Adventure' }, 
+        { name: 'Animation' }, 
+        { name: 'Comedy' }, 
+        { name: 'Documentary' }, 
+        { name: 'Drama' }, 
+        { name: 'Fantasy' }, 
+        { name: 'Horror' },
+        { name: 'Musical' },
+        { name: 'Mystery' },
+        { name: 'Romance' },
+        { name: 'Sci-Fi' },
+        { name: 'Sport' },
+        { name: 'Thriller'}
     ]; 
 
     return q.invoke(Category, 'create', categories);
