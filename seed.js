@@ -52,6 +52,24 @@ var seedUsers = function () {
 
 };
 
+
+var seedFilms = function () {
+
+    var films = [{
+        title: 'Die Hard',
+        categories: [ObjectId('5532c18a0dad5827ab24af3c'), ObjectId('5532c18a0dad5827ab24af49'), ObjectId('5532c18a0dad5827ab24af46')],
+        description: 'this movie rocks',
+        price: 599,
+        photo: 'http://www.impawards.com/1988/posters/die_hard.jpg',
+        inventory: 5 
+        }];
+
+    return q.invoke(Film, 'create', films);
+
+};
+
+
+
 var seedCategories = function () {
     var categories = [
         { name: 'Action' }, 
@@ -89,6 +107,22 @@ connectToDb.then(function () {
         }
     });
 
+    // films
+     var filmPromise = getCurrentFilmData().then(function (films) {
+        if (films.length === 0) {
+            return seedFilms();
+        } else {
+            console.log(chalk.magenta('Seems to already be film data, exiting!'));
+            return;
+        }
+    }).then(function (films) {
+        if (films) {
+          console.log(chalk.green('Film seed successful!'));
+        }
+    });
+
+
+
     // category
     var catPromise = getCurrentCategoryData().then(function (categories) {
         if (categories.length === 0) {
@@ -103,7 +137,7 @@ connectToDb.then(function () {
         }
     });
 
-    promisesForSeeds.push(userPromise, catPromise);
+    promisesForSeeds.push(userPromise, catPromise, filmPromise);
 
     q.all(promisesForSeeds).then(function () {
         console.log(chalk.blue('All seeds successful!'));
