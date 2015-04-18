@@ -8,11 +8,10 @@ var reviewSchema = new mongoose.Schema({
 // add review schema here
 
     user_id: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},    // reference user collection
-    date: {type: date},
+    date: {type: Date, default: Date.now},
     comment: String,
-    rating: Number,
-    film_id: [{type: mongoose.Schema.Types.ObjectId, ref: 'Film'}], 
-
+    rating: {type: Number, min: 0, max: 5},
+    film_id: {type: mongoose.Schema.Types.ObjectId, ref: 'Film'}
 });
 
 module.exports = {

@@ -6,9 +6,7 @@ var mongoose = require('mongoose');
 
 var categorySchema = new mongoose.Schema({
 // add category schema here
-
-    name: String,
-
+    name: String
 });
 
 module.exports = {
