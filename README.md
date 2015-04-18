@@ -1,4 +1,4 @@
-StackStore
+B.A. Movies
 =============
 
-An e-commerce platform allowing users to create, manage and run an e-commerce site.
+A platform allowing users to purchase only the most badass movies...online!
