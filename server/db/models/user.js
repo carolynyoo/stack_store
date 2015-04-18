@@ -26,12 +26,9 @@ var schema = new mongoose.Schema({
     },
 
     // Our Additional User requirements
-    
     name: {
         type: String
-          },
-    
-
+    }
 });
 
 // generateSalt, encryptPassword and the pre 'save' and 'correctPassword' operations
