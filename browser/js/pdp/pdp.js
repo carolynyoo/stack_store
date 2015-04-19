@@ -16,8 +16,8 @@ app.config(function ($stateProvider) {
 
 app.factory('pdpFactory', function ($http) {
     return {
-        getInfo: function () {
-            return $http.get('/products/:id').then(function (response) {
+        getInfo: function (pid) {
+            return $http.get('/api/products/:pid').then(function (response) {
                 return response.data;
             });
         }
@@ -26,7 +26,7 @@ app.factory('pdpFactory', function ($http) {
 
 app.controller('PdpCtrl', function ($scope, pdpInfo) {
   $scope.film = pdpInfo; 
-  
+
   // retrieve category names from object ids later
   $scope.categories = getCategories($scope.film.categories);
 })
