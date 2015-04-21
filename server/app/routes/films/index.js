@@ -17,7 +17,7 @@ router.get('/films', function (req, res) {
 
     FilmsModel.find({}, function (err, films) {
             if(err) throw err
-            res.send(films);
+            res.send("SEND SOMETHING");
     });
 
 });
