@@ -1,8 +1,6 @@
 'use strict';
 app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) {
 
-console.log("Boo!")
-
     return {
         restrict: 'E',
         scope: {},
