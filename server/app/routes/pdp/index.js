@@ -1,5 +1,5 @@
 'use strict';
-var path = require('path');
+var mongoose = require('mongoose');
 var router = require('express').Router();
 module.exports = router;
 
