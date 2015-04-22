@@ -7,13 +7,11 @@ var mongoose = require('mongoose');
 var reviewSchema = new mongoose.Schema({
 // add review schema here
 
-    user_id: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},    // reference user collection
+    user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},    // reference user collection
     date: {type: Date, default: Date.now},
-    comment: String,
+    comment: {type:String, required: true},
     rating: {type: Number, min: 0, max: 5},
-    film_id: {type: mongoose.Schema.Types.ObjectId, ref: 'Film'}
+    film: {type: mongoose.Schema.Types.ObjectId, ref: 'Film'}
 });
 
-module.exports = {
-    Review: mongoose.model('Review', reviewSchema),
-};
+module.exports = mongoose.model('Review', reviewSchema);
