@@ -147,6 +147,12 @@ var seedCategories = function () {
     return q.invoke(Category, 'create', categories);
 }
 
+seedCategories().then(function() {
+    return mongoose.model('Category').find()
+}).then(function(categories) {
+    // left off here!!! 
+})
+
 connectToDb.then(function () {
     var promisesForSeeds = []; 
     // users
@@ -189,9 +195,13 @@ connectToDb.then(function () {
         if (categories) {
             console.log(chalk.green('Category seed successful!'));
         }
+    }).then(function () {
+        Category.find(function (err, categories) {
+            return categories;
+        });
     });
 
-    promisesForSeeds.push(userPromise, catPromise, filmPromise);
+    promisesForSeeds.push(userPromise, catPromise);
 
     q.all(promisesForSeeds).then(function () {
         console.log(chalk.blue('All seeds successful!'));
