@@ -7,9 +7,22 @@ app.config(function ($stateProvider) {
 	});
 });
 
-app.controller('NewUserCtrl', function ($scope, AuthService, $state) {
+app.controller('NewUserCtrl', function ($scope, AuthService, $state, $http) {
 
     $scope.error = null;
-    $scope.newLogin = {};
+    $scope.newAccount = {};
+
+    $scope.createAccount = function (newAccount) {
+
+    	$scope.error = null;
+
+    	$http.post('/api/new-user', newAccount).
+    		success(function() {
+    			console.log("New user successfully registered!");
+    		}).
+    		error(function() {
+    			console.log("Some error occurred during account registration.");
+    		});
+    }
 
 });
