@@ -14,6 +14,4 @@ var filmSchema = new mongoose.Schema({
   inventory: {type: Number, required: true}
 });
 
-module.exports = {
-    Film: mongoose.model('Film', filmSchema),
-};
+mongoose.model('Film', filmSchema);

@@ -6,9 +6,7 @@ var mongoose = require('mongoose');
 
 var categorySchema = new mongoose.Schema({
 // add category schema here
-    name: String
+    name: {type: String, required: true}
 });
 
-module.exports = {
-    Category: mongoose.model('Category', categorySchema),
-};
+mongoose.model('Category', categorySchema);
