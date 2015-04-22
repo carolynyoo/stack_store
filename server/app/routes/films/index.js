@@ -5,19 +5,21 @@
 var router = require('express').Router();
 module.exports = router;
 
+var path = require('path');
+var filmPath = path.join(__dirname, '../../../db/models/film');
 
-var FilmsModel = require('../../../db/models/film')
+var FilmsModel = require(filmPath);
 
-router.get('/films', function (req, res) {
+router.get('/', function (req, res) {
 
 	console.log("SOMETHING");
 	console.log(FilmsModel);
     
     var modelParams = req.query.category ? { category: req.query.category } : {};
 
-    FilmsModel.find({}, function (err, films) {
+    FilmsModel.Film.find({}, function (err, films) {
             if(err) throw err
-            res.send("SEND SOMETHING");
+            res.send(films);
     });
 
 });
