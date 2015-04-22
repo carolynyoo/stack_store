@@ -29,4 +29,4 @@ app.controller('PdpCtrl', function ($scope, pdpInfo) {
 
   // retrieve category names from object ids later
   $scope.categories = getCategories($scope.film.categories);
-})
+}) 
