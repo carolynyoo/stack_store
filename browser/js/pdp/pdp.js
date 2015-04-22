@@ -31,4 +31,17 @@ app.controller('PdpCtrl', function ($scope, pdpInfo) {
 
   // retrieve category names from object ids later
 //  $scope.categories = getCategories($scope.film.categories);
-}) 
+})
+
+app.directive('productDetailsBox', function(){
+
+    return {
+        restrict: 'E',
+        templateUrl: 'js/pdp/productdetails.html',
+        
+        link: function(scope, el, attr){
+
+        }
+
+}
+});
