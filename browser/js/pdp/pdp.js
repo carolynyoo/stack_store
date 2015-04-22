@@ -59,3 +59,12 @@ app.directive('productImage', function(){
 }
 });
 
+// need custom filter for currency conversion from cents
+app.filter('realCurrency', function(price){   
+
+    // convert here
+
+});
+
+
+
