@@ -45,3 +45,17 @@ app.directive('productDetailsBox', function(){
 
 }
 });
+
+app.directive('productImage', function(){
+
+    return {
+        restrict: 'E',
+        templateUrl: 'js/pdp/productimage.html',
+        
+        link: function(scope, el, attr){
+
+        }
+
+}
+});
+
