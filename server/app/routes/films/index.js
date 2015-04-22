@@ -14,10 +14,20 @@ router.get('/', function (req, res) {
 
 	// console.log("SOMETHING");
 	// console.log(FilmsModel);
-    
-    var modelParams = req.query.category ? { category: req.query.category } : {};
 
-    FilmsModel.Film.find({}, function (err, films) {
+    /* 
+    	working query params
+		{ title: "The Matrix" }
+		{ categories: "5532c18a0dad5827ab24af49" }
+		
+		Failed params
+		{ categories: "Action" }
+    */
+    
+    var searchParams = req.query.title ? { title: req.query.title } : {};
+    // http://127.0.0.1:4567/api/films?title=The+Matrix
+
+    FilmsModel.Film.find(searchParams, function (err, films) {
             if(err) throw err
             // console.log("FILMS-SERVER-Side",films);
             res.send(films);
