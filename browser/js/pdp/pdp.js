@@ -8,7 +8,7 @@ app.config(function ($stateProvider) {
             pdpInfo: function ($stateParams, pdpFactory) {
                // return pdpFactory.getInfo($stateParams.pid);
                // Matrix test for now - do not have category view wired up yet 
-               return pdpFactory.getInfo('5532c18a0dad5827ab24af49');
+               return pdpFactory.getInfo('5532cfcbf9014a90ac43a10d');
             }
         }
     });
@@ -29,4 +29,4 @@ app.controller('PdpCtrl', function ($scope, pdpInfo) {
 
   // retrieve category names from object ids later
   $scope.categories = getCategories($scope.film.categories);
-})
+}) 
