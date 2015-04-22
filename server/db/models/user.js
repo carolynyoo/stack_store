@@ -2,7 +2,6 @@
 var crypto = require('crypto');
 var mongoose = require('mongoose');
 
-// I made a change
 var schema = new mongoose.Schema({
     email: {
         type: String
