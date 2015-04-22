@@ -1,14 +1,15 @@
 
 <h1>BadAss Movies. Complete Catalog:</h1>
 
-<div class="browserfilm" ng-repeat="film in films">
-	<img class="browserpic" src="{{film.photo}}" alt="{{film.title}} img">
-	<h3>{{film.title}}</h3><br>
-	<p>{{film.description}}</p><br>
-	<button type="button" class="btn btn-default">{{film.price}}</button>
-	<button type="button" class="btn btn-success">BUY!</button>
-
-</div>
+<ul>
+	<li class="browserfilm" ng-repeat="film in films">
+		<img class="browserpic" src="{{film.photo}}" alt="{{film.title}} img">
+		<h3>{{film.title}}</h3><br>
+		<p>{{film.description}}</p><br>
+		<button type="button" class="btn btn-default">{{film.price}}</button>
+		<button type="button" class="btn btn-success">BUY!</button>
+	</li>
+</ul>
 
 <!-- 
 	<p ng-repeat="film in films">{{film.title}}</p> 
