@@ -8,7 +8,9 @@ app.config(function ($stateProvider) {
             pdpInfo: function ($stateParams, pdpFactory) {
                // return pdpFactory.getInfo($stateParams.pid);
                // Matrix test for now - do not have category view wired up yet 
-               return pdpFactory.getInfo('5532cfcbf9014a90ac43a10d');
+               //return pdpFactory.getInfo('5536f882712a688124e77b80');
+               return pdpFactory.getInfo($stateParams.pid);
+
             }
         }
     });
@@ -17,7 +19,7 @@ app.config(function ($stateProvider) {
 app.factory('pdpFactory', function ($http) {
     return {
         getInfo: function (pid) {
-            return $http.get('/api/products/:pid').then(function (response) {
+            return $http.get('/api/products/'+pid).then(function (response) {
                 return response.data;
             });
         }
@@ -28,5 +30,41 @@ app.controller('PdpCtrl', function ($scope, pdpInfo) {
   $scope.film = pdpInfo; 
 
   // retrieve category names from object ids later
-  $scope.categories = getCategories($scope.film.categories);
-}) 
+//  $scope.categories = getCategories($scope.film.categories);
+})
+
+app.directive('productDetailsBox', function(){
+
+    return {
+        restrict: 'E',
+        templateUrl: 'js/pdp/productdetails.html',
+        
+        link: function(scope, el, attr){
+
+        }
+
+}
+});
+
+app.directive('productImage', function(){
+
+    return {
+        restrict: 'E',
+        templateUrl: 'js/pdp/productimage.html',
+        
+        link: function(scope, el, attr){
+
+        }
+
+}
+});
+
+// need custom filter for currency conversion from cents
+app.filter('realCurrency', function(price){   
+
+    // convert here
+
+});
+
+
+
