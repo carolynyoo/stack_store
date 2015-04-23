@@ -24,6 +24,7 @@ var connectToDb = require('./server/db');
 var User = mongoose.model('User');
 var Category = mongoose.model('Category');
 var Film = mongoose.model('Film');
+var Review = mongoose.model('Review');
 var q = require('q');
 var chalk = require('chalk');
 
@@ -38,6 +39,12 @@ var getCurrentCategoryData = function () {
 var getCurrentFilmData = function () {
   return q.ninvoke(Film, 'find', {});
 }
+
+var getCurrentReviewData = function () {
+  return q.ninvoke(Review, 'find', {});
+}
+
+
 
 var seedUsers = function () {
 
@@ -125,6 +132,21 @@ var seedFilms = function () {
 };
 
 
+var seedReviews = function () {
+    var reviews = [
+        
+        {user: "5532c9d007456cf6297ab1f5",    // reference user collection
+        date: "Wed Jul 27 16:54:49 EST 2011",
+        comment: "This movie is cool",
+        rating: 4,
+        film: "5536f882712a688124e77b80"},    // reference film collection
+              
+    ]; 
+
+    return q.invoke(Review, 'create', reviews);
+}
+
+
 
 var seedCategories = function () {
     var categories = [
@@ -191,7 +213,22 @@ connectToDb.then(function () {
         }
     });
 
-    promisesForSeeds.push(userPromise, catPromise, filmPromise);
+    // review
+    var reviewPromise = getCurrentReviewData().then(function (reviews) {
+        if (reviews.length === 0) {
+            return seedReviews();
+        } else {
+            console.log(chalk.magenta('Seems to already be review data, exiting!'));
+            return; 
+        }
+    }).then(function (reviews) {
+        if (reviews) {
+            console.log(chalk.green('Review seed successful!'));
+        }
+    });
+
+
+    promisesForSeeds.push(userPromise, catPromise, filmPromise, reviewPromise);
 
     q.all(promisesForSeeds).then(function () {
         console.log(chalk.blue('All seeds successful!'));
