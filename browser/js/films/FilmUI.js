@@ -16,8 +16,8 @@ app.config(function ($stateProvider) {
 
 app.controller('filmsCtrl', function ($scope, FilmFactory) {
   
-  $scope.getMovies = function(){
-    FilmFactory.getFilms()
+  $scope.getMovies = function(filter){
+    FilmFactory.getFilms(filter)
       .then(function(filmsfromserver){
         $scope.films = filmsfromserver;
         console.log("$scope.films: ",$scope.films);

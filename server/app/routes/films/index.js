@@ -24,8 +24,10 @@ router.get('/', function (req, res) {
 		{ categories: "Action" }
     */
     
-    var searchParams = req.query.title ? { title: req.query.title } : {};
-    // http://127.0.0.1:4567/api/films?title=The+Matrix
+    // var searchParams = req.query.title ? { title: req.query.title } : {};
+	// http://127.0.0.1:4567/api/films?title=The+Matrix
+
+	var searchParams = req.query.categories ? { categories: req.query.categories } : {};
 
     FilmsModel.Film.find(searchParams, function (err, films) {
             if(err) throw err

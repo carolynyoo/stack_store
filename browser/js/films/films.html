@@ -1,4 +1,35 @@
 
 <h1>BadAss Movies. Complete Catalog:</h1>
 
-<p ng-repeat="film in films">{{film.title}}</p>
+<!-- 
+<button ng-click="getMovies('5532c18a0dad5827ab24af49')">5532c18a0dad5827ab24af49</button> 
+-->
+
+<!-- Single button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    Select Genre <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#" ng-click="getMovies('5532c18a0dad5827ab24af49')">5532c18a0dad5827ab24af49</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#" ng-click="getMovies()">All Movies</a></li>
+  </ul>
+</div>
+
+
+<!-- <select name="" id="">
+	<option value="5532c18a0dad5827ab24af3c" ng-click="getMovies(5532c18a0dad5827ab24af3c)">5532c18a0dad5827ab24af3c</option>
+	<option value="5532c18a0dad5827ab24af49">5532c18a0dad5827ab24af49</option>
+	<option value="5532c18a0dad5827ab24af46">5532c18a0dad5827ab24af46</option>
+	<option value="5532c18a0dad5827ab24af3f">5532c18a0dad5827ab24af3f</option>
+	<option value="5532c18a0dad5827ab24af3e">5532c18a0dad5827ab24af3e</option>
+	<option value="5532c18a0dad5827ab24af43">5532c18a0dad5827ab24af43</option>
+</select> -->
+
+<div ng-repeat="film in films">
+	<p>{{film.title}}</p>
+	<p>{{film.categories}}</p>	
+</div>
