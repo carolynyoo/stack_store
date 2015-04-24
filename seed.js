@@ -140,7 +140,13 @@ var seedReviews = function () {
         comment: "This movie is cool",
         rating: 4,
         film: "5536f882712a688124e77b80"},    // reference film collection
-              
+      
+        {user: "5532c9d007456cf6297ab1f5",    // reference user collection
+        date: "Wed Jul 27 16:54:49 EST 2011",
+        comment: "This movie is cool",
+        rating: 4,
+        film: "5536f882712a688124e77b83"},    // Superbad (RW db)
+
     ]; 
 
     return q.invoke(Review, 'create', reviews);
