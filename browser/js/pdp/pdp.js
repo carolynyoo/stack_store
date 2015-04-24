@@ -17,7 +17,7 @@ app.config(function ($stateProvider) {
 app.factory('pdpFactory', function ($http) {
     return {
         getInfo: function (pid) {
-            return $http.get('/api/products/:pid').then(function (response) {
+            return $http.get('/api/products/'+pid).then(function (response) {
                 return response.data;
             });
         }
