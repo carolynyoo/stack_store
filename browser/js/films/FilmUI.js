@@ -14,7 +14,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('filmsCtrl', function ($scope, FilmFactory) {
+app.controller('filmsCtrl', function ($scope, FilmFactory, CategoryFactory) {
   
   $scope.getMovies = function(filter){
     FilmFactory.getFilms(filter)
@@ -29,4 +29,17 @@ app.controller('filmsCtrl', function ($scope, FilmFactory) {
 
   $scope.getMovies();
 
+  $scope.getCategories = function(){
+      CategoryFactory.getCategories()
+        .then(function(categoriesfromserver){
+          $scope.categories = categoriesfromserver;
+          console.log("$scope.categories: ",$scope.categories);
+        })
+        .catch(function(err){
+          console.log("err mofo! : ",err);
+        }); 
+    } // close getCategories
+
+    $scope.getCategories();
+    
 }); // end filmsCtrl
