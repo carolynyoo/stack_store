@@ -1,5 +1,5 @@
 'use strict';
-var app = angular.module('BadAssMovies', ['ui.router', 'fsaPreBuilt']);
+var app = angular.module('BadAssMovies', ['ui.router', 'fsaPreBuilt', 'ngCookies']);
 
 app.config(function ($urlRouterProvider, $locationProvider) {
     // This turns off hashbang urls (/#about) and changes it to something normal (/about)
@@ -7,6 +7,12 @@ app.config(function ($urlRouterProvider, $locationProvider) {
     // If we go to a URL that ui-router doesn't have registered, go to the "/" url.
     $urlRouterProvider.otherwise('/');
 });
+
+app.controller('CookieCtrl', ['$scope','$cookieStore', function($scope, $cookieStore) {
+  // Setting a cookie
+  $cookieStore.put('myFavorite', 'oatmeal');
+  $scope.foo = $cookieStore.get('myFavorite');
+}]);
 
 // This app.run is for controlling access to specific states.
 app.run(function ($rootScope, AuthService, $state) {
