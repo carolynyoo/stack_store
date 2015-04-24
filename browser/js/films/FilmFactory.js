@@ -1,5 +1,4 @@
 'use strict';
-
 app.factory('FilmFactory', function ($http) {
 	return {
 		getFilms: function(category){
@@ -14,14 +13,3 @@ app.factory('FilmFactory', function ($http) {
 		}
 	}
 });
-
-
-/*app.factory('pdpFactory', function ($http) {
-    return {
-        getInfo: function (pid) {
-            return $http.get('/api/products/:pid').then(function (response) {
-                return response.data;
-            });
-        }
-    };
-});*/

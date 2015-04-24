@@ -1,5 +1,4 @@
 'use strict';
-
 app.factory('CategoryFactory', function ($http) {
 	return {
 		getCategories: function(){
@@ -11,14 +10,3 @@ app.factory('CategoryFactory', function ($http) {
 		}
 	}
 });
-
-
-/*app.factory('pdpFactory', function ($http) {
-    return {
-        getInfo: function (pid) {
-            return $http.get('/api/products/:pid').then(function (response) {
-                return response.data;
-            });
-        }
-    };
-});*/
