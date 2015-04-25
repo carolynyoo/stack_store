@@ -10,9 +10,9 @@ var FilmsModel = mongoose.model('Film');
 
 router.get('/', function (req, res) {
     
-    var modelParams = req.query.category ? { category: req.query.category } : {};
+    var searchParams = req.query.categories ? { categories: req.query.categories } : {};
 
-    FilmsModel.find({}, function (err, films) {
+    FilmsModel.find(searchParams, function (err, films) {
             if(err) throw err
             res.send(films);
     });
