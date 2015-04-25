@@ -41,7 +41,6 @@ var wipeDb = function () {
 
 var findIdFromDb = function (elem, db, keyName) {
     for (var entry in db) {
-        // console.log('fie', db[entry][keyName], elem, db[entry][keyName]===elem, db[entry]._id)
         if (db[entry][keyName]===elem) {
             return db[entry]._id;
         }
@@ -200,11 +199,11 @@ connectToDb.then(function () {
             review['user'] = userID;
             review['film'] = filmID; 
         });
-        console.log(seedReviews);
         return q.invoke(Review, 'create', seedReviews);
     })
     .then(function () {
-        console.log(chalk.blue('Review seed successful!'));
+        console.log(chalk.green('Review seed successful!'));
+        console.log(chalk.blue('All seeds successful!'));
         process.kill(0);
     })
     .catch(function (err) {
