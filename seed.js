@@ -168,8 +168,8 @@ var createFilms =
         console.log(chalk.green('Category seed successful!'));
         seedFilms.forEach(function (film, filmIndex, filmArr) {
             film['categories'].forEach(function (elem, index, arr) {
-                var filmID = findIdFromDb(elem, categories, 'name');
-                film['categories'][index] = filmID;
+                var categoryID = findIdFromDb(elem, categories, 'name');
+                film['categories'][index] = categoryID;
             })
         })
         return q.invoke(Film, 'create', seedFilms);
