@@ -1,5 +1,4 @@
 'use strict';
-console.log('fooo');
 
 // Set up the state provider
 app.config(function ($stateProvider) {
@@ -13,5 +12,5 @@ app.config(function ($stateProvider) {
 // Set up the Cart Controller
 
 app.controller('CartCtrl', function ($scope, $state) {
-  $scope.cart = 'Hello'; 
+
 });
