@@ -11,9 +11,8 @@ var filmSchema = new mongoose.Schema({
   description: String,
   price: {type: Number, required: true},
   photo: {type: String, default: 'http://placehold.it/200x300'},
-  inventory: {type: Number, required: true}
+  inventory: {type: Number, required: true},
+  reviews: [{type:mongoose.Schema.Types.ObjectId, ref: 'Review'}]
 });
 
-module.exports = {
-    Film: mongoose.model('Film', filmSchema),
-};
+mongoose.model('Film', filmSchema);
