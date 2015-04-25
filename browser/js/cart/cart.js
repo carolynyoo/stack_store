@@ -17,7 +17,7 @@ app.config(function ($stateProvider) {
 
 app.controller('CartCtrl', function ($scope, cartInfo) {
 
-	$scope.cart = cartInfo;
+	$scope.allFilmsInCart = cartInfo.films;
 
 });
 

@@ -8,8 +8,11 @@ var cartModel = mongoose.model('Cart');
 router.get('/', function (req, res) {
 	var sessionId = req.sessionID;
 
-	cartModel.findOne({sessionId: sessionId}).exec(function (err, cart) {
+	cartModel.findOne({sessionId: sessionId}).populate('films').exec(function (err, cart) {
 		if(err) throw err;
+
+		console.log(cart);
+
         res.send(cart);
 	});
 
