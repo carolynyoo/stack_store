@@ -175,6 +175,7 @@ var createFilms =
     })
     .then(function () {
         return Film.find().exec();
+
     });
 
 var createUsers = 
@@ -184,6 +185,8 @@ var createUsers =
     .then (function () {
         return User.find().exec();
     });
+
+
 
 connectToDb.then(function () {
     return wipeDb()
