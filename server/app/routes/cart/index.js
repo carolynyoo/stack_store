@@ -5,6 +5,16 @@ module.exports = router;
 
 var cartModel = mongoose.model('Cart');
 
+router.get('/', function (req, res) {
+	var sessionId = req.sessionID;
+
+	cartModel.findOne({sessionId: sessionId}).exec(function (err, cart) {
+		if(err) throw err;
+        res.send(cart);
+	});
+
+});
+
 router.post('/', function (req, res, next) {
 	var filmId = req.body.filmId;
 	var sessionId = req.sessionID;
@@ -26,4 +36,4 @@ router.post('/', function (req, res, next) {
 	  	res.sendStatus(200);
 	});
 
-})
+});
