@@ -71,4 +71,8 @@ schema.method('correctPassword', function (candidatePassword) {
     return encryptPassword(candidatePassword, this.salt) === this.password;
 });
 
+schema.method('getReviews', function() {
+    return mongoose.model('Review').find({ user: this._id }).exec();
+})
+
 mongoose.model('User', schema);
