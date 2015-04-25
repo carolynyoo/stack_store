@@ -8,10 +8,17 @@ app.config(function ($urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/');
 });
 
+// Create cookie controller
+
 app.controller('CookieCtrl', ['$scope','$cookieStore', function($scope, $cookieStore) {
-  // Setting a cookie
-  $cookieStore.put('myFavorite', 'oatmeal');
-  $scope.foo = $cookieStore.get('myFavorite');
+  // Setting a cookie to store the sessionId
+  var sessionId = Math.random().toString(36).slice(2);
+
+  if ($cookieStore.get('sessionId') == undefined) {
+    $cookieStore.put('sessionId', sessionId);
+  }
+
+  console.log("The current sessionId is " + $cookieStore.get('sessionId'));
 }]);
 
 // This app.run is for controlling access to specific states.
