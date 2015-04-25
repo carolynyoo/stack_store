@@ -15,10 +15,13 @@ router.post('/new-user', function(req, res) {
 
 router.use('/tutorial', require('./tutorial'));
 router.use('/members', require('./members'));
+router.use('/films', require('./films'));
 router.use('/products', require('./pdp'));
+
 
 // Make sure this is after all of
 // the registered routes!
 router.use(function (req, res) {
     res.status(404).end();
 });
+
