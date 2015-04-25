@@ -29,7 +29,7 @@ var q = require('q');
 var chalk = require('chalk');
 
 var wipeDb = function () {
-    var models = [User, Category, Film];
+    var models = [User, Category, Film, Review];
 
     var promises = models.map(function (model) {
         return model.find({}).remove().exec();
@@ -196,21 +196,19 @@ connectToDb.then(function () {
         console.log(chalk.green('Film and User seed successful!'));
         seedReviews.forEach(function (review, index, arr) {
             var userID = findIdFromDb(review['user'], users, 'name');
-            var filmID = findIdFromDb(review['film'], films, 'name'); 
-            review['user'][index] = userID;
-            review['film'][index] = filmID; 
-        })
+            var filmID = findIdFromDb(review['film'], films, 'title'); 
+            review['user'] = userID;
+            review['film'] = filmID; 
+        });
+        console.log(seedReviews);
+        return q.invoke(Review, 'create', seedReviews);
     })
-    return q.invoke(Review, 'create', seedReviews);
-})
-.then(function (reviews) {
-    console.log(reviews);
-})
-.then(function () {
-    console.log(chalk.blue('All seeds successful!'));
-    process.kill(0);
-})
-.catch(function (err) {
-    console.error(err);
-    process.kill(1);
+    .then(function () {
+        console.log(chalk.blue('Review seed successful!'));
+        process.kill(0);
+    })
+    .catch(function (err) {
+        console.error(err);
+        process.kill(1);
+    })
 })
