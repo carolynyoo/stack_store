@@ -39,6 +39,7 @@ var wipeDb = function () {
 
 }
 
+
 var findIdFromDb = function (elem, db, keyName) {
     for (var entry in db) {
         if (db[entry][keyName]===elem) {
