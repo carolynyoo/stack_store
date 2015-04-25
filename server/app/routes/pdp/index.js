@@ -1,16 +1,15 @@
 'use strict';
-var path = require('path');
+var mongoose = require('mongoose');
 var router = require('express').Router();
 module.exports = router;
 
-var filmPath = path.join(__dirname, '../../../db/models/film');
-var filmModel = require(filmPath);
+var filmModel = mongoose.model('Film');
 
-router.get('/:pid', function (req, res) {
+router.get('/:pid', function (req, res, next) {
   var pid = req.params.pid; 
-  filmModel.Film.find({"_id": pid}, function (err, film) {
-    if (err) console.log(err);
+  filmModel.findById(pid, function (err, film) {
+    if (err) next(err);
     console.log(film);
-    res.send(film);
+    res.json(film);
   })
 });
