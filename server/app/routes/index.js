@@ -17,7 +17,6 @@ router.use('/tutorial', require('./tutorial'));
 router.use('/members', require('./members'));
 router.use('/films', require('./films'));
 router.use('/products', require('./pdp'));
-router.use('/cart', require('./cart'));
 
 
 // Make sure this is after all of
