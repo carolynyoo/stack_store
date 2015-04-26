@@ -17,3 +17,7 @@
 @import 'tutorial/main';
 @import 'login/main';
 @import 'films/main';
+
+.clear {
+  @include clearfix;
+}
