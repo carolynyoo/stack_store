@@ -13,7 +13,7 @@ router.get('/', function (req, res) {
     var modelParams = req.query.category ? { category: req.query.category } : {};
 
     FilmsModel.find({}, function (err, films) {
-            if(err) throw err
+            if(err) throw err;
             res.send(films);
     });
 

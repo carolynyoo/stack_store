@@ -10,7 +10,7 @@ router.get('/:pid', function (req, res, next) {
   filmModel.findOne({_id: pid})
   .populate('categories')
   .exec(function(err, film){
-      if (err) console.log(err)
+      if (err) console.log(err);
       res.json(film);
   }
       );

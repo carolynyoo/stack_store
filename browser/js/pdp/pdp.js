@@ -26,22 +26,24 @@ app.factory('pdpFactory', function ($http) {
     };
 });
 
-app.controller('PdpCtrl', function ($scope, $http, $stateParams, pdpInfo) {
+app.controller('PdpCtrl', function ($scope, $http, $stateParams, $state, pdpInfo) {
   $scope.film = pdpInfo; 
 
   $scope.addFilmToCart = function() {
     $http.post('/api/cart', {filmId: $stateParams.pid}).
     success(function() {
         console.log("Item added to cart!");
+        $state.go('cart');
     }).
     error(function() {
-        console.log("Issue adding item to cart");
-    })
-  }
+        console.log("Error adding item to cart");
+    });
+
+  };
 
   // retrieve category names from object ids later
 //  $scope.categories = getCategories($scope.film.categories);
-})
+});
 
 app.directive('productDetailsBox', function(){
 
@@ -53,7 +55,7 @@ app.directive('productDetailsBox', function(){
 
         }
 
-}
+};
 });
 
 app.directive('productImage', function(){
@@ -66,7 +68,7 @@ app.directive('productImage', function(){
 
         }
 
-}
+};
 });
 
 app.directive('filmReview', function(){
@@ -79,7 +81,7 @@ app.directive('filmReview', function(){
 
         }
 
-}
+};
 });
 
 app.directive('filmRating', function(){
@@ -92,7 +94,7 @@ app.directive('filmRating', function(){
 
         }
 
-}
+};
 });
 
 

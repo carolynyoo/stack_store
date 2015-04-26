@@ -23,6 +23,6 @@ app.controller('NewUserCtrl', function ($scope, AuthService, $state, $http) {
     		error(function() {
     			console.log("Some error occurred during account registration.");
     		});
-    }
+    };
 
 });
