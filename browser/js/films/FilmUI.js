@@ -25,7 +25,7 @@ app.controller('filmsCtrl', function ($scope, FilmFactory) {
       .catch(function(err){
         console.log("err mofo! : ",err);
       }); 
-  } // close getMovies
+  }; // close getMovies
 
   $scope.getMovies();
 

@@ -36,12 +36,12 @@ app.controller('PdpCtrl', function ($scope, $http, $stateParams, pdpInfo) {
     }).
     error(function() {
         console.log("Issue adding item to cart");
-    })
-  }
+    });
+  };
 
   // retrieve category names from object ids later
 //  $scope.categories = getCategories($scope.film.categories);
-})
+});
 
 app.directive('productDetailsBox', function(){
 
@@ -53,7 +53,7 @@ app.directive('productDetailsBox', function(){
 
         }
 
-}
+};
 });
 
 app.directive('productImage', function(){
@@ -66,7 +66,7 @@ app.directive('productImage', function(){
 
         }
 
-}
+};
 });
 
 app.directive('filmReview', function(){
@@ -79,7 +79,7 @@ app.directive('filmReview', function(){
 
         }
 
-}
+};
 });
 
 app.directive('filmRating', function(){
@@ -92,7 +92,7 @@ app.directive('filmRating', function(){
 
         }
 
-}
+};
 });
 
 

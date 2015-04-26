@@ -26,3 +26,7 @@
 .film-title {
     font-weight: bold;
 }
+
+.clear {
+  @include clearfix;
+}

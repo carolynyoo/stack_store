@@ -10,7 +10,7 @@ app.config(function ($stateProvider) {
    				return cartFactory.getCart();
    			}
    		}
-   })
+   });
 });
 
 // Set up the Cart Controller
@@ -28,5 +28,5 @@ app.factory('cartFactory', function ($http) {
 			    return response.data;
 			});
 		}
-	}
-})
+	};
+});

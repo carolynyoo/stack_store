@@ -29,13 +29,13 @@ router.post('/', function (req, res, next) {
 			cart.films.push(filmId);
 			return cart.save();
 		} else {
-			cart = new cartModel({sessionId: sessionId})
+			cart = new cartModel({sessionId: sessionId});
 			cart.films.push(filmId);
 			return cart.save();
 		}
 	})
 	.then(function (savedCart) {
-	  	console.log('Cart model updated!')
+	  	console.log('Cart model updated!');
 	  	res.sendStatus(200);
 	});
 
