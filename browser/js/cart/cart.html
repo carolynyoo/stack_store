@@ -5,8 +5,7 @@
 	<div class="film-title">{{film.title}}</div>
 	<p>{{film.description}}</p>
 	<p>Price: {{film.price}}</p>
-	<p>Inventory: {{film.inventory}}</p>
-	<button type="button" class="btn btn-danger">Delete</button>
+	<button type="button" class="btn btn-danger" ng-click="removeFilmFromCart(film)">Delete</button>
 </div>
 
 <br>

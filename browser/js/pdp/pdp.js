@@ -26,17 +26,19 @@ app.factory('pdpFactory', function ($http) {
     };
 });
 
-app.controller('PdpCtrl', function ($scope, $http, $stateParams, pdpInfo) {
+app.controller('PdpCtrl', function ($scope, $http, $stateParams, $state, pdpInfo) {
   $scope.film = pdpInfo; 
 
   $scope.addFilmToCart = function() {
     $http.post('/api/cart', {filmId: $stateParams.pid}).
     success(function() {
         console.log("Item added to cart!");
+        $state.go('cart');
     }).
     error(function() {
-        console.log("Issue adding item to cart");
+        console.log("Error adding item to cart");
     });
+
   };
 
   // retrieve category names from object ids later
