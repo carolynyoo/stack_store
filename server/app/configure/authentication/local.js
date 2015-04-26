@@ -47,4 +47,7 @@ module.exports = function (app) {
 
     });
 
+    // A POST /register route is used to handle account creation.
+    
+
 };
