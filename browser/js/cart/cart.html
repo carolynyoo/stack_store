@@ -1,9 +1,12 @@
 <h1>Cart</h1>
 
-<p ng-repeat="film in allFilmsInCart">
-{{film.title}}
-{{film.description}}
-{{film.price}}
-{{film.inventory}}
-<img src={{film.photo}} alt="Image Not Found" width="160px" height="240px">
-</p>
+<div ng-repeat="film in allFilmsInCart" class="clear">
+	<div class="movie-card"><img src={{film.photo}} alt="Image Not Found" width="160px" height="240px"></div>
+	<div class="film-title">{{film.title}}</div>
+	<p>{{film.description}}</p>
+	<p>Price: {{film.price}}</p>
+	<button type="button" class="btn btn-danger" ng-click="removeFilmFromCart(film)">Delete</button>
+</div>
+
+<br>
+<button type="submit" class="btn btn-success">Checkout</button>

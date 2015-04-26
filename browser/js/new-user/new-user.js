@@ -17,12 +17,20 @@ app.controller('NewUserCtrl', function ($scope, AuthService, $state, $http) {
     	$scope.error = null;
 
     	$http.post('/api/new-user', newAccount).
-    		success(function() {
+    		success(function(data) {
     			console.log("New user successfully registered!");
+
+                //Automatically log in after creating a new account
+
+                AuthService.login({email: newAccount.email, password: newAccount.password}).then(function () {
+                    $state.go('home');
+                }).catch(function () {
+                    $scope.error = 'Invalid login credentials.';
+                });
     		}).
-    		error(function() {
+    		error(function(data) {
     			console.log("Some error occurred during account registration.");
     		});
-    }
+    };
 
 });

@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 app.factory('ReviewFactory', function($http) {
     return {
@@ -7,7 +7,5 @@ app.factory('ReviewFactory', function($http) {
                  return response.data;
              });
         }
-    }
-})
-
-
+    };
+});

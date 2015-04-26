@@ -7,7 +7,7 @@ app.factory('FilmFactory', function ($http) {
                 return response.data;
             });
 		}
-	}
+	};
 });
 
 

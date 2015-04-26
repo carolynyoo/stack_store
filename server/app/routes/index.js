@@ -7,9 +7,12 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
 router.post('/new-user', function(req, res) {
+	console.log("The body is", req.body);
 	var user = new User(req.body);
+	console.log(user);
 	user.save(function (err, data) {
 		  if (err) return console.error(err);
+		  res.sendStatus(200);
 	});
 });
 
