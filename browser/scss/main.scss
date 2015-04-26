@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: 'Oxygen';
 }
 
 @mixin clearfix {
@@ -15,14 +16,4 @@
 @import 'about/main';
 @import 'tutorial/main';
 @import 'login/main';
-
-
-.movie-card {
-    width: 160px;
-    height: 240px;
-    float: left;
-}
-
-.film-title {
-    font-weight: bold;
-}
+@import 'films/main';
