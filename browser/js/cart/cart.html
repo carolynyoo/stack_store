@@ -5,8 +5,10 @@
 	<div class="film-title">{{film.title}}</div>
 	<p>{{film.description}}</p>
 	<p>Price: {{film.price | centsToDollars | currency}}</p>
+	<p>Quantity: </p>
 	<button type="button" class="btn btn-danger" ng-click="removeFilmFromCart(film)">Delete</button>
+	<button type="button" class="btn btn-info">Edit</button>
 </div>
 
 <br>
-<button type="submit" class="btn btn-success">Checkout</button>
+<button type="submit" class="btn btn-success">Proceed to Checkout</button>
