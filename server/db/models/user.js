@@ -73,6 +73,6 @@ schema.method('correctPassword', function (candidatePassword) {
 
 schema.method('getReviews', function() {
     return mongoose.model('Review').find({ user: this._id }).exec();
-})
+});
 
 mongoose.model('User', schema);

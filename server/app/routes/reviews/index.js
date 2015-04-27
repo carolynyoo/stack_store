@@ -11,5 +11,5 @@ router.get('/:pid', function (req, res, next) {
     if (err) next(err);
     console.log(reviews);
     res.json(reviews);
-  })
+  });
 });
