@@ -1,38 +1,18 @@
 <h1>BadAss Movies. Complete Catalog:</h1>
 
-<!-- 
-<button ng-click="getMovies('5532c18a0dad5827ab24af49')">5532c18a0dad5827ab24af49</button> 
--->
-
-<!-- Single button -->
-<div class="btn-group genres">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-    Filter Genre <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="#" ng-click="getMovies('5532c18a0dad5827ab24af49')">5532c18a0dad5827ab24af49</a></li>
-    <li><a href="#" ng-click="getMovies('5532c18a0dad5827ab24af3c')">5532c18a0dad5827ab24af3c</a></li>
-    <li><a href="#" ng-click="getMovies('5532c18a0dad5827ab24af46')">5532c18a0dad5827ab24af46</a></li>
-    <li><a href="#" ng-click="getMovies('5532c18a0dad5827ab24af3f')">5532c18a0dad5827ab24af3f</a></li>
-    <li><a href="#" ng-click="getMovies('5532c18a0dad5827ab24af3e')">5532c18a0dad5827ab24af3e</a></li>
-    <li><a href="#" ng-click="getMovies('5532c18a0dad5827ab24af43')">5532c18a0dad5827ab24af43</a></li>
-    <li class="divider"></li>
-    <li><a href="#" ng-click="getMovies()">All Movies</a></li>
-  </ul>
-</div>
-
 <div class="btn-group genres">
   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
     Genres (from db) <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" role="menu">
-    <li><a href="#" ng-repeat="category in categories" ng-click="getMovies({{category._id}})">{{category.name}}</a></li>
+    <li><a href="#" ng-repeat="category in categories" ng-click="getMovies(category._id)">{{category.name}}</a></li>
     <li class="divider"></li>
     <li><a href="#" ng-click="getMovies()">All Movies</a></li>
   </ul>
 </div>
 
 <div ng-repeat="film in films">
-	<p>{{film.title}}</p>
-	<p>{{film.categories}}</p>	
+	<a ng-href="/products/{{film._id}}">{{film.title}}</a>	
+  <p ng-repeat="category in film.categories">{{category.name}}</p>
+  <!--   <p>{{film.categories.name}}</p> -->	
 </div>
