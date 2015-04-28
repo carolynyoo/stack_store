@@ -16,6 +16,7 @@ require('./models/category');
 require('./models/film');
 require('./models/review');
 require('./models/cart');
+require('./models/order');
 
 
 var startDbPromise = new Q(function (resolve, reject) {
