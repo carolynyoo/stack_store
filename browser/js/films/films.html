@@ -1,6 +1,18 @@
-
 <h1>BadAss Movies. Complete Catalog:</h1>
 
-<p ng-repeat="film in films">
-<a ng-href="/products/{{film._id}}">{{film.title}}</a>
-</p>
+<div class="btn-group genres">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    Genres (from db) <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#" ng-repeat="category in categories" ng-click="getMovies(category._id)">{{category.name}}</a></li>
+    <li class="divider"></li>
+    <li><a href="#" ng-click="getMovies()">All Movies</a></li>
+  </ul>
+</div>
+
+<div ng-repeat="film in films">
+	<a ng-href="/products/{{film._id}}">{{film.title}}</a>	
+  <p ng-repeat="category in film.categories">{{category.name}}</p>
+  <!--   <p>{{film.categories.name}}</p> -->	
+</div>

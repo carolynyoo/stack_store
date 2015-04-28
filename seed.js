@@ -138,7 +138,6 @@ var seedFilms = [
     }
 ];
 
-
 var seedReviews = [
     // seed users and films by name
     {
@@ -186,6 +185,7 @@ var createUsers =
     .then (function () {
         return User.find().exec();
     });
+
 
 
 connectToDb.then(function () {
