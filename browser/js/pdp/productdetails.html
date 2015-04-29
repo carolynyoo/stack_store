@@ -1,6 +1,8 @@
-<div class="film-title">{{film.title}}</div>
-<p>Categories:
-<li ng-repeat="category in film.categories">{{category.name}}</li>
-</p>
-<p>Description: {{film.description}}</p>
-<p>Price: {{film.price}}</p>
+<h1 class="film-title">{{film.title}}</h1>
+<button class="btn btn-default" ng-repeat="category in film.categories">{{category.name}}</button>
+<div class="product-info">
+  <span class="heading">Description:</span> 
+  <span class="text">{{film.description}}</span>
+  <span class="heading">Price:</span> 
+  <span class="text price">{{film.price}}</span>
+</div>
