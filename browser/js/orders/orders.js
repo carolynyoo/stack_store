@@ -18,6 +18,8 @@ app.config(function ($stateProvider) {
 
 app.controller('OrdersCtrl', function ($scope, $http, orderInfo) {
 
+	console.log("ORDER INFO IS", orderInfo);
+
 	$scope.allOrdersForUser = orderInfo;
 
 });
