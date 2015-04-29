@@ -17,8 +17,10 @@
       <img ng-src="{{film.photo}}" />
       <p>{{film.title}}</p>
     </a>
-    <button type="button" class="btn btn-default">{{film.price}}</button>
+   <p><span ng-repeat="category in film.categories">
+    {{category.name}} {{$last ? '' : ($index==film.categories.length-2) ? ' &amp; ' : ','}}
+  </span></p>
+    <button type="button" class="btn btn-default">{{film.price | centsToDollars | currency}}</button>
    <button type="button" class="btn btn-success">BUY</button>
-    <!--   <p>{{film.categories.name}}</p> -->	
   </div>
 </div>

@@ -99,13 +99,8 @@ app.directive('filmRating', function(){
 
 
 
-
-// need custom filter for currency conversion from cents
-app.filter('realCurrency', function(price){   
-
-    // convert here
-
-});
-
-
-
+app.filter("centsToDollars", function() {
+    return function (amountInCents) {
+        return (amountInCents/100).toFixed(2);
+    }
+})

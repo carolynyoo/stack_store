@@ -45,3 +45,9 @@ app.controller('filmsCtrl', function ($scope, FilmFactory, CategoryFactory) {
     $scope.getCategories();
     
 }); // end filmsCtrl
+
+app.filter("centsToDollars", function() {
+  return function (amountInCents) {
+    return (amountInCents/100).toFixed(2);
+  }
+})
