@@ -74,13 +74,24 @@ router.post('/', function (req, res, next) {
 
 		if (cart) {
 
+			console.log("Cart already exists!");
+
 			// If film already exists in a line order, just increase the quantity
 
 			// Function to check if film already exists in Cart
 
+			console.log("Film ID is ", filmId);
+
+			var lineItemIndex;
+
 			function filmAlreadyExistsInCart(lineItems) {
+				console.log("RUNNING FUNCTION!!!");
 				for (var i = 0; i < lineItems.length; i++) {
-					if (lineItems[i].film.indexOf(filmId) > -1) return i;
+					console.log("Film ID IN CART is ",lineItems[i].film);
+					if (lineItems[i].film == filmId) {
+						lineItemIndex = i;
+						return true;
+					};
 				}
 
 				return false;
@@ -88,7 +99,7 @@ router.post('/', function (req, res, next) {
 
 			if (filmAlreadyExistsInCart(cart.lineItems)) {
 
-				cart.lineItems[i].quantity += 1;
+				cart.lineItems[lineItemIndex].quantity += 1;
 
 				console.log("Cart exists, quantity of film increased!");
 
@@ -100,10 +111,10 @@ router.post('/', function (req, res, next) {
 					film: filmId,
 					quantity: 1
 				});
-				
-			}
-
+			
 				console.log("Cart exists, created a new line order with a quantity of 1");
+
+			}
 
 			return cart.save();
 
