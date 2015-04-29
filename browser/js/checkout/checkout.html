@@ -3,9 +3,36 @@
 
 		<h1>Checkout</h1>
 
-		<p>Billing Info</p>
+		<form id="checkout-form" name="checkoutForm" ng-submit="checkoutForm.$valid && checkout()">
 
-		<p>Shipping Info</p>
+		<div class="row">
+			<div class="col-md-6">
+				<p>Billing Info:</p>
+				<div class="form-group">
+				    <label for="creditCardName">Name on Credit Card</label>
+				    <input type="text" ng-model="billing.creditCardName" class="form-control" id="creditCardName" placeholder="Name on Credit Card">
+				    <label for="creditCardNumber">Credit Card Number</label>
+				    <input type="text" ng-model="billing.creditCardNumber" class="form-control" id="creditCardNumber" placeholder="Enter Credit Card Number">
+				    <label for="creditCardCVC">CVC</label>
+				    <input type="text" ng-model="billing.creditCardCVC" class="form-control" id="creditCardCVC" placeholder="Enter Credit Card CVC">
+				</div>
+			</div>
+			<div class="col-md-6">
+				<p>Shipping Info</p>
+				<div class="form-group">
+				    <label for="street">Street Address</label>
+				    <input type="text" ng-model="address.street" class="form-control" id="street" placeholder="Enter Street Address">
+				    <label for="city">City</label>
+				    <input type="text" ng-model="address.city" class="form-control" id="city" placeholder="Enter City">
+				    <label for="state">State</label>
+				    <input type="text" ng-model="address.state" class="form-control" id="state" placeholder="Enter State">
+				    <label for="zip">Zip Code</label>
+				    <input type="text" ng-model="address.zip" class="form-control" id="zip" placeholder="Enter Zip Code">
+				</div>
+			</div>
+		</div>
+
+		</form>
 
 		<h2>Order Summary</h2>
 
