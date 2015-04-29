@@ -6,6 +6,11 @@ app.config(function ($stateProvider) {
 		url: '/cart',
 		templateUrl: 'js/checkout/checkout.html',
 		controller: 'CheckoutCtrl',
+		resolve: {
+			cartInfo: function (cartFactory) {
+				return cartFactory.getCart();
+			}
+		},
 		// The following data.authenticate is read by an event listener
 		// that controls access to this state. Refer to app.js.
 		data: {
@@ -16,6 +21,6 @@ app.config(function ($stateProvider) {
 
 // Set up the Checkout controller
 
-app.controller('CheckoutCtrl', function ($scope, $http) {
-
+app.controller('CheckoutCtrl', function ($scope, $http, cartInfo) {
+	$scope.allLineItemsInCart = cartInfo.lineItems;
 })

@@ -7,7 +7,16 @@
 
 		<p>Shipping Info</p>
 
-		<p>Order Summary</p>
+		<h2>Order Summary</h2>
+
+		<div ng-repeat="lineItem in allLineItemsInCart" class="clear">
+			<div class="film-title">{{lineItem.film.title}}</div>
+			<p>{{lineItem.film.description}}</p>
+			<p>Price: {{lineItem.film.price | centsToDollars | currency}}</p>
+			<p>Quantity: {{lineItem.quantity}}</p>
+			<button type="button" class="btn btn-danger" ng-click="removeFilmFromCart(lineItem.film)">Delete</button>
+			<button type="button" class="btn btn-info">Edit</button>
+		</div>
 
 	</div>
 
