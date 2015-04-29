@@ -1,4 +1,6 @@
-<p>Review</p>
-
-<p>Rating</p>
-<p>{{film.rating}}</p>
+<div ng-repeat="review in film.reviews">
+  <span class="heading">Review:</span> 
+  <span class="text">{{review.comment}}</span>
+  <span class="heading">Rating:</span> 
+  <span class="text ">{{review.rating}}</span>
+</div>
