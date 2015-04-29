@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: 'Oxygen';
 }
 
 @mixin clearfix {
@@ -16,3 +17,8 @@
 @import 'tutorial/main';
 @import 'login/main';
 @import 'films/mainfilms';
+@import 'films/main';
+
+.clear {
+  @include clearfix;
+}

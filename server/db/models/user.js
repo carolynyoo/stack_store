@@ -4,10 +4,12 @@ var mongoose = require('mongoose');
 
 var schema = new mongoose.Schema({
     email: {
-        type: String
+        type: String,
+        required: true
     },
     password: {
-        type: String
+        type: String,
+        required: true
     },
     salt: {
         type: String
@@ -27,7 +29,8 @@ var schema = new mongoose.Schema({
 
     // Our Additional User requirements
     name: {
-        type: String
+        type: String,
+        required: true
     }, 
     address: {
         street: String,
@@ -66,6 +69,10 @@ schema.statics.encryptPassword = encryptPassword;
 
 schema.method('correctPassword', function (candidatePassword) {
     return encryptPassword(candidatePassword, this.salt) === this.password;
+});
+
+schema.method('getReviews', function() {
+    return mongoose.model('Review').find({ user: this._id }).exec();
 });
 
 mongoose.model('User', schema);

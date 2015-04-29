@@ -1,7 +1,7 @@
 navbar {
 
   display: block;
-  background: #a1a1a1;
+  background: #4B77BE;
 
   fullstack-logo {
     padding-top: 10px;
@@ -10,29 +10,31 @@ navbar {
   }
 
   a {
-    color: white;
+    color: #ddd;
     &:hover {
-      color: white;
+      color: #ddd;
     }
   }
 
   .nav > li > a {
     cursor: pointer;
     &.active {
-      color: #f30046;
+      color: #fff;
     }
     &:hover {
       transition: color 0.2s;
+      background-color: #89C4F4;
     }
     &:focus {
-      color: #f30046;
-      background: transparent;
+      color: #fff;
+      background-color: transparent;
     }
   }
 
   .login-button {
     float: right;
     margin-top: 8px;
+    background-color: #89C4F4;
   }
 
   .welcome {
