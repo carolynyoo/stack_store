@@ -33,10 +33,14 @@ router.put('/', function (req, res) {
 		if (index > -1) {
 			cart.films.splice(index, 1);
 		}
+
 		return cart.save();
 	}).then(function(savedCart) {
 		console.log('Item removed from cart!');
-		res.send(savedCart);
+		savedCart.populate('films', function (err, populatedCart) {
+			if (err) throw err;
+			res.send(populatedCart);
+		});
 	});
 });
 
