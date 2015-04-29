@@ -18,12 +18,8 @@ router.get('/', function (req, res) {
 	cartModel.findOne({sessionId: sessionId}).exec(function (err, cart) {
 		if(err) throw err;
 
-		console.log("Cart before population", cart);
-
 		lineItemModel.populate(cart.lineItems, opts, function(err, populatedLineItem) {
 			if(err) throw err;
-			console.log("Populated Line Item", populatedLineItem);
-			console.log("Cart after population", cart);
 			res.send(cart);
 		}) 
 
@@ -37,27 +33,40 @@ router.put('/', function (req, res) {
 	var sessionId = req.sessionID;
 	var filmId = req.body.filmId;
 
+	var opts = {
+	            path: 'film',
+	        };
+
 	cartModel.findOne({sessionId: sessionId}).exec(function (err, cart) {
 		if(err) throw err;
 
-		// Determine if a line order for the film already exists
+		// Determine if a line item for the film already exists
 
-		// carts.lineItems.forEach(function searchFor)
+		var lineItemIndex;
 
-		var index = cart.films.indexOf(filmId);
+		function returnIndexOfLineItemForFilm(lineItems) {
+			for (var i = 0; i < lineItems.length; i++) {
+				if (lineItems[i].film == filmId) {
+					lineItemIndex = i;
+					return true;
+				} else {
+					console.log("Film not found")
+				}
+			}
+		};
 
-		if (index > -1) {
-			cart.films.splice(index, 1);
-		}
+		returnIndexOfLineItemForFilm(cart.lineItems);
+
+		cart.lineItems.splice(lineItemIndex, 1);
 
 		return cart.save();
 	}).then(function(savedCart) {
 		console.log('Item removed from cart!');
-		savedCart.populate('films', function (err, populatedCart) {
-			if (err) throw err;
-			res.send(populatedCart);
+			lineItemModel.populate(savedCart.lineItems, opts, function(err, populatedLineItem) {
+				if(err) throw err;
+				res.send(savedCart);
+			});	 
 		});
-	});
 });
 
 //ADD ITEM TO CART
@@ -85,9 +94,7 @@ router.post('/', function (req, res, next) {
 			var lineItemIndex;
 
 			function filmAlreadyExistsInCart(lineItems) {
-				console.log("RUNNING FUNCTION!!!");
 				for (var i = 0; i < lineItems.length; i++) {
-					console.log("Film ID IN CART is ",lineItems[i].film);
 					if (lineItems[i].film == filmId) {
 						lineItemIndex = i;
 						return true;

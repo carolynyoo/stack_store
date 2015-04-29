@@ -25,7 +25,7 @@ app.controller('CartCtrl', function ($scope, $http, cartInfo, cartFactory) {
 		var filmId = film._id;
 		$http.put('/api/cart', {filmId: filmId}).
 		    success(function(cartInfo) {
-		    	$scope.allFilmsInCart = cartInfo.films;
+		    	$scope.allLineItemsInCart = cartInfo.lineItems;
 		        console.log("Item removed from Cart!");
 		    }).
 		    error(function(data) {
