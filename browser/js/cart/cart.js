@@ -17,7 +17,7 @@ app.config(function ($stateProvider) {
 
 app.controller('CartCtrl', function ($scope, $http, cartInfo, cartFactory) {
 
-	$scope.allFilmsInCart = cartInfo.films;
+	$scope.allLineItemsInCart = cartInfo.lineItems;
 
 	// Function to delete an item from the cart
 
@@ -41,6 +41,7 @@ app.factory('cartFactory', function ($http) {
 	return {
 		getCart: function() {
 			return $http.get('/api/cart').then(function (response) {
+				console.log("The data is", response.data);
 			    return response.data;
 			});
 		}
