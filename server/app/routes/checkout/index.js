@@ -36,15 +36,12 @@ router.post('/', function (req, res, next) {
 		order.save();
 	});
 
-	// It should close the current cart
-
-	// cartModel.findOne({sessionId: sessionId}).exec()
-	// .then(function (err, cart) {
-	// 	console.log(cart);
-	// 	if(err) throw err;
-	// 	cart.closed = true;
-	// 	cart.save();
-	// });
+	cartModel.findOne({sessionId: sessionId}).exec(function (err, cart) {
+		console.log(cart);
+		if(err) throw err;
+		cart.closed = true;
+		cart.save();
+	});
 
 	res.sendStatus(200);
 

@@ -10,7 +10,7 @@ var cartSchema = new mongoose.Schema({
 	sessionId: {type: String, required: true},
 	promoApplied: {type: Boolean, required: true}, 
 	promoDiscount: {type: Number, required: true, default: 0},
-	closed: {type: Boolean, default: false}
+	closed: {type: Boolean, required: true, default: false}
 });
 
 mongoose.model('Cart', cartSchema);
