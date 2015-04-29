@@ -3,7 +3,7 @@
 
 app.config(function ($stateProvider) {
 	$stateProvider.state('checkout', {
-		url: '/cart',
+		url: '/checkout',
 		templateUrl: 'js/checkout/checkout.html',
 		controller: 'CheckoutCtrl',
 		resolve: {
@@ -22,5 +22,19 @@ app.config(function ($stateProvider) {
 // Set up the Checkout controller
 
 app.controller('CheckoutCtrl', function ($scope, $http, cartInfo) {
+
+	$scope.checkout = function () {
+		$http.post('/api/checkout', {cartInfo: cartInfo}).
+			success(function(data) {
+			    console.log("Order created!");
+			}).
+			error(function(data) {
+			    console.log("Error creating order!");
+			});
+	};
 	$scope.allLineItemsInCart = cartInfo.lineItems;
-})
+	$scope.billing = {};
+	$scope.address = {};
+	$scope.error = null;
+
+});

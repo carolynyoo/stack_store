@@ -1,57 +1,55 @@
-<div class="row">
-	<div class="col-md-9">
+<form id="checkout-form" name="checkoutForm" ng-submit="checkout()">
+	<div class="row">
+		<div class="col-md-9">
 
-		<h1>Checkout</h1>
+			<h1>Checkout</h1>
 
-		<form id="checkout-form" name="checkoutForm" ng-submit="checkoutForm.$valid && checkout()">
-
-		<div class="row">
-			<div class="col-md-6">
-				<p>Billing Info:</p>
-				<div class="form-group">
-				    <label for="creditCardName">Name on Credit Card</label>
-				    <input type="text" ng-model="billing.creditCardName" class="form-control" id="creditCardName" placeholder="Name on Credit Card">
-				    <label for="creditCardNumber">Credit Card Number</label>
-				    <input type="text" ng-model="billing.creditCardNumber" class="form-control" id="creditCardNumber" placeholder="Enter Credit Card Number">
-				    <label for="creditCardCVC">CVC</label>
-				    <input type="text" ng-model="billing.creditCardCVC" class="form-control" id="creditCardCVC" placeholder="Enter Credit Card CVC">
+			<div class="row">
+				<div class="col-md-6">
+					<p>Billing Info:</p>
+					<div class="form-group">
+					    <label for="creditCardName">Name on Credit Card</label>
+					    <input type="text" ng-model="billing.creditCardName" class="form-control" id="creditCardName" placeholder="Name on Credit Card">
+					    <label for="creditCardNumber">Credit Card Number</label>
+					    <input type="text" ng-model="billing.creditCardNumber" class="form-control" id="creditCardNumber" placeholder="Enter Credit Card Number">
+					    <label for="creditCardCVC">CVC</label>
+					    <input type="text" ng-model="billing.creditCardCVC" class="form-control" id="creditCardCVC" placeholder="Enter Credit Card CVC">
+					</div>
+				</div>
+				<div class="col-md-6">
+					<p>Shipping Info</p>
+					<div class="form-group">
+					    <label for="street">Street Address</label>
+					    <input type="text" ng-model="address.street" class="form-control" id="street" placeholder="Enter Street Address">
+					    <label for="city">City</label>
+					    <input type="text" ng-model="address.city" class="form-control" id="city" placeholder="Enter City">
+					    <label for="state">State</label>
+					    <input type="text" ng-model="address.state" class="form-control" id="state" placeholder="Enter State">
+					    <label for="zip">Zip Code</label>
+					    <input type="text" ng-model="address.zip" class="form-control" id="zip" placeholder="Enter Zip Code">
+					</div>
 				</div>
 			</div>
-			<div class="col-md-6">
-				<p>Shipping Info</p>
-				<div class="form-group">
-				    <label for="street">Street Address</label>
-				    <input type="text" ng-model="address.street" class="form-control" id="street" placeholder="Enter Street Address">
-				    <label for="city">City</label>
-				    <input type="text" ng-model="address.city" class="form-control" id="city" placeholder="Enter City">
-				    <label for="state">State</label>
-				    <input type="text" ng-model="address.state" class="form-control" id="state" placeholder="Enter State">
-				    <label for="zip">Zip Code</label>
-				    <input type="text" ng-model="address.zip" class="form-control" id="zip" placeholder="Enter Zip Code">
-				</div>
+
+			<h2>Order Summary</h2>
+
+			<div ng-repeat="lineItem in allLineItemsInCart" class="clear">
+				<div class="film-title">{{lineItem.film.title}}</div>
+				<p>{{lineItem.film.description}}</p>
+				<p>Price: {{lineItem.film.price | centsToDollars | currency}}</p>
+				<p>Quantity: {{lineItem.quantity}}</p>
+				<button type="button" class="btn btn-danger" ng-click="removeFilmFromCart(lineItem.film)">Delete</button>
+				<button type="button" class="btn btn-info">Edit</button>
 			</div>
+
 		</div>
 
-		</form>
+		<div class="col-md-3" >
 
-		<h2>Order Summary</h2>
+			<p>Order Details</p>
 
-		<div ng-repeat="lineItem in allLineItemsInCart" class="clear">
-			<div class="film-title">{{lineItem.film.title}}</div>
-			<p>{{lineItem.film.description}}</p>
-			<p>Price: {{lineItem.film.price | centsToDollars | currency}}</p>
-			<p>Quantity: {{lineItem.quantity}}</p>
-			<button type="button" class="btn btn-danger" ng-click="removeFilmFromCart(lineItem.film)">Delete</button>
-			<button type="button" class="btn btn-info">Edit</button>
+			<button type="submit" class="btn btn-success">Place Order</button>
+
 		</div>
-
 	</div>
-
-	<div class="col-md-3" >
-
-		<p>Order Details</p>
-
-		<button type="submit" class="btn btn-success" ui-sref="confirmation">Place Order</button>
-
-	</div>
-</div>
+</form>

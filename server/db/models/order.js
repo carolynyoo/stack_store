@@ -8,10 +8,11 @@ var lineItemSchema = new mongoose.Schema({
 var orderSchema = new mongoose.Schema({
 	lineItems: [lineItemSchema],
 	sessionId: {type: String, required: true},
-	user: {type:mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
-	status: {type: String, required: true},
+	user: {type:mongoose.Schema.Types.ObjectId, ref: 'User'},
+	status: {type: String, required: true, default: "Inactive"},
 	datetime: {type: Date, required: true},
-	promoApplied: {type: Boolean, required: true}, 
+	confirmationNumber: {type: String, required: true},
+	promoApplied: {type: Boolean, required: true, default: false}, 
 	promoDiscount: {type: Number, required: true, default: 0}
 });
 
