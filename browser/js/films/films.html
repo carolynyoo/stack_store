@@ -1,5 +1,3 @@
-<h1>BadAss Movies. Complete Catalog:</h1>
-
 <div class="btn-group genres">
   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
     Genres (from db) <span class="caret"></span>
@@ -11,8 +9,30 @@
   </ul>
 </div>
 
-<div ng-repeat="film in films">
-	<a ng-href="/products/{{film._id}}">{{film.title}}</a>	
-  <p ng-repeat="category in film.categories">{{category.name}}</p>
+<!-- <div ng-repeat="film in films"> -->
+	<!-- <a ng-href="/products/{{film._id}}">{{film.title}}</a>	 -->
+  <!-- <p ng-repeat="category in film.categories">{{category.name}}</p> -->
   <!--   <p>{{film.categories.name}}</p> -->	
+<!-- </div> -->
+
+<div class="browserfilm" ng-repeat="film in films">
+  <img class="browserpic" src="{{film.photo}}" alt="{{film.title}} img">
+    <h3><a ng-href="/products/{{film._id}}">{{film.title}}</a></h3>
+    <p>{{film.description}}</p>
+    <div ng-repeat="category in film.categories">{{category.name}}</div>
+    <button type="button" class="btn btn-default">{{film.price}}</button>
+    <button type="button" class="btn btn-info">Detail</button>
+    <button type="button" class="btn btn-success">BUY!</button>
 </div>
+
+<!-- <ul>
+  <li class="browserfilm" ng-repeat="film in films">
+    <img class="browserpic" src="{{film.photo}}" alt="{{film.title}} img">
+    <h3 ng-href="/products/{{film._id}}">{{film.title}}</h3><br>
+    <p>{{film.description}}</p><br>
+    <p ng-repeat="category in film.categories">{{category.name}}</p>
+    <button type="button" class="btn btn-default">{{film.price}}</button>
+    <button type="button" class="btn btn-info">Detail</button>
+    <button type="button" class="btn btn-success">BUY!</button>
+  </li>
+</ul> -->
