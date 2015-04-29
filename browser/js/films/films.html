@@ -11,8 +11,14 @@
   </ul>
 </div>
 
-<div ng-repeat="film in films">
-	<a ng-href="/products/{{film._id}}">{{film.title}}</a>	
-  <p ng-repeat="category in film.categories">{{category.name}}</p>
-  <!--   <p>{{film.categories.name}}</p> -->	
+<div class="film-area">
+  <div class="film-list col-md-3" ng-repeat="film in films">
+  	<a ng-href="/products/{{film._id}}">
+      <img ng-src="{{film.photo}}" />
+      <p>{{film.title}}</p>
+    </a>
+    <button type="button" class="btn btn-default">{{film.price}}</button>
+   <button type="button" class="btn btn-success">BUY</button>
+    <!--   <p>{{film.categories.name}}</p> -->	
+  </div>
 </div>
