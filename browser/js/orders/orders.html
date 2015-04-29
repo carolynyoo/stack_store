@@ -1,1 +1,12 @@
 <h2>Previous orders</h2>
+
+<div ng-repeat="order in allOrdersForUser">
+	<h3><i>{{order.datetime}}</i></h3>
+	<p>Confirmation number: {{order.confirmationNumber}}</p>
+	<p>Order status: {{order.status}}</p>
+	<p><b>Order summary:</b><p>
+	<p ng-repeat="lineItem in order.lineItems">
+		{{lineItem.film}}
+		{{lineItem.quantity}}
+	</p>
+</div>
