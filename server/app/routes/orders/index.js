@@ -1,31 +1,45 @@
 'use strict';
 var mongoose = require('mongoose');
 var router = require('express').Router();
+var async = require('async');
 module.exports = router;
 
 var orderModel = mongoose.model('Order');
 var lineItemModel = mongoose.model('LineItem');
+
 
 router.get('/:userId', function(req, res) {
 	// Query to find order goes here
 
 	var userId = req.params.userId;
 
-	var opts = {
-	            path: 'film',
-	        };
 
 	orderModel.find({user: userId}).exec(function (err, orders) {
+		
+		var opts = {
+		            path: 'film',
+		        };
+
 		if (err) throw err;
 
-		for (var i=0; i < orders.length; i++) {
-			lineItemModel.populate(orders[i].lineItems, opts, function(err, populatedLineItem) {
-				if (err) throw err;
-			}).then(function(populatedOrders) {
-				console.log("POPULATED ORDERS ARE: ", orders);
+		var populateOrders = function(order, callback) {
+			lineItemModel.populate(order.lineItems, opts, 
+				function(err, populatedLineItem) {
+						if (err) throw err;
+						return callback(null);
+				});
+		};
+
+		//Use async since .populate is asynchronous
+
+		async.eachSeries(
+			orders, 
+			populateOrders,
+			function(err) {
+				console.log("SENDING ORDERS", orders);
 				res.send(orders);
-			});
-		}
+			}
+		);
 	});
 
 });

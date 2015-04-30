@@ -21,12 +21,13 @@ app.config(function ($stateProvider) {
 
 // Set up the Checkout controller
 
-app.controller('CheckoutCtrl', function ($scope, $http, cartInfo) {
+app.controller('CheckoutCtrl', function ($scope, $http, cartInfo, $state) {
 
 	$scope.checkout = function () {
 		$http.post('/api/checkout', {cartInfo: cartInfo}).
 			success(function(data) {
 			    console.log("Order created!");
+			    $state.go('home');
 			}).
 			error(function(data) {
 			    console.log("Error creating order!");
