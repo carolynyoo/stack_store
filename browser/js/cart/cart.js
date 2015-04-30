@@ -17,7 +17,7 @@ app.config(function ($stateProvider) {
 
 app.controller('CartCtrl', function ($scope, $http, cartInfo, cartFactory) {
 
-	$scope.allFilmsInCart = cartInfo.films;
+	$scope.allLineItemsInCart = cartInfo.lineItems;
 
 	// Function to delete an item from the cart
 
@@ -25,7 +25,7 @@ app.controller('CartCtrl', function ($scope, $http, cartInfo, cartFactory) {
 		var filmId = film._id;
 		$http.put('/api/cart', {filmId: filmId}).
 		    success(function(cartInfo) {
-		    	$scope.allFilmsInCart = cartInfo.films;
+		    	$scope.allLineItemsInCart = cartInfo.lineItems;
 		        console.log("Item removed from Cart!");
 		    }).
 		    error(function(data) {
@@ -41,6 +41,7 @@ app.factory('cartFactory', function ($http) {
 	return {
 		getCart: function() {
 			return $http.get('/api/cart').then(function (response) {
+				console.log("The data is", response.data);
 			    return response.data;
 			});
 		}
