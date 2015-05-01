@@ -7,7 +7,6 @@ module.exports = router;
 var orderModel = mongoose.model('Order');
 var lineItemModel = mongoose.model('LineItem');
 
-
 router.get('/:userId', function(req, res) {
 	// Query to find order goes here
 
@@ -43,3 +42,12 @@ router.get('/:userId', function(req, res) {
 	});
 
 });
+
+
+router.get('/', function(req, res) {
+	orderModel.find({}, function (err, orders) {
+            if(err) throw err
+            // console.log("FILMS-SERVER-Side",films);
+            res.json(orders);
+    });
+})
