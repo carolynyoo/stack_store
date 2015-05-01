@@ -23,8 +23,8 @@ app.run(function ($rootScope, AuthService, $state) {
         // log changes in state
         $rootScope.previousState = fromState.name;
         $rootScope.currentState = toState.name;
-        console.log('Previous state:'+$rootScope.previousState);
-        console.log('Current state:'+$rootScope.currentState);
+        // console.log('Previous state:'+$rootScope.previousState);
+        // console.log('Current state:'+$rootScope.currentState);
 
         if (!destinationStateRequiresAuth(toState)) {
             // The destination state does not require authentication

@@ -22,6 +22,8 @@ router.use('/films', require('./films'));
 router.use('/products', require('./pdp'));
 router.use('/cart', require('./cart'));
 router.use('/categories', require('./categories'));
+router.use('/checkout', require('./checkout'));
+router.use('/orders', require('./orders'));
 
 // Make sure this is after all of
 // the registered routes!
