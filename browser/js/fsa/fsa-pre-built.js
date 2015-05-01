@@ -67,6 +67,15 @@
             return !!Session.user;
         };
 
+        this.getAdminStatus = function () {
+            if (!Session.user) {
+                return null
+            } 
+            else {
+                return Session.user.admin;
+            }
+        }
+
         this.getLoggedInUser = function () {
 
             // If an authenticated session exists, we
@@ -74,6 +83,7 @@
             // with a promise. This ensures that we can
             // always interface with this method asynchronously.
             if (this.isAuthenticated()) {
+                console.log('do i get here');
                 return $q.when(Session.user);
             }
 
