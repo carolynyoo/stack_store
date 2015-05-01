@@ -1,10 +1,19 @@
+<div class="container">
+<div class="row">
 <section id="product">
 
+<div class="col-md-6">
 <product-image></product-image>
-<product-details-box>hello</product-details-box>
+</div>
 
-<film-rating>film rating goes here</film-rating>
-<film-review>film review goes here</film-review>
+<div class="col-md-6">
+  <product-details-box></product-details-box>
+
+  <film-review></film-review>
+
+<button ng-click="addFilmToCart()" class="btn btn-success">Add to Cart</button>
+</div>
+
 </section>
-
-<button ng-click="addFilmToCart()">Add to Cart</button>
+</div>
+</div>

@@ -37,6 +37,11 @@ var schema = new mongoose.Schema({
         city: String,
         state: String,
         zip: Number
+    },
+    billing: {
+        creditCardName: String,
+        creditCardNumber: String,
+        creditCardCVC: String,
     }
 });
 

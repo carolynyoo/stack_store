@@ -84,20 +84,6 @@ app.directive('filmReview', function(){
 };
 });
 
-app.directive('filmRating', function(){
-
-    return {
-        restrict: 'E',
-        templateUrl: 'js/pdp/filmrating.html',
-        
-        link: function(scope, el, attr){
-
-        }
-
-};
-});
-
-
 
 
 // need custom filter for currency conversion from cents
