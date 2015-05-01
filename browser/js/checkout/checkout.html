@@ -11,9 +11,11 @@
 					    <label for="creditCardName">Name on Credit Card</label>
 					    <input type="text" ng-model="billing.creditCardName" class="form-control" id="creditCardName" placeholder="Name on Credit Card">
 					    <label for="creditCardNumber">Credit Card Number</label>
-					    <input type="text" ng-model="billing.creditCardNumber" class="form-control" id="creditCardNumber" placeholder="Enter Credit Card Number">
+					    <input type="text" ng-model="billing.creditCardNumber" class="form-control" x-autocompletetype="cc-number" restrict-numeric card-number-validator card-number-formatter card-type="cardType" id="creditCardNumber" placeholder="Enter Credit Card Number">
 					    <label for="creditCardCVC">CVC</label>
-					    <input type="text" ng-model="billing.creditCardCVC" class="form-control" id="creditCardCVC" placeholder="Enter Credit Card CVC">
+					    <input type="text" ng-model="billing.creditCardCVC" x-autocompletetype="cc-csc" restrict-numeric card-cvc-validator card-cvc-formatter ng-maxlength="4" ng-pattern="/\d*/" class="form-control" id="creditCardCVC" placeholder="Enter Credit Card CVC">
+					    <label for="creditExpiration">Expiration Date</label>
+					    <input type="text" ng-model="billing.creditExpiration" class="form-control" x-autocompletetype="cc-exp" maxlength="9" restrict-numeric card-expiry-validator card-expiry-formatter id="creditExpiration" placeholder="Enter Expiration Date MM/YYYY">
 					</div>
 				</div>
 				<div class="col-md-6">
