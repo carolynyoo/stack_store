@@ -45,9 +45,39 @@ router.get('/:userId', function(req, res) {
 
 
 router.get('/', function(req, res) {
-	orderModel.find({}, function (err, orders) {
+
+	// IF defined as orderSchema.methods.getRanking...
+	// (and not exported)
+	// 'orderModel' is a constructor 
+	// **Really should be OrderModel... 
+	// SO, doesn't have the instance method you created...
+	// When you run the constructor and get the instance returned, then you get the instance and your method
+
+	/* orderModel.findOne({}, function (err, orderObj) {
+        // Constructor gets the mongoose prototype methods... findOne 
+        
+        console.log(orderObj);
+        // what's returned looks like a record from the db... 
+
+        // !! BUT... mongoose is hiding things 
+        for (var keys in orderObj){
+        	console.log(keys)
+        }
+        // Looks like an obj from your db... but really its a mongoose object!!
+
+        if(err) throw err
+        orderObj.getRanking(function(err, orders){
+            res.json(orders);
+        });
+    	// that mongoose instance object has the method we want to use. 
+    }); */
+
+	// Mongoose 'Statics' get placed on the Constructor from mongoose.model
+ 	// For whatever reason...  
+	orderModel.getRanking(function (err, orders) {
             if(err) throw err
             // console.log("FILMS-SERVER-Side",films);
             res.json(orders);
     });
+
 })
