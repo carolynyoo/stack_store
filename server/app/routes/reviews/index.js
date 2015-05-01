@@ -7,9 +7,9 @@ var reviewModel = mongoose.model('Review');
 
 router.get('/:pid', function (req, res, next) {
   var pid = req.params.pid; 
-  reviewModel.findById(pid, function (err, reviews) {
+  reviewModel.findOne({film: ObjectId(pid)}).populate('comment').exec(function (err, review) {
     if (err) next(err);
-    console.log(reviews);
-    res.json(reviews);
+    console.log(review);
+    res.json(review);
   });
 });

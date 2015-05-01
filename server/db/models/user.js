@@ -43,6 +43,11 @@ var schema = new mongoose.Schema({
         default: false,
         required: true
     }
+    billing: {
+        creditCardName: String,
+        creditCardNumber: String,
+        creditCardCVC: String,
+    }
 });
 
 // generateSalt, encryptPassword and the pre 'save' and 'correctPassword' operations

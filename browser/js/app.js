@@ -16,11 +16,22 @@ app.run(function ($rootScope, AuthService, $state) {
         return state.data && state.data.authenticate;
     };
 
+    // The given state requires an authenticated admin user.
+    var destinationStateRequiresAdmin = function (state) {
+        return state.data && state.data.admin;
+    };
+
     // $stateChangeStart is an event fired
     // whenever the process of changing a state begins.
-    $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 
-        if (!destinationStateRequiresAuth(toState)) {
+        // log changes in state
+        $rootScope.previousState = fromState.name;
+        $rootScope.currentState = toState.name;
+        // console.log('Previous state:'+$rootScope.previousState);
+        // console.log('Current state:'+$rootScope.currentState);
+
+        if (!destinationStateRequiresAuth(toState) && !destinationStateRequiresAdmin(toState)) {
             // The destination state does not require authentication
             // Short circuit with return.
             return;
@@ -40,10 +51,20 @@ app.run(function ($rootScope, AuthService, $state) {
             // (the second time, AuthService.isAuthenticated() will work)
             // otherwise, if no user is logged in, go to "login" state.
             if (user) {
-                $state.go(toState.name, toParams);
+                if (destinationStateRequiresAdmin(toState)) {
+                    if (user.admin) {
+                        $state.go('admin');
+                    }
+                } else {
+                    if (destinationStateRequiresAuth(toState)) {
+                        $state.go(toState.name, toParams);
+                    }
+                }
             } else {
                 $state.go('login');
             }
+        }).catch(function () {
+            $state.go('login');
         });
 
     });
