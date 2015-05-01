@@ -42,7 +42,7 @@ var schema = new mongoose.Schema({
         type: Boolean,
         default: false,
         required: true
-    }
+    },
     billing: {
         creditCardName: String,
         creditCardNumber: String,
