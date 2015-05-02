@@ -1,5 +1,4 @@
-app.config(function ($stateProvider) {
-
+app.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider.state('admin', {
         url: '/admin',
         templateUrl: 'js/admin/admin.html',
@@ -8,20 +7,24 @@ app.config(function ($stateProvider) {
         // that controls access to this state. Refer to app.js.
         data: {
             admin: true
+        },
+        onEnter: function($state, $timeout) {
+          $timeout(function() {
+            $state.go('admin.welcome')
+          })
         }
     })
+      .state('admin.welcome', {
+        url: '/welcome',
+        templateUrl: 'js/admin/templates/welcome.html'
+      })
       .state('admin.products', {
-        url: 'products',
+        url: '/products',
         templateUrl: 'js/admin/templates/products.html',
-        controller: 'filmsCtrl',
-        resolve: {
-            allProducts: function(pdpFactory) {
-                return FilmFactory.getFilms(); 
-            }
-        }
+        controller: 'filmsCtrl'
       })
       .state('admin.products.pid', {
-        url: 'products:pid',
+        url: '/products/:pid',
         templateUrl: 'js/admin/templates/pid.html',
         controller: 'PdpCtrl',
         resolve: {

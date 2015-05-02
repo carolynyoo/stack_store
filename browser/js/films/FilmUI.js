@@ -4,13 +4,6 @@ app.config(function ($stateProvider) {
         url: '/films',
         templateUrl: 'js/films/films.html',
         controller: 'filmsCtrl'
-          /*resolve: {
-            giveFilms: function ($stateParams, FilmFactory) {
-               // return pdpFactory.getInfo($stateParams.pid);
-               // Matrix test for now - do not have category view wired up yet 
-               return FilmFactory.getFilms();
-            }
-        }*/
     });
 });
 
