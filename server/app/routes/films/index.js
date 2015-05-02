@@ -27,12 +27,24 @@ router.get('/', function (req, res) {
 });
 
 
-router.put('/', function (req, res, next) {
+router.put('/', function (req, res) {
 	
 	console.log("HIT THE FILM PUT ROUTE");
 	var purchasestats = req.body.purchasestats;
+	// var movie = req.body.purchasestats[0].movie;
+	// console.log("movie: ",movie);
+	// var stats = JSON.parse(purchasestats)
+	// console.log("purchasestats: ",stats);
 	console.log("purchasestats: ",purchasestats);
-
 	
-
+	for(movie in purchasestats){
+		console.log(movie._id);
+		console.log(movie.count);
+		FilmsModel.find({ _id: movie._id})
+			.exec(function(err, films){
+				if(err) throw err
+				console.log(films);
+			});
+	}
+	
 });
