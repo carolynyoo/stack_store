@@ -57,7 +57,8 @@ var seedUsers = [
     {
         email: 'obama@gmail.com',
         name: 'Obama',
-        password: 'potus'
+        password: 'potus',
+        admin: true
     }
 ];
 

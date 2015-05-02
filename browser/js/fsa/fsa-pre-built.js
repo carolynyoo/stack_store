@@ -83,7 +83,6 @@
             // with a promise. This ensures that we can
             // always interface with this method asynchronously.
             if (this.isAuthenticated()) {
-                console.log('do i get here');
                 return $q.when(Session.user);
             }
 
