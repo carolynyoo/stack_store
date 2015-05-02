@@ -2,37 +2,50 @@
 	<div class="row">
 		<div class="col-md-9">
 
-			<h1>Checkout</h1>
+				<h1>Checkout</h1>
+					<div class="row">
+						<div class="col-md-6">
+							<p>Billing Info:</p>
 
-			<div class="row">
-				<div class="col-md-6">
-					<p>Billing Info:</p>
-					<div class="form-group">
-					    <label for="creditCardName">Name on Credit Card</label>
-					    <input type="text" ng-model="billing.creditCardName" class="form-control" id="creditCardName" placeholder="Name on Credit Card">
-					    <label for="creditCardNumber">Credit Card Number</label>
-					    <input type="text" ng-model="billing.creditCardNumber" class="form-control" x-autocompletetype="cc-number" restrict-numeric card-number-validator card-number-formatter card-type="cardType" id="creditCardNumber" placeholder="Enter Credit Card Number">
-					    <label for="creditCardCVC">CVC</label>
-					    <input type="text" ng-model="billing.creditCardCVC" x-autocompletetype="cc-csc" restrict-numeric card-cvc-validator card-cvc-formatter ng-maxlength="4" ng-pattern="/\d*/" class="form-control" id="creditCardCVC" placeholder="Enter Credit Card CVC">
-					    <label for="creditExpiration">Expiration Date</label>
-					    <input type="text" ng-model="billing.creditExpiration" class="form-control" x-autocompletetype="cc-exp" maxlength="9" restrict-numeric card-expiry-validator card-expiry-formatter id="creditExpiration" placeholder="Enter Expiration Date MM/YYYY">
+							<div class="form-group">
+							    <label for="creditCardName">Name on Credit Card</label>
+							    <input type="text" ng-model="billing.creditCardName" class="form-control" id="creditCardName" placeholder="Name on Credit Card">
+							 </div>
+
+							 <div class="form-group" ng-class="{ 'has-error': checkoutForm.creditCardNumber.$invalid }">
+							    <label for="creditCardNumber">Credit Card Number</label>
+							    <input type="text" name="creditCardNumber" ng-model="billing.creditCardNumber" class="form-control" x-autocompletetype="cc-number" restrict-numeric card-number-validator card-number-formatter card-type="cardType" id="creditCardNumber" placeholder="Enter Credit Card Number">
+							    <p ng-show="checkoutForm.creditCardNumber.$invalid&&checkoutForm.creditCardNumber.$dirty">Please enter a valid credit card number</p>
+							  </div>
+
+							  <div class="form-group" ng-class="{ 'has-error': checkoutForm.creditCardCVC.$invalid }">
+							    <label for="creditCardCVC">CVC</label>
+							    <input type="text" name="creditCardCVC" ng-model="billing.creditCardCVC" x-autocompletetype="cc-csc" restrict-numeric card-cvc-validator card-cvc-formatter ng-maxlength="4" ng-pattern="/\d*/" class="form-control" id="creditCardCVC" placeholder="Enter Credit Card CVC">
+							    <p ng-show="checkoutForm.creditCardCVC.$invalid&&checkoutForm.creditCardCVC.$dirty">Please enter a valid CVC</p>
+							  </div>
+
+							    
+							  <div class="form-group" ng-class="{ 'has-error': checkoutForm.creditCardExpiry.$invalid }">
+							    <label for="creditExpiration">Expiration Date</label>
+							    <input type="text" name="creditCardExpiry" ng-model="billing.creditExpiration" class="form-control" x-autocompletetype="cc-exp" maxlength="9" restrict-numeric card-expiry-validator card-expiry-formatter id="creditExpiration" placeholder="Enter Expiration Date MM/YYYY">
+							    <p ng-show="checkoutForm.creditCardExpiry.$invalid&&checkoutForm.creditCardExpiry.$dirty">Please enter a valid expiration date MM/YYYY</p>
+							  </div>
+							
+						</div>
+					<div class="col-md-6">
+						<p>Shipping Info</p>
+						<div class="form-group">
+						    <label for="street">Street Address</label>
+						    <input type="text" ng-model="address.street" class="form-control" id="street" placeholder="Enter Street Address">
+						    <label for="city">City</label>
+						    <input type="text" ng-model="address.city" class="form-control" id="city" placeholder="Enter City">
+						    <label for="state">State</label>
+						    <input type="text" ng-model="address.state" class="form-control" id="state" placeholder="Enter State">
+						    <label for="zip">Zip Code</label>
+						    <input type="text" ng-model="address.zip" class="form-control" id="zip" placeholder="Enter Zip Code">
+						</div>
 					</div>
 				</div>
-				<div class="col-md-6">
-					<p>Shipping Info</p>
-					<div class="form-group">
-					    <label for="street">Street Address</label>
-					    <input type="text" ng-model="address.street" class="form-control" id="street" placeholder="Enter Street Address">
-					    <label for="city">City</label>
-					    <input type="text" ng-model="address.city" class="form-control" id="city" placeholder="Enter City">
-					    <label for="state">State</label>
-					    <input type="text" ng-model="address.state" class="form-control" id="state" placeholder="Enter State">
-					    <label for="zip">Zip Code</label>
-					    <input type="text" ng-model="address.zip" class="form-control" id="zip" placeholder="Enter Zip Code">
-					</div>
-				</div>
-			</div>
-
 			<h2>Order Summary</h2>
 
 			<div ng-repeat="lineItem in allLineItemsInCart" class="clear">
