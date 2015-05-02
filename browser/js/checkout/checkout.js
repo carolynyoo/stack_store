@@ -1,5 +1,6 @@
 'use strict';
 // Set up the state provider
+// var q = require('q');
 
 app.config(function ($stateProvider) {
 	$stateProvider.state('checkout', {
@@ -37,20 +38,30 @@ app.controller('CheckoutCtrl', function ($scope, $http, cartInfo, $state) {
 
 	console.log("purchasestats: ",purchasestats);
 
+	var postcartpromise = $http.post('/api/checkout', {cartInfo: cartInfo});
+	var poststats = $http.put('/api/films', {purchasestats: purchasestats});
+	var calls = [postcartpromise, poststats];
+
+	$scope.putStats = function () {
+		$http.put('/api/films', {purchasestats: purchasestats})
+		.success(function(){
+			
+		});
+		console.log("putStats FIRED!")
+	};
+
 	$scope.checkout = function () {
-		$http.post('/api/checkout', {cartInfo: cartInfo}).
-		then(function(postreturn){
-			$http.put('/api/films', {purchasestats: purchasestats})	
-		}, function(err){
-			consol.log(err);
-		}).
-			success(function(data) {
-			    console.log("Order created!");
-			    $state.go('confirmation');
-			}).
-			error(function(data) {
-			    console.log("Error creating order!");
-			});
+		// postcartpromise
+		// .then(poststats)
+		// $q.all(calls)
+		$http.post('/api/checkout', {cartInfo: cartInfo})
+		.success(function(data) {
+		    console.log("Order created!");
+		    $state.go('confirmation');
+		})
+		.error(function(data) {
+		    console.log("Error creating order!");
+		});
 	};
 	$scope.allLineItemsInCart = cartInfo.lineItems;
 	$scope.billing = {};

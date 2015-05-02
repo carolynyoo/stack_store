@@ -28,9 +28,11 @@ router.get('/', function (req, res) {
 
 
 router.put('/', function (req, res, next) {
-
+	
+	console.log("HIT THE FILM PUT ROUTE");
 	var purchasestats = req.body.purchasestats;
 	console.log("purchasestats: ",purchasestats);
 
+	
 
 });
