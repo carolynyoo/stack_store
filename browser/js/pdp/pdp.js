@@ -19,8 +19,8 @@ app.factory('Product', function ($http) {
                 return response.data;
             });
         },
-        update: function (pid) {
-            return $http.put('/api/products'+pid).then(function (response) {
+        update: function (pid, newData) {
+            return $http.put('/api/products', newData).then(function (response) {
                 return response.data;
             })
         },
@@ -33,6 +33,8 @@ app.factory('Product', function ($http) {
 });
 
 app.controller('PdpCtrl', function ($scope, $http, $stateParams, $state, pdpInfo) {
+  $scope.formData = {};
+
   $scope.film = pdpInfo;
 
   // to be refactored into factory
