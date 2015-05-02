@@ -9,7 +9,27 @@ app.config(function ($stateProvider) {
         data: {
             admin: true
         }
-    });
+    })
+      .state('admin.products', {
+        url: 'products',
+        templateUrl: 'js/admin/templates/products.html',
+        controller: 'filmsCtrl',
+        resolve: {
+            allProducts: function(pdpFactory) {
+                return FilmFactory.getFilms(); 
+            }
+        }
+      })
+      .state('admin.products.pid', {
+        url: 'products:pid',
+        templateUrl: 'js/admin/templates/pid.html',
+        controller: 'PdpCtrl',
+        resolve: {
+            product: function ($stateParams, pdpFactory) {
+                return pdpFactory.getInfo($stateParams.pid);
+            }
+        }
+      })
 
 });
 
@@ -25,3 +45,4 @@ app.controller('AdminCtrl', function ($scope, AuthService) {
   setUser();
 
 });
+
