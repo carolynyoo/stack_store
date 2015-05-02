@@ -1,17 +1,27 @@
-'user strict';
+'use strict';
 
 // Set up the state provider
 app.config(function ($stateProvider) {
 	$stateProvider.state('orders', {
 		url: '/orders',
 		templateUrl: 'js/orders/orders.html',
-		controller: 'OrdersCtrl'
+		controller: 'OrdersCtrl',
+		resolve: {
+				orderInfo: function (ordersFactory, Session) {
+				var userId = Session.user._id;
+				return ordersFactory.getOrders(userId);
+				}
+		}
 	});
 });
 
 // Set up the Order controller
 
-app.controller('OrdersCtrl', function ($scope, $http, ordersFactory) {
+app.controller('OrdersCtrl', function ($scope, $http, orderInfo) {
+
+	console.log("ORDER INFO IS", orderInfo);
+
+	$scope.allOrdersForUser = orderInfo;
 
 });
 
@@ -19,8 +29,9 @@ app.controller('OrdersCtrl', function ($scope, $http, ordersFactory) {
 
 app.factory('ordersFactory', function ($http) {
 	return {
-		getOrders: function() {
-			return $http.get('/api/orders').then(function (response) {
+		getOrders: function(userId) {
+			console.log("TRYING TO GET ORDERS WITH USERID: ", userId);
+			return $http.get('/api/orders/'+userId).then(function (response) {
 				return response.data;
 			});
 		}

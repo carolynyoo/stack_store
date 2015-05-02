@@ -94,5 +94,5 @@ app.directive('filmRating', function(){
 
         }
 
-};
+    };
 });

@@ -67,6 +67,15 @@
             return !!Session.user;
         };
 
+        this.getAdminStatus = function () {
+            if (!Session.user) {
+                return null
+            } 
+            else {
+                return Session.user.admin;
+            }
+        }
+
         this.getLoggedInUser = function () {
 
             // If an authenticated session exists, we

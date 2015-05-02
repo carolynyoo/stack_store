@@ -12,7 +12,6 @@ var filmSchema = new mongoose.Schema({
   price: {type: Number, required: true},
   photo: {type: String, default: 'http://placehold.it/200x300'},
   inventory: {type: Number, required: true},
-  reviews: [{type:mongoose.Schema.Types.ObjectId, ref: 'Review'}]
 });
 
 mongoose.model('Film', filmSchema);
