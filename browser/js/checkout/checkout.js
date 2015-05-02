@@ -27,7 +27,7 @@ app.controller('CheckoutCtrl', function ($scope, $http, cartInfo, $state) {
 		$http.post('/api/checkout', {cartInfo: cartInfo}).
 			success(function(data) {
 			    console.log("Order created!");
-			    $state.go('home');
+			    $state.go('confirmation');
 			}).
 			error(function(data) {
 			    console.log("Error creating order!");

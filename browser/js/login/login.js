@@ -17,8 +17,6 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state, $rootScope) {
 
         $scope.error = null;
 
-        console.log('BAH',$rootScope.previousState)
-
         AuthService.login(loginInfo).then(function () {
             $state.go($rootScope.previousState);
         }).catch(function () {

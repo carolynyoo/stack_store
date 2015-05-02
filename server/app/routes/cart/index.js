@@ -18,10 +18,15 @@ router.get('/', function (req, res) {
 	cartModel.findOne({sessionId: sessionId}).exec(function (err, cart) {
 		if(err) throw err;
 
-		lineItemModel.populate(cart.lineItems, opts, function(err, populatedLineItem) {
-			if(err) throw err;
-			res.send(cart);
-		}) 
+		if (cart) {
+			lineItemModel.populate(cart.lineItems, opts, function(err, populatedLineItem) {
+				if(err) throw err;
+				res.send(cart);
+			});
+		} else {
+			console.log("NO CART FOUND!");
+			throw err;
+		}
 
 	});
 
