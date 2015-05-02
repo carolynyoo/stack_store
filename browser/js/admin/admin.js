@@ -1,3 +1,4 @@
+'use strict';
 app.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider.state('admin', {
         url: '/admin',
@@ -7,11 +8,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         // that controls access to this state. Refer to app.js.
         data: {
             admin: true
-        },
-        onEnter: function($state, $timeout) {
-          $timeout(function() {
-            $state.go('admin.welcome')
-          })
         }
     })
       .state('admin.welcome', {
@@ -23,14 +19,14 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         templateUrl: 'js/admin/templates/products.html',
         controller: 'filmsCtrl'
       })
-      .state('admin.products.pid', {
-        url: '/products/:pid',
-        templateUrl: 'js/admin/templates/pid.html',
+      .state('admin.editproduct', {
+        url: '/edit/:pid',
+        templateUrl: 'js/admin/templates/edit-product.html',
         controller: 'PdpCtrl',
         resolve: {
-            product: function ($stateParams, pdpFactory) {
-                return pdpFactory.getInfo($stateParams.pid);
-            }
+          pdpInfo: function ($stateParams, Product) {
+             return Product.get($stateParams.pid);
+          }
         }
       })
 

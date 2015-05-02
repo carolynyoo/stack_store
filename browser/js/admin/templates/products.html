@@ -12,7 +12,10 @@
     </thead>
     <tbody>
       <tr ng-repeat="film in films">
-          <td><a ng-href="admin/products/{{film._id}}">Edit</a></td>
+          <td>
+          <a ng-href="/admin/edit/{{film._id}}" class="edit">Edit</a> | 
+          <a ng-href="/products/{{film._id}}" class="view">View</a>
+          </td>
           <td>{{film.title}}</td>
           <td>
           <span ng-repeat="category in film.categories | orderBy:'name'">

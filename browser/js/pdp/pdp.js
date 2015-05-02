@@ -5,30 +5,37 @@ app.config(function ($stateProvider) {
         templateUrl: 'js/pdp/pdp.html',
         controller: 'PdpCtrl',
         resolve: {
-            pdpInfo: function ($stateParams, pdpFactory) {
-               // return pdpFactory.getInfo($stateParams.pid);
-               // Matrix test for now - do not have category view wired up yet 
-               //return pdpFactory.getInfo('5536f882712a688124e77b80');
-               return pdpFactory.getInfo($stateParams.pid);
-
+            pdpInfo: function ($stateParams, Product) {
+               return Product.get($stateParams.pid);
             }
         }
     });
 });
 
-app.factory('pdpFactory', function ($http) {
+app.factory('Product', function ($http) {
     return {
-        getInfo: function (pid) {
+        get: function (pid) {
             return $http.get('/api/products/'+pid).then(function (response) {
                 return response.data;
             });
+        },
+        update: function (pid) {
+            return $http.put('/api/products'+pid).then(function (response) {
+                return response.data;
+            })
+        },
+        delete: function (pid) {
+            return $http.delete('/api/products'+pid).then(function (response) {
+                return response.data;
+            })
         }
     };
 });
 
 app.controller('PdpCtrl', function ($scope, $http, $stateParams, $state, pdpInfo) {
-  $scope.film = pdpInfo; 
+  $scope.film = pdpInfo;
 
+  // to be refactored into factory
   $scope.addFilmToCart = function() {
     $http.post('/api/cart', {filmId: $stateParams.pid}).
     success(function() {
