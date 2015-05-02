@@ -7,6 +7,7 @@ var lineItemSchema = new mongoose.Schema({
 
 var cartSchema = new mongoose.Schema({
 	lineItems: [lineItemSchema],
+	user: {type:mongoose.Schema.Types.ObjectId, ref: 'User'},
 	sessionId: {type: String, required: true},
 	promoApplied: {type: Boolean, required: true}, 
 	promoDiscount: {type: Number, required: true, default: 0},

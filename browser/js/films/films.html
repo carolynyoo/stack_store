@@ -12,13 +12,12 @@
 </div>
 
 <div class="film-area">
-  <div class="film-list col-md-3" ng-repeat="film in films">
+  <div class="film-list col-xs-6 col-md-3 col-lg-3" ng-repeat="film in films">
   	<a ng-href="/products/{{film._id}}">
       <img ng-src="{{film.photo}}" />
-      <p>{{film.title}}</p>
+      <p id="movie-title">{{film.title}}</p>
     </a>
-    <button type="button" class="btn btn-default">{{film.price}}</button>
+    <span id="movie-price">{{film.price | centsToDollars | currency}}</span>
    <button type="button" class="btn btn-success">BUY</button>
-    <!--   <p>{{film.categories.name}}</p> -->	
   </div>
 </div>
