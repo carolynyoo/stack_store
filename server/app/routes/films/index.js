@@ -25,3 +25,12 @@ router.get('/', function (req, res) {
     });*/
 
 });
+
+
+router.put('/', function (req, res, next) {
+
+	var purchasestats = req.body.purchasestats;
+	console.log("purchasestats: ",purchasestats);
+
+
+});
