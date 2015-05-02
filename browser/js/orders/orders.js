@@ -11,7 +11,6 @@ app.config(function ($stateProvider) {
 				var userId = Session.user._id;
 				return ordersFactory.getOrders(userId);
 				}
-			}
 		}
 	});
 });
