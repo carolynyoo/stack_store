@@ -9,8 +9,10 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
 
             scope.items = [
                 { label: 'Home', state: 'home' },
+                { label: 'All Films', state: 'films' },
                 { label: 'Cart', state: 'cart' },
-                { label: 'Your Account', state: 'yourAccount', auth: true }
+                { label: 'Your Account', state: 'yourAccount', auth: true },
+                // { label: 'Admin', state: 'admin', auth: true }
             ];
 
             scope.user = null;
@@ -24,6 +26,10 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
                    $state.go('home');
                 });
             };
+
+            scope.isAdmin = function () {
+                return AuthService.getAdminStatus();
+            }
 
             var setUser = function () {
                 AuthService.getLoggedInUser().then(function (user) {
