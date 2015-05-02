@@ -7,8 +7,10 @@ app.config(function ($stateProvider) {
 		templateUrl: 'js/orders/orders.html',
 		controller: 'OrdersCtrl',
 		resolve: {
-			orderInfo: function (ordersFactory) {
-				return ordersFactory.getOrders("5541421a6c6c31d47876e032");
+				orderInfo: function (ordersFactory, Session) {
+				var userId = Session.user._id;
+				return ordersFactory.getOrders(userId);
+				}
 			}
 		}
 	});
