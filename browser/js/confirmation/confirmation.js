@@ -18,4 +18,4 @@ app.config(function ($stateProvider) {
 
 app.controller('ConfirmationCtrl', function ($scope, $http) {
 
-})
+});

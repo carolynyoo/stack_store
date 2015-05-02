@@ -38,6 +38,11 @@ var schema = new mongoose.Schema({
         state: String,
         zip: Number
     },
+    admin: {
+        type: Boolean,
+        default: false,
+        required: true
+    },
     billing: {
         creditCardName: String,
         creditCardNumber: String,
