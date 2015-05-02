@@ -22,7 +22,7 @@ app.config(function ($stateProvider) {
 // Set up the Checkout controller
 
 app.controller('CheckoutCtrl', function ($scope, $http, cartInfo, $state) {
-//	window.scope = $scope
+
 	$scope.checkout = function () {
 		$http.post('/api/checkout', {cartInfo: cartInfo}).
 			success(function(data) {
