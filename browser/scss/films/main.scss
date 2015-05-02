@@ -18,9 +18,22 @@
 /* category view */
 .film-list {
   text-align: center;
-  height: 350px;
+  height: 400px;
   img {
     width: 160px;
     height: 250px;
   }
+}
+
+#movie-title {
+  padding-top: 5px;
+  font-size: 20px;
+  color: #000;
+}
+
+#movie-price {
+  color: #888;
+  font-size: 20px;
+  padding-right: 10px;
+  vertical-align: middle;
 }
