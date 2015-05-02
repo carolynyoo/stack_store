@@ -13,5 +13,15 @@ app.config(function ($stateProvider) {
 
 });
 
-app.controller('AdminCtrl', function ($scope) {
-})
+app.controller('AdminCtrl', function ($scope, AuthService) {
+  $scope.user = null;
+
+  var setUser = function () {
+    AuthService.getLoggedInUser().then(function (user) {
+        $scope.user = user;
+    });
+  };
+
+  setUser();
+
+});
