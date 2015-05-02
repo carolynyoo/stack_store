@@ -1,3 +1,4 @@
+<container>
 <form id="filmreview-form" name="filmreviewForm" ng-submit="checkout()">
 	<div class="row">
 		<div class="col-md-9">
@@ -36,10 +37,11 @@
 
 		<div class="col-md-3" >
 
-			<p>Order Date: PUT ORDER DATE HERE (optional)</p>
+			<p>Order Date: {{order.datetime}}</p>
 			<button ng-click="LINK TO ORDERS PAGE" class="btn btn-danger">Cancel</button>
 			<button type="submit" class="btn btn-success">Submit Review</button>
 
 		</div>
 	</div>
 </form>
+</container>

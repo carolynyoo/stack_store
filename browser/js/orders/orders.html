@@ -11,6 +11,6 @@
 		<p>{{lineItem.film.description}}</p>
 		<p>Price: {{lineItem.film.price | centsToDollars | currency}}</p>
 		<p>Quantity: {{lineItem.quantity}}</p>
-		<button ng-click="writeReviewForFilm()" class="btn btn-success">Write A Review</button>
+		<button ng-click="writeReviewForFilm()" ui-sref="review" href="/review" class="btn btn-success">Write A Review</button>
 	</div>
 </div>

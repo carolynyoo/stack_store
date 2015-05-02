@@ -12,7 +12,14 @@ app.config(function ($stateProvider) {
 				return ordersFactory.getOrders(userId);
 				}
 		}
-	});
+	})
+	.state('review', {
+		url: '/review',
+		templateUrl: 'js/reviews/review.html',
+		controller: 'OrdersCtrl'
+		}
+	);
+
 });
 
 // Set up the Order controller
@@ -22,6 +29,11 @@ app.controller('OrdersCtrl', function ($scope, $http, orderInfo) {
 	console.log("ORDER INFO IS", orderInfo);
 
 	$scope.allOrdersForUser = orderInfo;
+
+	// Review film navigation
+	$scope.writeReviewForFilm = function(){
+		$state.go('review');
+	};
 
 });
 
