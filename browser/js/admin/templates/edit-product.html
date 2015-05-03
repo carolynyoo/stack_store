@@ -1,38 +1,38 @@
 <h1>Edit Product</h1>
-
-<!-- <button class="btn btn-default" ng-repeat="category in film.categories">{{category.name}}</button>
-<div class="product-info">
-  <span class="heading">Description:</span> 
-  <span class="text">{{film.description}}</span>
-  <span class="heading">Price:</span> 
-  <span class="text price">{{film.price | centsToDollars | currency}}</span>
-</div> -->
-
-<form id="edit-product-form" name="editProductForm" ng-submit="submit()">
+<button class="btn btn-danger" ng-click="delete()">Delete Product</button>
+<button type="submit" class="btn btn-success" ng-click="edit()">Submit</button>
+<br/>
+<form id="edit-product-form" name="editProductForm" ng-submit="edit()">
 <label>Title</label><br/>
-<textarea name="title" ng-model="formData.title" ng-init="formData.title = film.title" rows="1" cols="50">
+<textarea name="title" ng-model="formData.title" rows="1" cols="50">
 </textarea><br/>
 <label>Description</label><br/>
-<textarea name="description" ng-model="formData.description" ng-init="formData.description = film.description" rows="3" cols="50">
+<textarea name="description" ng-model="formData.description" rows="3" cols="50">
 </textarea><br/>
 <label>Photo</label><br/>
-<textarea name="photo" ng-model="formData.photo" ng-init="formData.photo = film.photo" rows="2" cols="50">
+<textarea name="photo" ng-model="formData.photo" rows="2" cols="50">
 </textarea><br/>
+<label>Price (cents)</label><br/>
+<input type="number" name="price" ng-model="formData.price" />
+<br/>
+<label>Inventory</label><br/>
+<input type="number" name="inventory" ng-model="formData.inventory" />
+<br/>
 <div class="form-group">
-    <label for="categories">Categories</label><br/>
-    <label ng-repeat="category in film.categories">
-      <input type="checkbox" checklist-model="formData.categories" checklist-value="category.id">
+  <label for="categories">Categories</label><br/>
+  <span ng-repeat="category in film.categories">
+    <label class="checkbox" for="category._id">
+      <input type="checkbox" ng-model="formData.categories[category._id]" name="group" id="category._id" />
       {{category.name}}
-      <br/>
- </div>
+    </label>
+  </span>
+</div>
 
-<div class="preview">
-  <h3>Submission Preview:</h3>
+<h3>Preview:</h3>
+  <div class="col-md-3">
   <img src='{{formData.photo}}' width="160" height="240">
-  <br/>
-  <p>Title: {{formData.title}}</p>
-  <p>Description: {{formData.description}}</p>
-  <div ng-repeat="category in formData.categories">
-  <span>{{category}}</span>
   </div>
-</div>  
+  <div class="col-md-9">
+  <pre ng-bind="formData | json"></pre> 
+</div>
+<br/>

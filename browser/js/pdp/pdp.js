@@ -12,7 +12,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.factory('Product', function ($http) {
+app.factory('Product', function ($state, $http) {
     return {
         get: function (pid) {
             return $http.get('/api/products/'+pid).then(function (response) {
@@ -20,22 +20,35 @@ app.factory('Product', function ($http) {
             });
         },
         update: function (pid, newData) {
-            return $http.put('/api/products', newData).then(function (response) {
-                return response.data;
+            return $http.put('/api/products/'+pid, newData).then(function (response) {
+                console.log('updated');
+            },
+            function (error) {
+                console.log(error)
             })
         },
         delete: function (pid) {
-            return $http.delete('/api/products'+pid).then(function (response) {
-                return response.data;
+            $http.delete('/api/products/'+pid).success(function (response) {
+                $state.go('admin.products');
+            })
+            .error(function (err) {
+                console.log("error:"+err);
             })
         }
     };
 });
 
-app.controller('PdpCtrl', function ($scope, $http, $stateParams, $state, pdpInfo) {
-  $scope.formData = {};
-
+app.controller('PdpCtrl', function ($scope, $http, $stateParams, $state, pdpInfo, Product) {
   $scope.film = pdpInfo;
+  $scope.formData = $scope.film;
+
+  $scope.edit = function () {
+    return Product.update($scope.film._id, $scope.formData);
+  }
+
+  $scope.delete = function () {
+    return Product.delete($scope.film._id);
+  }
 
   // to be refactored into factory
   $scope.addFilmToCart = function() {
