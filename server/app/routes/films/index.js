@@ -35,16 +35,28 @@ router.put('/', function (req, res) {
 	// console.log("movie: ",movie);
 	// var stats = JSON.parse(purchasestats)
 	// console.log("purchasestats: ",stats);
+	console.log(typeof purchasestats);
 	console.log("purchasestats: ",purchasestats);
 	
-	for(movie in purchasestats){
-		console.log(movie._id);
-		console.log(movie.count);
-		FilmsModel.find({ _id: movie._id})
-			.exec(function(err, films){
-				if(err) throw err
-				console.log(films);
+	for(var movie in purchasestats){
+		// console.log(movie);
+		// console.log(purchasestats[movie]);
+		// console.log(purchasestats[movie]._id);
+		// console.log(purchasestats[movie].count);
+		
+		// FilmsModel.find({ _id: purchasestats[movie]._id})
+		// 	.exec(function(err, films){
+		// 		if(err) throw err
+		// 		console.log(films);
+		// 	});
+
+		FilmsModel.update({ _id: purchasestats[movie]._id}, { $inc: { purchased: purchasestats[movie].count }})
+			.exec(function(err, results){
+				if(err){console.log(err)}
+				console.log(results)
 			});
 	}
 	
 });
+
+
