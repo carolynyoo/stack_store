@@ -86,7 +86,7 @@ var seedFilms = [
         categories: ['Thriller', 'Drama', 'Action'],
         description: 'this movie rocks',
         price: 599,
-        photo: 'http://www.impawards.com/1988/posters/die_hard.jpg',
+        photo: 'https://d12vb6dvkz909q.cloudfront.net/uploads/galleries/16517/die-hard-poster.jpg',
         inventory: 5 
     },
     {
@@ -102,7 +102,7 @@ var seedFilms = [
         categories: ['Romance', 'Comedy'],
         description: 'Can two friends sleep together and still love each other in the morning?',
         price: 399,
-        photo: 'http://images.moviepostershop.com/when-harry-met-sally-movie-poster-1989-1020470291.jpg',
+        photo: 'http://www.granadatheater.com/files/2015/03/when-harry-met-sally-poster-artwork-billy-crystal-meg-ryan-carrie-fisher.jpg',
         inventory: 2 
     },
     {
@@ -110,7 +110,7 @@ var seedFilms = [
         categories: ['Comedy'],
         description: 'Seth and Evan are best friends, inseparable, navigating the last weeks of high school.',
         price: 899,
-        photo: 'http://www.impawards.com/2007/posters/superbad.jpg',
+        photo: 'http://images.moviepostershop.com/superbad-movie-poster-2007-1020405577.jpg',
         inventory: 8 
     }, 
     {
@@ -136,6 +136,30 @@ var seedFilms = [
         price: 299,
         photo: 'http://www.1art1.de/images/imagel/m//m1210.jpg',
         inventory: 8
+    },
+    {
+        title: 'The Princess Bride',
+        categories: ['Fantasy'],
+        description: 'A fairy tale adventure about a beautiful young woman and her one true love. He must find her after a long separation and save her. They must battle the evils of the mythical kingdom of Florin to be reunited with each other. Based on the William Goldman novel "The Princess Bride" which earned its own loyal audience.',
+        price: 499,
+        photo: 'http://posterpress.us/uploads/t/the_princess_bride_1987.jpg',
+        inventory: 8
+    },
+    {
+        title: 'Singin\' in the Rain',
+        categories: ['Musical'],
+        description: 'A spoof of the turmoil that afflicted the movie industry in the late 1920s when movies went from silent to sound. ',
+        price: 199,
+        photo: 'http://image.tmdb.org/t/p/original/bLbZBIeEqBcDiqUmLare2nv8fAt.jpg',
+        inventory: 2
+    },
+    {
+        title: 'Memento',
+        categories: ['Mystery', 'Thriller'],
+        description: 'Leonard (Guy Pearce) is tracking down the man who raped and murdered his wife. The difficulty, however, of locating his wife\'s killer is compounded by the fact that he suffers from a rare, untreatable form of memory loss. ',
+        price: 599,
+        photo: 'http://e.movie.as/p/36638.jpg',
+        inventory: 10
     }
 ];
 
