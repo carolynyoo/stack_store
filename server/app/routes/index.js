@@ -16,6 +16,7 @@ router.post('/new-user', function(req, res) {
 	});
 });
 
+router.use('/home', require('./home'));
 router.use('/tutorial', require('./tutorial'));
 router.use('/members', require('./members'));
 router.use('/films', require('./films'));

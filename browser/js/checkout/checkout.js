@@ -23,15 +23,34 @@ app.config(function ($stateProvider) {
 
 app.controller('CheckoutCtrl', function ($scope, $http, cartInfo, $state) {
 
+	var purchasestats = {};
+
+	var purchases = cartInfo.lineItems; 
+	console.log("purchases: ",purchases);
+	var l = purchases.length;
+
+	for(var i=0; i<l; i++){
+		var filmstat = {}
+		filmstat._id = purchases[i].film._id;
+		filmstat.count = purchases[i].quantity
+		purchasestats[i] = filmstat
+	}
+
+	$scope.putStats = function () {
+		$http.put('/api/films', {purchasestats : purchasestats})
+		.success(function(){
+		});
+	};
+
 	$scope.checkout = function () {
-		$http.post('/api/checkout', {cartInfo: cartInfo}).
-			success(function(data) {
-			    console.log("Order created!");
-			    $state.go('confirmation');
-			}).
-			error(function(data) {
-			    console.log("Error creating order!");
-			});
+		$http.post('/api/checkout', {cartInfo: cartInfo})
+		.success(function(data) {
+		    console.log("Order created!");
+		    $state.go('confirmation');
+		})
+		.error(function(data) {
+		    console.log("Error creating order!");
+		});
 	};
 	$scope.allLineItemsInCart = cartInfo.lineItems;
 	$scope.billing = {};

@@ -1,6 +1,3 @@
-// ******************************************
-// Need an 'internal API endpoint' for films
-// *******************************************
 
 var mongoose = require('mongoose');
 var router = require('express').Router();
@@ -19,9 +16,22 @@ router.get('/', function (req, res) {
 			res.json(films);
 		});
 
-	/*FilmsModel.find(searchParams, function (err, films) {
-            if(err) throw err
-            res.send(films);
-    });*/
-
 });
+
+
+router.put('/', function (req, res) {
+
+	var purchasestats = req.body.purchasestats;
+	
+	for(var movie in purchasestats){
+	
+		FilmsModel.update({ _id: purchasestats[movie]._id}, { $inc: { purchased: purchasestats[movie].count }})
+			.exec(function(err, results){
+				if(err){console.log(err)}
+				// console.log(results)
+			});
+	}
+	
+});
+
+
