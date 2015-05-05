@@ -29,6 +29,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
           }
         }
       })
+      .state('admin.addproduct', {
+        url: '/add',
+        templateUrl: 'js/admin/templates/add-product.html',
+        controller: 'PdpCtrl'
+      })
 
 });
 

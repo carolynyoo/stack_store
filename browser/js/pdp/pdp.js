@@ -19,12 +19,20 @@ app.factory('Product', function ($state, $http) {
                 return response.data;
             });
         },
-        update: function (pid, newData) {
-            return $http.put('/api/products/'+pid, newData).then(function (response) {
-                console.log('updated');
+        add: function () {
+            return $http.post('/api/products').then(function (response) {
+                $state.go('admin.products');
             },
             function (error) {
-                console.log(error)
+                console.log(error);
+            })
+        },
+        update: function (pid, newData) {
+            return $http.put('/api/products/'+pid, newData).then(function (response) {
+                $state.go('admin.products');
+            },
+            function (error) {
+                console.log(error);
             })
         },
         delete: function (pid) {
@@ -38,9 +46,26 @@ app.factory('Product', function ($state, $http) {
     };
 });
 
-app.controller('PdpCtrl', function ($scope, $http, $stateParams, $state, pdpInfo, Product) {
+app.controller('PdpCtrl', function ($scope, $http, $stateParams, $state, pdpInfo, Product, CategoryFactory) {
   $scope.film = pdpInfo;
   $scope.formData = $scope.film;
+  $scope.newData = {};
+
+    $scope.getCategories = function(){
+      CategoryFactory.getCategories()
+        .then(function(categoriesfromserver){
+          $scope.categories = categoriesfromserver;
+        })
+        .catch(function(err){
+          console.log("error! : ",err);
+        }); 
+    } // close getCategories
+
+    $scope.getCategories();
+
+  $scope.add = function () {
+    return Product.add($scope.newData);
+  }
 
   $scope.edit = function () {
     return Product.update($scope.film._id, $scope.formData);

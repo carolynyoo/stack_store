@@ -34,26 +34,29 @@ router.delete('/:pid', function (req, res, next) {
   })
 });
 
-router.put('/', function (req, res, next) {
-  var pid = req.body._id;
-  return filmModel.findById(pid, function (err, film) {
-    if (err) {
-      return next(err);
-    }
-    if (!film) {
-      return res.send(404);
-    }
-    var updatedFilm = {
+router.put('/:pid', function (req, res, next) {
+  var pid = req.params.pid;
+  var updatedFilm = {
       title: req.body.title, 
       description: req.body.description,
+      price: req.body.price,
       inventory: req.body.inventory,
       photo: req.body.photo
-    }
-    filmModel.updateById(pid, updatedFilm, function (err) {
+  }
+  return filmModel.findByIdAndUpdate(pid, {$set: updatedFilm}, function (err) {
       if (err) {
-        return res.send(500, err);
+        return res.status(500);
       }
       return res.send('Success in updating');
     })
-  })
-})
+});
+
+router.post('/', function (req, res, next) {
+  var newFilm = req.body;
+  return filmModel.findByIdAndUpdate(pid, {$set: updatedFilm}, function (err) {
+      if (err) {
+        return res.status(500);
+      }
+      return res.send('Success in updating');
+    })
+});
