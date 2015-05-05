@@ -30,11 +30,20 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         }
       })
       .state('admin.addproduct', {
-        url: '/add',
+        url: '/products/add',
         templateUrl: 'js/admin/templates/add-product.html',
         controller: 'PdpCtrl'
       })
-
+      .state('admin.categories', {
+        url: '/categories',
+        templateUrl: 'js/admin/templates/categories.html',
+        controller: 'filmsCtrl'
+      })
+      .state('admin.addcategory', {
+        url: '/categories/add',
+        templateUrl: 'js/admin/templates/add-category.html',
+        controller: 'filmsCtrl'
+      })
 });
 
 app.controller('AdminCtrl', function ($scope, AuthService) {

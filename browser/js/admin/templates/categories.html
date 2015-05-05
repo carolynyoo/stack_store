@@ -1,0 +1,21 @@
+<h1>Products</h1>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+      <th>Categories</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="category in categories | orderBy:'name'">
+          <td>
+          {{category.name}}
+          </td>
+        </a>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div>
+<button class="btn btn-success" ui-sref="admin.addcategory">Add Category</button>
+</div>

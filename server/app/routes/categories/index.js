@@ -17,3 +17,16 @@ router.get('/', function (req, res) {
     });
 
 });
+
+router.post('/', function (req, res, next) {
+
+  var newCategory = new CategoriesModel(req.body);
+
+  newCategory.save(function (err) {
+    if (err) {
+      return next(err);
+    }
+    return res.send('Success in creating');
+})
+
+});
