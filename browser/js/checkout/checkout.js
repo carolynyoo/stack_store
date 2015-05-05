@@ -31,32 +31,16 @@ app.controller('CheckoutCtrl', function ($scope, $http, cartInfo, $state) {
 	var l = purchases.length;
 
 	for(var i=0; i<l; i++){
-		// var movie = purchases[i].film.toString();
-		// console.log(movie+" : "+purchases[i].quantity)
 		var filmstat = {}
 		filmstat._id = purchases[i].film._id;
 		filmstat.count = purchases[i].quantity
-		// var movie = purchases[i].film._id;
 		purchasestats[i] = filmstat
 	}
-
-	console.log(typeof purchasestats);
-	console.log("purchasestats: ",purchasestats);
-
-	// var realstats = JSON.parse(purchasestats);
-	// console.log("realstats: ",realstats);
-	// console.log(typeof realstats);
-
-	// var postcartpromise = $http.post('/api/checkout', {cartInfo: cartInfo});
-	// var poststats = $http.put('/api/films', {purchasestats: purchasestats});
-	// var calls = [postcartpromise, poststats];
 
 	$scope.putStats = function () {
 		$http.put('/api/films', {purchasestats : purchasestats})
 		.success(function(){
-
 		});
-		console.log("putStats FIRED!")
 	};
 
 	$scope.checkout = function () {
