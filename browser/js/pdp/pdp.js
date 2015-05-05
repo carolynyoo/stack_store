@@ -19,8 +19,8 @@ app.factory('Product', function ($state, $http) {
                 return response.data;
             });
         },
-        add: function () {
-            return $http.post('/api/products').then(function (response) {
+        add: function (film) {
+            return $http.post('/api/products', film).then(function (response) {
                 $state.go('admin.products');
             },
             function (error) {
@@ -49,12 +49,19 @@ app.factory('Product', function ($state, $http) {
 app.controller('PdpCtrl', function ($scope, $http, $stateParams, $state, pdpInfo, Product, CategoryFactory) {
   $scope.film = pdpInfo;
   $scope.formData = $scope.film;
-  $scope.newData = {};
+  $scope.newData = {
+    title: null, 
+    description: null,
+    price: null,
+    inventory: null,
+    photo: null,
+    categories: null
+  };
 
     $scope.getCategories = function(){
       CategoryFactory.getCategories()
         .then(function(categoriesfromserver){
-          $scope.categories = categoriesfromserver;
+          $scope.newData.categories = categoriesfromserver;
         })
         .catch(function(err){
           console.log("error! : ",err);

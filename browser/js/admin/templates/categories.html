@@ -3,11 +3,15 @@
   <table class="table table-striped">
     <thead>
       <tr>
+      <th></th>
       <th>Categories</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="category in categories | orderBy:'name'">
+          <td>
+            <button class="btn btn-warning" ng-click="delete(category._id)">Delete</a></button>
+          </td>
           <td>
           {{category.name}}
           </td>

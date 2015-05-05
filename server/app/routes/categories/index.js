@@ -20,7 +20,9 @@ router.get('/', function (req, res) {
 
 router.post('/', function (req, res, next) {
 
-  var newCategory = new CategoriesModel(req.body);
+  var newCategory = new CategoriesModel({
+    name: req.body.name
+  });
 
   newCategory.save(function (err) {
     if (err) {
@@ -29,4 +31,16 @@ router.post('/', function (req, res, next) {
     return res.send('Success in creating');
 })
 
+});
+
+router.delete('/:id', function (req, res, next) {
+  var id = req.params.id;
+  return CategoriesModel.findById(id, function (err, category) {
+    return category.remove(function (err) {
+      if (err) {
+        return next(err);
+      }
+      return res.send('Success in deletion');
+    })
+  })
 });

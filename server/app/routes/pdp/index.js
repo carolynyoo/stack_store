@@ -52,11 +52,18 @@ router.put('/:pid', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-  var newFilm = req.body;
-  return filmModel.findByIdAndUpdate(pid, {$set: updatedFilm}, function (err) {
-      if (err) {
-        return res.status(500);
-      }
-      return res.send('Success in updating');
-    })
+  var newFilm = new filmModel({
+    title: req.body.title, 
+    description: req.body.description,
+    price: req.body.price,
+    inventory: req.body.inventory,
+    photo: req.body.photo
+  })
+
+  newFilm.save(function (err) {
+    if (err) {
+      return next(err);
+    }
+    return res.send('Success in creating');
+  })
 });

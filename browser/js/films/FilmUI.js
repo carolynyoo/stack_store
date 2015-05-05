@@ -8,7 +8,18 @@ app.config(function ($stateProvider) {
 });
 
 app.controller('filmsCtrl', function ($scope, FilmFactory, CategoryFactory) {
-  
+  $scope.category = {
+    name: null
+  };
+
+  $scope.add = function () {
+    return CategoryFactory.add($scope.category);
+  }
+
+  $scope.delete = function (id) {
+    return CategoryFactory.delete(id);
+  }
+
   $scope.getMovies = function(filter){
     FilmFactory.getFilms(filter)
       .then(function(filmsfromserver){
