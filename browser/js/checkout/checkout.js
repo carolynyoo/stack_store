@@ -1,6 +1,5 @@
 'use strict';
 // Set up the state provider
-// var q = require('q');
 
 app.config(function ($stateProvider) {
 	$stateProvider.state('checkout', {
@@ -44,9 +43,6 @@ app.controller('CheckoutCtrl', function ($scope, $http, cartInfo, $state) {
 	};
 
 	$scope.checkout = function () {
-		// postcartpromise
-		// .then(poststats)
-		// $q.all(calls)
 		$http.post('/api/checkout', {cartInfo: cartInfo})
 		.success(function(data) {
 		    console.log("Order created!");

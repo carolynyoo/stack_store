@@ -17,8 +17,6 @@ app.config(function ($stateProvider) {
 
 app.controller('CartCtrl', function ($scope, $http, cartInfo, cartFactory) {
 
-	console.log("cartInfo: ",cartInfo);
-
 	$scope.allLineItemsInCart = cartInfo.lineItems;
 
 	// Function to delete an item from the cart
