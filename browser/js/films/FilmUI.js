@@ -4,25 +4,26 @@ app.config(function ($stateProvider) {
         url: '/films',
         templateUrl: 'js/films/films.html',
         controller: 'filmsCtrl'
-          /*resolve: {
-            giveFilms: function ($stateParams, FilmFactory) {
-               // return pdpFactory.getInfo($stateParams.pid);
-               // Matrix test for now - do not have category view wired up yet 
-               return FilmFactory.getFilms();
-            }
-        }*/
     });
 });
 
 app.controller('filmsCtrl', function ($scope, FilmFactory, CategoryFactory) {
-  
+  $scope.category = {
+    name: null
+  };
+
+  $scope.add = function () {
+    return CategoryFactory.add($scope.category);
+  }
+
+  $scope.delete = function (id) {
+    return CategoryFactory.delete(id);
+  }
+
   $scope.getMovies = function(filter){
-    console.log("FILTER: ",filter);
-    console.log("FilmFactory.getFilms("+filter+")");
     FilmFactory.getFilms(filter)
       .then(function(filmsfromserver){
         $scope.films = filmsfromserver;
-        console.log("$scope.films: ",$scope.films);
       })
       .catch(function(err){
         console.log("error! : ",err);
@@ -35,7 +36,6 @@ app.controller('filmsCtrl', function ($scope, FilmFactory, CategoryFactory) {
       CategoryFactory.getCategories()
         .then(function(categoriesfromserver){
           $scope.categories = categoriesfromserver;
-          console.log("$scope.categories: ",$scope.categories);
         })
         .catch(function(err){
           console.log("error! : ",err);
@@ -45,3 +45,9 @@ app.controller('filmsCtrl', function ($scope, FilmFactory, CategoryFactory) {
     $scope.getCategories();
     
 }); // end filmsCtrl
+
+app.filter("centsToDollars", function() {
+  return function (amountInCents) {
+    return (amountInCents/100).toFixed(2);
+  }
+});

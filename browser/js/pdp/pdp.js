@@ -5,30 +5,84 @@ app.config(function ($stateProvider) {
         templateUrl: 'js/pdp/pdp.html',
         controller: 'PdpCtrl',
         resolve: {
-            pdpInfo: function ($stateParams, pdpFactory) {
-               // return pdpFactory.getInfo($stateParams.pid);
-               // Matrix test for now - do not have category view wired up yet 
-               //return pdpFactory.getInfo('5536f882712a688124e77b80');
-               return pdpFactory.getInfo($stateParams.pid);
-
+            pdpInfo: function ($stateParams, Product) {
+               return Product.get($stateParams.pid);
             }
         }
     });
 });
 
-app.factory('pdpFactory', function ($http) {
+app.factory('Product', function ($state, $http) {
     return {
-        getInfo: function (pid) {
+        get: function (pid) {
             return $http.get('/api/products/'+pid).then(function (response) {
                 return response.data;
             });
+        },
+        add: function (film) {
+            return $http.post('/api/products', film).then(function (response) {
+                $state.go('admin.products');
+            },
+            function (error) {
+                console.log(error);
+            })
+        },
+        update: function (pid, newData) {
+            return $http.put('/api/products/'+pid, newData).then(function (response) {
+                $state.go('admin.products');
+            },
+            function (error) {
+                console.log(error);
+            })
+        },
+        delete: function (pid) {
+            $http.delete('/api/products/'+pid).success(function (response) {
+                $state.go('admin.products');
+            })
+            .error(function (err) {
+                console.log("error:"+err);
+            })
         }
     };
 });
 
-app.controller('PdpCtrl', function ($scope, $http, $stateParams, $state, pdpInfo) {
-  $scope.film = pdpInfo; 
+app.controller('PdpCtrl', function ($scope, $http, $stateParams, $state, pdpInfo, Product, CategoryFactory) {
+  $scope.film = pdpInfo;
+  $scope.formData = $scope.film;
+  $scope.newData = {
+    title: null, 
+    description: null,
+    price: null,
+    inventory: null,
+    photo: null,
+    categories: null
+  };
 
+    $scope.getCategories = function(){
+      CategoryFactory.getCategories()
+        .then(function(categoriesfromserver){
+          $scope.newData.categories = categoriesfromserver;
+        })
+        .catch(function(err){
+          console.log("error! : ",err);
+        }); 
+    } // close getCategories
+
+    $scope.getCategories();
+
+  $scope.add = function () {
+    return Product.add($scope.newData);
+  }
+
+  $scope.edit = function () {
+    return Product.update($scope.film._id, $scope.formData);
+  }
+
+  $scope.delete = function () {
+    return Product.delete($scope.film._id);
+  }
+
+  // to be refactored into factory
   $scope.addFilmToCart = function() {
     $http.post('/api/cart', {filmId: $stateParams.pid}).
     success(function() {
@@ -84,14 +138,15 @@ app.directive('filmReview', function(){
 };
 });
 
+app.directive('filmRating', function(){
 
+    return {
+        restrict: 'E',
+        templateUrl: 'js/pdp/filmrating.html',
+        
+        link: function(scope, el, attr){
 
-// need custom filter for currency conversion from cents
-app.filter('realCurrency', function(price){   
+        }
 
-    // convert here
-
+    };
 });
-
-
-

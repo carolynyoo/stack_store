@@ -1,0 +1,38 @@
+<h1>Edit Product</h1>
+<button class="btn btn-danger" ng-click="delete()">Delete Product</button>
+<button type="submit" class="btn btn-success" ng-click="edit()">Submit</button>
+<br/>
+<form id="edit-product-form" name="editProductForm" ng-submit="edit()">
+<label>Title</label><br/>
+<textarea name="title" ng-model="formData.title" rows="1" cols="50">
+</textarea><br/>
+<label>Description</label><br/>
+<textarea name="description" ng-model="formData.description" rows="3" cols="50">
+</textarea><br/>
+<label>Photo</label><br/>
+<textarea name="photo" ng-model="formData.photo" rows="2" cols="50">
+</textarea><br/>
+<label>Price (cents)</label><br/>
+<input type="number" name="price" ng-model="formData.price" />
+<br/>
+<label>Inventory</label><br/>
+<input type="number" name="inventory" ng-model="formData.inventory" />
+<br/>
+<div class="form-group">
+  <label for="categories">Categories</label><br/>
+  <span ng-repeat="category in film.categories">
+    <label class="checkbox" for="category._id">
+      <input type="checkbox" ng-model="formData.categories[$index].selected" name="group" id="category._id" />
+      {{category.name}}
+    </label>
+  </span>
+</div>
+
+<h3>Preview:</h3>
+  <div class="col-md-3">
+  <img src='{{formData.photo}}' width="160" height="240">
+  </div>
+  <div class="col-md-9">
+  <pre ng-bind="formData | json"></pre> 
+</div>
+<br/>
