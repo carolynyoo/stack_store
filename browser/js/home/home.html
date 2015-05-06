@@ -1,4 +1,21 @@
 <section id="home">
+
+
+<h1>Top Films</h2>    
+
+    <div class="film-area">
+  <div class="film-list col-xs-6 col-md-3 col-lg-3" ng-repeat="film in films">
+  	<a ng-href="/products/{{film._id}}">
+      <img ng-src="{{film.photo}}" />
+      <p id="movie-title">{{film.title}}</p>
+    </a>
+    <span id="movie-price">{{film.price | centsToDollars | currency}}</span>
+   <button type="button" class="btn btn-success">BUY</button>
+  </div>
+</div>
+
+<br><h2><a ui-sref="films">All Films</a></h2>
+
     <fullstack-logo></fullstack-logo>
-    <h1><a ui-sref="films">All Films</a></h1>
+
 </section>
