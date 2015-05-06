@@ -12,16 +12,11 @@ router.get('/', function (req, res) {
     
     var searchParams = req.query.categories ? { categories: req.query.categories } : {};
 
-	FilmsModel.find(searchParams)
-		.populate('categories')
-		.exec(function(err, films){
-			if(err) throw err
-			res.json(films);
-		});
-
-	/*FilmsModel.find(searchParams, function (err, films) {
-            if(err) throw err
-            res.send(films);
-    });*/
+  FilmsModel.find(searchParams)
+    .populate('categories')
+    .exec(function(err, films){
+      if(err) throw err
+      res.json(films);
+    });
 
 });
