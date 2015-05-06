@@ -13,20 +13,6 @@ app.config(function ($stateProvider) {
 				}
 		}
 	})
-//	.state('review', {
-//		url: '/review/:id',
-//		templateUrl: 'js/reviews/review.html',
-//		controller: 'ReviewCtrl',
-//		params: {film: null},
-//		resolve: {
-
-				// orderInfo: function (ordersFactory, Session) {
-
-				// var userId = Session.user._id;
-				// return ordersFactory.getOrders(userId);
-				// }
-//			}
-//	});
 
 });
 
@@ -40,25 +26,6 @@ app.controller('OrdersCtrl', function ($scope, $state, $http, $stateParams, orde
 	$scope.hello = "IT WORKED";
 
 	$scope.film = $stateParams.film;
-
-	// $scope.createReview = function () {
-	// 	// Hardcode User for now
-	// 	// Hardcore Film for now "553bf80eecb6b2672cc36f27" for Batman
-	// 	$http.post('/api/reviews/', {comment: $scope.review.comment, rating: $scope.review.rating, film: $scope.film._id}).
-	// 		success(function(data) {
-	// 		    console.log("Review created!");
-	// 		    $state.go('home');
-	// 		    return response.data;
-	// 		}).
-	// 		error(function(data) {
-	// 		    console.log("Error creating review!");
-	// 		});
-	// };
-
-
-
-
-
 
 
 //	Review film navigation
