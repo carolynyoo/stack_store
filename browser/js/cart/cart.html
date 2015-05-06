@@ -7,7 +7,22 @@
 			<div class="film-title">{{lineItem.film.title}}</div>
 			<p>{{lineItem.film.description}}</p>
 			<p>Price: {{lineItem.film.price | centsToDollars | currency}}</p>
-			<p>Quantity: {{lineItem.quantity}}</p>
+			<form>
+				<label for="lineItemQuantity">Quantity: </label>
+				<select autofocus="{{lineItem.quantity}}" ng-model="lineItem.quantity" class="form-control" id="lineItemQuantity" ng-change="updateQuantity(lineItem.quantity, $index)">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+				</select>
+			</form>
+
 			<button type="button" class="btn btn-danger" ng-click="removeFilmFromCart(lineItem.film)">Delete</button>
 			<button type="button" class="btn btn-info">Edit</button>
 		</div>

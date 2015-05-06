@@ -19,11 +19,18 @@ app.controller('CartCtrl', function ($scope, $http, cartInfo, cartFactory) {
 
 	$scope.allLineItemsInCart = cartInfo.lineItems;
 
+	$scope.updateQuantity = function(updatedQuantity, index) {
+		$scope.allLineItemsInCart[index].quantity = updatedQuantity;
+		$http.put('/api/cart/updateQuantity', {index: index, updatedQuantity: updatedQuantity}).then(function(response) {
+			console.log("Updated the quantity in the cart!", response.data);
+		    return response.data;
+		})
+	};
 	// Function to delete an item from the cart
 
 	$scope.removeFilmFromCart = function (film) {
 		var filmId = film._id;
-		$http.put('/api/cart', {filmId: filmId}).
+		$http.put('/api/cart/removeItem', {filmId: filmId}).
 		    success(function(cartInfo) {
 		    	$scope.allLineItemsInCart = cartInfo.lineItems;
 		        console.log("Item removed from Cart!");
