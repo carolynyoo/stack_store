@@ -22,7 +22,7 @@
   <label for="categories">Categories</label><br/>
   <span ng-repeat="category in film.categories">
     <label class="checkbox" for="category._id">
-      <input type="checkbox" ng-model="formData.categories[category._id]" name="group" id="category._id" />
+      <input type="checkbox" ng-model="formData.categories[$index].selected" name="group" id="category._id" />
       {{category.name}}
     </label>
   </span>
