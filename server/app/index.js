@@ -29,6 +29,10 @@ app.use(function (req, res, next) {
 
 });
 
+app.get('/github', function (req, res, next) {
+  res.redirect('https://github.com/carolynyoo/stack_store');
+});
+
 app.get('/*', function (req, res) {
     res.sendFile(app.get('indexHTMLPath'));
 });
