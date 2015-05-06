@@ -32,18 +32,21 @@ app.controller('OrdersCtrl', function ($scope, $state, $http, $stateParams, orde
 	$scope.writeReviewForFilm = function(lineItem){
 		console.log(lineItem);
 		var filmid = lineItem.film._id;
-		$http.get('/api/products/'+filmid).then(function (response) {
-				console.log("this is response object");
-				console.log(response.data);
-				$scope.film = response.data;
-				console.log("this is the scope object");
-				console.log($scope);
-				console.log("film.title");
-				$state.go('review', {id: response.data._id, film:response.data});
-                return response.data;
+		// $http.get('/api/products/'+filmid).then(function (response) {
+		// 		console.log("this is response object");
+		// 		console.log(response.data);
+		// 		$scope.film = response.data;
+		// 		console.log("this is the scope object");
+		// 		console.log($scope);
+		// 		console.log("film.title");
+		// 		$state.go('review', {id: response.data._id, film:response.data});
+		// 		console.log("passed state.go");
+  //               return response.data;
 
-				})
-		//.success(function(film){$scope.film = film;});
+		// 		})
+
+		$state.go('review', {id: filmid, film: lineItem.film});
+
 										};
 
 });

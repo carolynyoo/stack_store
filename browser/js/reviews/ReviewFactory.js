@@ -6,8 +6,8 @@ app.config(function ($stateProvider) {
         templateUrl: 'js/reviews/review.html',
         controller: 'ReviewCtrl',
         resolve: {
-            pdpInfo: function ($stateParams, pdpFactory, Session) {
-               return pdpFactory.getInfo($stateParams.id);
+            pdpInfo: function ($stateParams, Product, Session) {
+               return Product.get($stateParams.id);
             }
         }
     });
