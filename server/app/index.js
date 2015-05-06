@@ -33,6 +33,7 @@ app.get('/*', function (req, res) {
     res.sendFile(app.get('indexHTMLPath'));
 });
 
+
 // Error catching endware.
 app.use(function (err, req, res, next) {
     // console.error(err);

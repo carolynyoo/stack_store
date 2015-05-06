@@ -1,0 +1,34 @@
+<h1>Products</h1>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Categories</th>
+      <th>Inventory</th>
+      <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="film in films">
+          <td>
+          <a ng-href="/admin/edit/{{film._id}}" class="edit">Edit</a> | 
+          <a ng-href="/products/{{film._id}}" class="view">View</a>
+          </td>
+          <td>{{film.title}}</td>
+          <td>
+          <span ng-repeat="category in film.categories | orderBy:'name'">
+          {{category.name}}
+          </span>
+          </td>
+          <td>{{film.inventory}}</td>
+          <td>{{film.price | centsToDollars | currency}}</td>
+        </a>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div>
+  <button class="btn btn-success" ui-sref="admin.addproduct">Add Product</button>
+</div>

@@ -1,0 +1,37 @@
+<h1>Add Product</h1>
+<button type="submit" class="btn btn-success" ng-click="add()">Submit</button>
+<br/>
+<form id="add-product-form" name="addProductForm" ng-submit="edit()">
+<label>Title</label><br/>
+<textarea name="title" ng-model="newData.title" rows="1" cols="50">
+</textarea><br/>
+<label>Description</label><br/>
+<textarea name="description" ng-model="newData.description" rows="3" cols="50">
+</textarea><br/>
+<label>Photo</label><br/>
+<textarea name="photo" ng-model="newData.photo" rows="2" cols="50">
+</textarea><br/>
+<label>Price (cents)</label><br/>
+<input type="number" name="price" ng-model="newData.price" />
+<br/>
+<label>Inventory</label><br/>
+<input type="number" name="inventory" ng-model="newData.inventory" />
+<br/>
+<div class="form-group">
+  <label for="categories">Categories</label><br/>
+  <span ng-repeat="category in categories">
+    <label class="checkbox" for="category._id">
+      <input type="checkbox" ng-model="newData.categories[category._id]" name="group" id="category._id" />
+      {{category.name}}
+    </label>
+  </span>
+</div>
+
+<h3>Preview:</h3>
+  <div class="col-md-3">
+  <img src='{{newData.photo}}' width="160" height="240">
+  </div>
+  <div class="col-md-9">
+  <pre ng-bind="newData | json"></pre> 
+</div>
+<br/>
