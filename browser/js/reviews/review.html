@@ -1,8 +1,6 @@
-<container>
-<form id="filmreview-form" name="filmreviewForm" ng-submit="checkout()">
+<form id="filmreview-form" name="filmreviewForm">
 	<div class="row">
 		<div class="col-md-9">
-
 				<h1>Review {{film.title}}</h1>
 					<div class="row">
 						<div class="col-md-6">
@@ -24,9 +22,9 @@
 							  </div>
 
 							  <div class="preview">
-							  	<p>Your Review:</p>
+							  	<em><p>Your Review:</p></em>
 							  	<p>Rating: {{review.rating}}</p>
-							  	<p>Commment: {{review.comment}}</p>
+							  	<p>Comment: {{review.comment}}</p>
 							  </div>  
 
 							
@@ -38,10 +36,9 @@
 		<div class="col-md-3" >
 
 			<p>Order Date: {{order.datetime}}</p>
-			<button ng-click="LINK TO ORDERS PAGE" class="btn btn-danger">Cancel</button>
-			<button type="submit" class="btn btn-success">Submit Review</button>
+			<button ui-sref="orders" href="/orders" class="btn btn-danger">Cancel</button>
+			<button ng-click="createReview()" type="submit" class="btn btn-success">Submit Review</button>
 
 		</div>
 	</div>
 </form>
-</container>
