@@ -1,34 +1,41 @@
 <h1>Cart</h1>
 
-<div class="row">
-	<div class="col-md-9">
-		<div ng-repeat="lineItem in allLineItemsInCart" class="clear">
-			<div class="movie-card"><img src={{lineItem.film.photo}} alt="Image Not Found" width="160px" height="240px"></div>
-			<div class="film-title">{{lineItem.film.title}}</div>
-			<p>{{lineItem.film.description}}</p>
-			<p>Price: {{lineItem.film.price | centsToDollars | currency}}</p>
-			<form>
-				<label for="lineItemQuantity">Quantity: </label>
-				<select autofocus="{{lineItem.quantity}}" ng-model="lineItem.quantity" class="form-control" id="lineItemQuantity" ng-change="updateQuantity(lineItem.quantity, $index)">
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-					<option value="6">6</option>
-					<option value="7">7</option>
-					<option value="8">8</option>
-					<option value="9">9</option>
-					<option value="10">10</option>
-				</select>
-			</form>
+<div class="row" id="cart">
+	<div class="col-md-8">
+		<div ng-repeat="lineItem in allLineItemsInCart" class="line-item">
+			<div class="col-md-4">
+				<div class="cart-image"><img src={{lineItem.film.photo}} alt="Image Not Found" width="160px" height="240px"></div>
+			</div>
+			<div class="col-md-8">
+				<h1 class="film-title">{{lineItem.film.title}}</h1>
+				<span class="heading">Description:</span>
+				<span class="text">{{lineItem.film.description}}</span>
+				<span class="heading">Price:</span>
+				<span class="text">{{lineItem.film.price | centsToDollars | currency}}</span>
+				<form>
+					<label class="heading" for="lineItemQuantity">Quantity: </label>
+					<select autofocus="{{lineItem.quantity}}" ng-model="lineItem.quantity" class="form-control" id="lineItemQuantity" ng-change="updateQuantity(lineItem.quantity, $index)">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+					</select>
+				</form>
 
-			<button type="button" class="btn btn-danger" ng-click="removeFilmFromCart(lineItem.film)">Delete</button>
-			<button type="button" class="btn btn-info">Edit</button>
+				<button type="button" id="delete" class="btn btn-danger" ng-click="removeFilmFromCart(lineItem.film)">Delete</button>
+			</div>
 		</div>
 	</div>
 
-	<div class="col-md-3">
-		<button type="submit" class="btn btn-success" ui-sref="checkout">Proceed to Checkout</button>
+	<div class="col-md-4">
+		<span class="heading">Subtotal:</span>
+		<span class="text">{{subtotal | centsToDollars | currency}}</span>
+		<button type="submit" id="checkout-button" class="btn btn-success" ui-sref="checkout">Proceed to Checkout</button>
 	</div>
 <div>

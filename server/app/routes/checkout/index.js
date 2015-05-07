@@ -11,6 +11,8 @@ var orderModel = mongoose.model('Order');
 
 router.post('/', function (req, res, next) {
 	var cartId = req.body.cartInfo._id;
+	var totalPurchaseAmount = req.body.total;
+	console.log("Total Purchase Amount Is", totalPurchaseAmount);
 	var sessionId = req.sessionID;
 	var userId = req.user._id;
 
@@ -32,6 +34,7 @@ router.post('/', function (req, res, next) {
 			datetime: new Date().getTime(),
 			confirmationNumber: confirmationNumber,
 			lineItems: currentCart.lineItems,
+			totalPurchaseAmount: totalPurchaseAmount
 		});
 
 		order.save();

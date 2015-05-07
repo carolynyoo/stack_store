@@ -3,6 +3,7 @@
 <div ng-repeat="order in allOrdersForUser">
 	<h3><i>{{order.datetime}}</i></h3>
 	<p><b>Confirmation number:</b> {{order.confirmationNumber}}</p>
+	<p><b>Total purchase amount:</b> {{order.totalPurchaseAmount | centsToDollars | currency}}</p>
 	<p><b>Order status:</b> {{order.status}}</p>
 	<p><b>Order summary:</b><p>
 	<div ng-repeat="lineItem in order.lineItems" class="clear">

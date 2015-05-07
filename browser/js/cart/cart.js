@@ -17,7 +17,17 @@ app.config(function ($stateProvider) {
 
 app.controller('CartCtrl', function ($scope, $http, cartInfo, cartFactory) {
 
+	function calculateSubtotal (allLineItemsInCart) {
+		var subtotal = 0;
+		for (var i = 0; i < allLineItemsInCart.length; i++) {
+			var currentItem = allLineItemsInCart[i];
+			subtotal += (currentItem.quantity * currentItem.film.price);
+		}
+		return subtotal;
+	}
+
 	$scope.allLineItemsInCart = cartInfo.lineItems;
+	$scope.subtotal = calculateSubtotal($scope.allLineItemsInCart);
 
 	$scope.updateQuantity = function(updatedQuantity, index) {
 		$scope.allLineItemsInCart[index].quantity = updatedQuantity;
@@ -25,6 +35,7 @@ app.controller('CartCtrl', function ($scope, $http, cartInfo, cartFactory) {
 			console.log("Updated the quantity in the cart!", response.data);
 		    return response.data;
 		})
+		$scope.subtotal = calculateSubtotal($scope.allLineItemsInCart);
 	};
 	// Function to delete an item from the cart
 

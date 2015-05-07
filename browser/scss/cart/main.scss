@@ -1,0 +1,41 @@
+#cart {
+	select {
+		width: 80px;
+	}
+}
+
+.cart-image {
+	img {
+		width: 220px;
+	    height: 1.5*220px;
+	    border-radius: 20px;
+	}
+}
+
+.line-item {
+	padding-bottom: 40px;
+	@include clearfix;
+}
+
+#cart .heading {
+	font-weight: bold;
+	text-transform: uppercase;
+	display: block;
+}
+
+#delete {
+	margin-top: 20px;
+}
+
+#side-panel {
+	
+}
+
+#checkout-button {
+	margin: 0 auto;
+}
+
+#cart .text {
+  padding-bottom: 20px;
+  display: block;
+}
