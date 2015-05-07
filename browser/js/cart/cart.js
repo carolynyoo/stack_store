@@ -45,6 +45,7 @@ app.controller('CartCtrl', function ($scope, $http, cartInfo, cartFactory) {
 		    success(function(cartInfo) {
 		    	$scope.allLineItemsInCart = cartInfo.lineItems;
 		        console.log("Item removed from Cart!");
+				$scope.subtotal = calculateSubtotal($scope.allLineItemsInCart);
 		    }).
 		    error(function(data) {
 		        console.log("Error removing item from Cart!");
