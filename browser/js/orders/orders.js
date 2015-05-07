@@ -46,8 +46,8 @@ app.factory('ordersFactory', function ($http) {
 						console.log("TRYING TO GET ORDERS WITH USERID: ", userId);
 						return $http.get('/api/orders/'+userId).then(function (response) {
 						return response.data;
-																						});
-									},
+						});
+		},
 		getFilmName: function(lineItem){
 						var filmid = lineItem.film._id;
 						$http.get('/api/products/'+filmid).then(function (response) {
@@ -59,10 +59,9 @@ app.factory('ordersFactory', function ($http) {
 							console.log("film.title");
 							console.log($scope.film.title);
                 		return response.data;
-																					})
-												}
+						});
 		}
-	}
+	};
 });
 
 // Filter for cents -> dollars
