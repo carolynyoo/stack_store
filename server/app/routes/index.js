@@ -25,6 +25,7 @@ router.use('/cart', require('./cart'));
 router.use('/categories', require('./categories'));
 router.use('/checkout', require('./checkout'));
 router.use('/orders', require('./orders'));
+router.use('/review', require('./reviews'));
 
 // Make sure this is after all of
 // the registered routes!

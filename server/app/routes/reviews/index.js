@@ -13,3 +13,23 @@ router.get('/:pid', function (req, res, next) {
     res.json(review);
   });
 });
+
+router.post('/', function (req, res, next) {
+
+//	var filmid = req.body.film._id;
+
+	var rating = parseInt(req.body.rating);
+    
+		var review = new reviewModel({
+			user: req.body.user,
+			date: new Date().getTime(),
+			comment: req.body.comment,
+			rating: req.body.rating,
+			film: req.body.film
+		});
+
+		review.save();
+
+		res.sendStatus(204);
+
+});
