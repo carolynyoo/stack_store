@@ -1,6 +1,7 @@
 'use strict';
 var mongoose = require('mongoose');
 var cartModel = mongoose.model('Cart');
+var async = require('async');
 
 var router = require('express').Router();
 module.exports = router;
@@ -8,6 +9,7 @@ module.exports = router;
 var cartModel = mongoose.model('Cart');
 var lineItemModel = mongoose.model('LineItem');
 var orderModel = mongoose.model('Order');
+var filmModel = mongoose.model('Film');
 
 router.post('/', function (req, res, next) {
 	var cartId = req.body.cartInfo._id;
@@ -34,11 +36,34 @@ router.post('/', function (req, res, next) {
 			lineItems: currentCart.lineItems,
 		});
 
+		// It should update the inventory of each purchased film
+
+		var updateFilms = function(lineItem, callback) {
+			filmModel.findOne({_id: lineItem.film}).exec(function(err, currentFilm) {
+				console.log("INVENTORY BEFORE WAS", currentFilm.inventory);
+				currentFilm.inventory -= lineItem.quantity;
+				return currentFilm.save();
+			}).then(function (updatedCurrentFilm) {
+				console.log("INVENTORY AFTER IS", updatedCurrentFilm.inventory);
+				return callback(null);
+			});
+		};
+
+		async.eachSeries(
+			currentCart.lineItems,
+			updateFilms,
+			function(err) {
+				console.log("INVENTORY UPDATED FOR ALL FILMS");
+			}
+		)
+
 		order.save();
+
 	});
 
+	// It should update the status of the cart and save it.
+
 	cartModel.findOne({sessionId: sessionId}).exec(function (err, cart) {
-		console.log(cart);
 		if(err) throw err;
 		cart.closed = true;
 		cart.user = userId;
