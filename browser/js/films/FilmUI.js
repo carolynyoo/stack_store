@@ -7,7 +7,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('filmsCtrl', function ($scope, FilmFactory, CategoryFactory) {
+app.controller('filmsCtrl', function ($scope, FilmFactory, CategoryFactory, cartFactory) {
   $scope.category = {
     name: null
   };
@@ -43,6 +43,10 @@ app.controller('filmsCtrl', function ($scope, FilmFactory, CategoryFactory) {
     } // close getCategories
 
     $scope.getCategories();
+
+    $scope.addFilmToCart = function (pid) {
+      return cartFactory.addToCart(pid);
+    }
     
 }); // end filmsCtrl
 

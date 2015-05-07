@@ -18,6 +18,6 @@
       <p id="movie-title">{{film.title}}</p>
     </a>
     <span id="movie-price">{{film.price | centsToDollars | currency}}</span>
-   <button type="button" class="btn btn-success">BUY</button>
+   <button type="button" class="btn btn-success" ng-click="addFilmToCart(film._id)">BUY</button>
   </div>
 </div>

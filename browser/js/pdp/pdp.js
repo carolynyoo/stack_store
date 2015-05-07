@@ -46,7 +46,7 @@ app.factory('Product', function ($state, $http) {
     };
 });
 
-app.controller('PdpCtrl', function ($scope, $http, $stateParams, $state, pdpInfo, Product, CategoryFactory) {
+app.controller('PdpCtrl', function ($scope, $http, $stateParams, $state, pdpInfo, Product, CategoryFactory, cartFactory) {
   $scope.film = pdpInfo;
   $scope.formData = $scope.film;
   $scope.newData = {
@@ -82,17 +82,8 @@ app.controller('PdpCtrl', function ($scope, $http, $stateParams, $state, pdpInfo
     return Product.delete($scope.film._id);
   }
 
-  // to be refactored into factory
   $scope.addFilmToCart = function() {
-    $http.post('/api/cart', {filmId: $stateParams.pid}).
-    success(function() {
-        console.log("Item added to cart!");
-        $state.go('cart');
-    }).
-    error(function() {
-        console.log("Error adding item to cart");
-    });
-
+    return cartFactory.addToCart(); 
   };
 
   // retrieve category names from object ids later
