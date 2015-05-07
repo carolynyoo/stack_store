@@ -1,0 +1,44 @@
+<form id="filmreview-form" name="filmreviewForm">
+	<div class="row">
+		<div class="col-md-9">
+				<h1>Review {{film.title}}</h1>
+					<div class="row">
+						<div class="col-md-6">
+
+							<div class="form-group">
+							    <label for="rating">Rating</label>
+							    <select ng-model="review.rating" class="form-control" id="filmRating">
+							    	<option>1</option>
+							    	<option>2</option>
+							    	<option>3</option>
+							    	<option>4</option>
+							    	<option>5</option>
+							    </select>
+							 </div>
+
+							  <div class="form-group" ng-class="{ 'has-error': !filmreviewForm.length && filmreviewForm.$dirty }">
+							    <label for="filmComment">Comment</label>
+							    <input type="text" name="filmComment" ng-model="review.comment" id="filmComment" placeholder="Enter Your Review Here (Limit 500 Characters)" ng-maxlength="500">
+							  </div>
+
+							  <div class="preview">
+							  	<em><p>Your Review:</p></em>
+							  	<p>Rating: {{review.rating}}</p>
+							  	<p>Comment: {{review.comment}}</p>
+							  </div>  
+
+							
+						</div>
+				</div>
+			
+		</div>
+
+		<div class="col-md-3" >
+
+			<p>Order Date: {{order.datetime}}</p>
+			<button ui-sref="orders" href="/orders" class="btn btn-danger">Cancel</button>
+			<button ng-click="createReview()" type="submit" class="btn btn-success">Submit Review</button>
+
+		</div>
+	</div>
+</form>

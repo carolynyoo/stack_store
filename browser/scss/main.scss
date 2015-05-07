@@ -20,6 +20,8 @@
 @import 'checkout/main';
 @import 'films/main';
 @import 'cart/main';
+@import 'review/main';
+@import 'admin/main';
 
 .clear {
   @include clearfix;
