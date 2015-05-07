@@ -1,5 +1,4 @@
 <h2>Previous orders</h2>
-
 <div ng-repeat="order in allOrdersForUser">
 	<h3><i>{{order.datetime}}</i></h3>
 	<p><b>Confirmation number:</b> {{order.confirmationNumber}}</p>
@@ -11,5 +10,6 @@
 		<p>{{lineItem.film.description}}</p>
 		<p>Price: {{lineItem.film.price | centsToDollars | currency}}</p>
 		<p>Quantity: {{lineItem.quantity}}</p>
+		<button ng-click="writeReviewForFilm(lineItem)" class="btn btn-success">Write A Review</button>
 	</div>
 </div>

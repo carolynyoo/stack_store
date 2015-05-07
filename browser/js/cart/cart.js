@@ -37,14 +37,25 @@ app.controller('CartCtrl', function ($scope, $http, cartInfo, cartFactory) {
 
 // Factory to get a cart
 
-app.factory('cartFactory', function ($http) {
+app.factory('cartFactory', function ($http, $state, $stateParams) {
 	return {
 		getCart: function() {
 			return $http.get('/api/cart').then(function (response) {
 				console.log("The data is", response.data);
 			    return response.data;
 			});
-		}
+		},
+    addToCart: function (pid) {
+      var id = pid || $stateParams.pid; 
+      $http.post('/api/cart', {filmId: id}).
+      success(function() {
+          console.log("Item added to cart!");
+          $state.go('cart');
+      }).
+      error(function() {
+          console.log("Error adding item to cart");
+      });
+    }
 	};
 });
 

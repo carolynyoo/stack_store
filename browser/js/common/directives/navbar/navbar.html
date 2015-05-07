@@ -8,7 +8,10 @@
                 <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
             </li>
             <li ng-show="isAdmin()">
-                <a ui-sref-active="active" ui-sref="admin">Admin</a>
+                <a ui-sref-active="active" ui-sref="admin.welcome">Admin</a>
+            </li>
+            <li>
+                <a href="/github" target="_self">Github</a>
             </li>
         </ul>
         <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>
