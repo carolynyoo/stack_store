@@ -1,11 +1,11 @@
 'use strict';
-app.directive('randoGreeting', function (RandomGreetings) {
+app.directive('noneFound', function () {
 
     return {
         restrict: 'E',
-        templateUrl: 'js/common/directives/rando-greeting/rando-greeting.html',
+        templateUrl: 'js/common/directives/none-found/nonefound.html',
         link: function (scope) {
-            scope.greeting = RandomGreetings.getRandomGreeting();
+            scope.errormsg = "Dang. No Movies."
         }
     };
 
