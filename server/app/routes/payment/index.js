@@ -9,7 +9,7 @@ router.post('/', function(req, res, next) {
 
     var stripeToken = req.body.stripeToken;
 
-    console.log("This is request", req);
+    // console.log("This is request", req);
     var purchaseTotal = req.body.total;
     console.log("This is purchase total:", purchaseTotal);
 

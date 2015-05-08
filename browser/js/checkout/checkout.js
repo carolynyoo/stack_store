@@ -39,8 +39,7 @@ app.controller('CheckoutCtrl', function($scope, $http, cartInfo, $state) {
         $http.post('/api/checkout', {
             cartInfo: cartInfo, total: $scope.total
         }).
-        success(function(data) {
-
+        success(function(confirmationNumber) {
 
             // Stripe Token Creation
             Stripe.card.createToken(
@@ -62,7 +61,8 @@ app.controller('CheckoutCtrl', function($scope, $http, cartInfo, $state) {
 
 
             console.log("Order created!");
-            $state.go('confirmation');
+            console.log("THE CONFIRMATION NUMBER ISSSSSS", confirmationNumber);
+            $state.go('confirmation', {confirmationNumber: confirmationNumber});
         }).
         error(function(data) {
             console.log("Error creating order!");
@@ -115,6 +115,5 @@ app.controller('CheckoutCtrl', function($scope, $http, cartInfo, $state) {
 
         }
     }
-
 
 });
