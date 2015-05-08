@@ -79,28 +79,6 @@ app.controller('CheckoutCtrl', function($scope, $http, cartInfo, $state) {
     // Stripe Token Creation
     //Stripe.card.createToken($form, stripeResponseHandler);
 
-    /*
-
-    Stripe.card.createToken(
-
-    {
-    number: $scope.billing.creditCardNumber,
-    	cvc: $scope.billing.creditCardCVC,
-    exp_month: $scope.billing.creditExpiration.month,
-    exp_year: $scope.billing.creditExpiration.year,
-    name: $scope.billing.creditCardName,
-    address_line1: $scope.address.street,
-    //        address_line2: '',
-    address_city: $scope.address.city,
-    address_state: $scope.address.state,
-    address_zip: $scope.address.zip,
-    //        address_country: 'blah'
-    }
-
-    , stripeResponseHandler);
-
-    */
-
     // Put this in a separate API for '/charge' and make that call when hitting submit as well or nest in post request?
 
     // TEST CARD for Stripe: 4012888888881881
