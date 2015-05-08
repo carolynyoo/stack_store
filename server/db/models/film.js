@@ -6,12 +6,13 @@ var mongoose = require('mongoose');
 
 var filmSchema = new mongoose.Schema({
 // add film schema here
-  title: {type: String, required: true},
+  title: {type: String, required: true, unique: true},
   categories: [{type:mongoose.Schema.Types.ObjectId, ref: 'Category'}],
   description: String,
   price: {type: Number, required: true},
   photo: {type: String, default: 'http://placehold.it/200x300'},
   inventory: {type: Number, required: true},
+  purchased: {type: Number}
 });
 
 mongoose.model('Film', filmSchema);

@@ -36,7 +36,7 @@ router.get('/:userId', function(req, res) {
 			orders, 
 			populateOrders,
 			function(err) {
-				console.log("SENDING ORDERS", orders);
+				console.log("SENDING ORDERS");
 				res.send(orders);
 			}
 		);

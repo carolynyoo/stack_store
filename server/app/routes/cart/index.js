@@ -32,9 +32,24 @@ router.get('/', function (req, res) {
 
 });
 
+//UPDATE QUANTITY OF CART ITEM
+
+router.put('/updateQuantity', function (req, res) {
+	var lineItemIndex = req.body.index;
+	var lineItemUpdatedQuantity = req.body.updatedQuantity;
+	var sessionId = req.sessionID;
+	
+	cartModel.findOne({sessionId: sessionId}).exec(function (err, cart) {
+		if(err) throw err;
+		cart.lineItems[lineItemIndex].quantity = lineItemUpdatedQuantity;
+		cart.save();
+		res.send(cart);
+	});
+});
+
 //REMOVE ITEM FROM CART
 
-router.put('/', function (req, res) {
+router.put('/removeItem', function (req, res) {
 	var sessionId = req.sessionID;
 	var filmId = req.body.filmId;
 
