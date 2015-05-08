@@ -18,16 +18,14 @@ router.post('/', function (req, res, next) {
 	var sessionId = req.sessionID;
 	var userId = req.user._id;
 
-	// Function to generate a random confirmation number
+	// Generate random confirmationNumber for current Order
+
+	var confirmationNumber = Math.random().toString(36).slice(2);
 
 	// It should create an order that includes the line items
 
 	cartModel.findOne({_id: cartId}).exec(function (err, currentCart) {
 		if (err) throw err;
-
-		// Generate random confirmationNumber for current Order
-
-		var confirmationNumber = Math.random().toString(36).slice(2);
 
 		var order = new orderModel({
 			sessionId: sessionId,
@@ -98,7 +96,7 @@ router.post('/', function (req, res, next) {
 
         req.session.save(function(err){
     		if(err) throw err;
-			res.sendStatus(200);
+			res.send(confirmationNumber);
         });
     });
 

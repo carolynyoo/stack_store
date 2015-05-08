@@ -5,10 +5,42 @@
 #checkout-form .heading {
 	font-weight: bold;
 	text-transform: uppercase;
-	display: block;
 }
 
-#checkout-form .text {
-  padding-bottom: 20px;
-  display: block;
+#billing {
+	padding-left: 30px;
+}
+
+#order-summary {
+	margin-left: 30px;
+	margin-bottom: 10px;
+	border-style: solid;
+	border-left-color: #4B77BE;
+	border-right-color: #FFFFFF;
+	border-top-color: #FFFFFF;
+	border-bottom-color: #FFFFFF;
+	border-left-width: 10px;
+}
+
+#edit {
+	margin-bottom: 20px;
+	float: right;
+}
+
+.single-order {
+	margin-left: 10px;
+}
+
+#total {
+	margin-bottom: 10px;
+}
+
+#total-heading {
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 200%;
+}
+
+#total-text {
+	font-size: 200%;
 }
