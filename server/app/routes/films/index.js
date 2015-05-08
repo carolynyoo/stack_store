@@ -21,15 +21,21 @@ router.get('/', function (req, res) {
 
 router.put('/', function (req, res) {
 
+	// console.log("HIT THE FILM PUT ROUTE");
 	var purchasestats = req.body.purchasestats;
 	
+	// console.log(typeof purchasestats);		
+	// console.log("purchasestats: ",purchasestats);
+
 	for(var movie in purchasestats){
 	
-		FilmsModel.update({ _id: purchasestats[movie]._id}, { $inc: { purchased: purchasestats[movie].count }})
+		FilmsModel.update({ _id: purchasestats[movie]._id}, { $inc: { purchased: purchasestats[movie].count}})
 			.exec(function(err, results){
 				if(err){console.log(err)}
-				// console.log(results)
+				console.log(results)
 			});
 	}
 	
 });
+
+// , inventory: -purchasestats[movie].count }
