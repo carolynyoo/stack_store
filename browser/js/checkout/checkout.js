@@ -23,9 +23,21 @@ app.config(function($stateProvider) {
 
 app.controller('CheckoutCtrl', function($scope, $http, cartInfo, $state) {
 
+
+    function calculateTotal (allLineItemsInCart) {
+        var total = 0;
+        for (var i = 0; i < allLineItemsInCart.length; i++) {
+            var currentItem = allLineItemsInCart[i];
+            total += (currentItem.quantity * currentItem.film.price);
+        }
+        return total;
+    }
+
+
+
     $scope.checkout = function() {
         $http.post('/api/checkout', {
-            cartInfo: cartInfo
+            cartInfo: cartInfo, total: $scope.total
         }).
         success(function(data) {
 
