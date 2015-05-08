@@ -37,7 +37,7 @@ app.controller('OrdersCtrl', function ($scope, $state, $http, $stateParams, orde
 		var filmid = lineItem.film._id;
 		$state.go('review', {id: filmid, film: lineItem.film});
 
-										};
+	};
 
 });
 
