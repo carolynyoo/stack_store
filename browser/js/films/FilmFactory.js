@@ -10,6 +10,15 @@ app.factory('FilmFactory', function ($http) {
             }).then(function (response) {
                 return response.data;
             });
-		}
+		},
+
+        getRegex: function(searchstring){
+            return $http.get('/api/test', { 
+                params: {regextitle: searchstring}
+            }).then(function (response) {
+                return response.data;
+            });
+        }
+
 	}
 });

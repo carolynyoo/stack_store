@@ -33,6 +33,17 @@ app.controller('filmsCtrl', function ($scope, FilmFactory, CategoryFactory, cart
 
   $scope.getMovies();
 
+  $scope.getRegex = function(){
+    FilmFactory.getRegex($scope.searchstring)
+    .then(function(filmsfromserver){
+      $scope.films = filmsfromserver;
+    })
+    .catch(function(err){
+      console.log("error! : ",err);
+    }); 
+  };
+
+
   $scope.getCategories = function(){
       CategoryFactory.getCategories()
         .then(function(categoriesfromserver){
