@@ -19,9 +19,9 @@
 <br/>
 <div class="form-group">
   <label for="categories">Categories</label><br/>
-  <span ng-repeat="category in categories">
+  <span ng-repeat="category in newData.categories">
     <label class="checkbox" for="category._id">
-      <input type="checkbox" ng-model="newData.categories[category._id]" name="group" id="category._id" />
+      <input type="checkbox" ng-model="newData.categories[category.name].selected" name="group" id="category._id" />
       {{category.name}}
     </label>
   </span>

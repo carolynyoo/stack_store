@@ -1,0 +1,31 @@
+.order {
+  height: 100%;
+  padding: 20px 10px;
+  button {
+    margin-left: 10px;
+  }
+  img {
+    width: 160px;
+    height: 240px;
+  }
+  .movie-card {
+    margin-bottom: 10px;
+  }
+  .col-md-6.info {
+    margin-top: 35px;
+  }
+  h5 {
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #000;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.order:nth-of-type(odd) {
+  background: #f1f3f4;
+  border-radius: 15px;
+}
