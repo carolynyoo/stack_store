@@ -1,0 +1,24 @@
+<h1>Users</h1>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Admin Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="user in users">
+          <td>
+          <a ng-href="/admin/user/edit/{{user._id}}" class="edit">Edit</a>
+          </td>
+          <td>{{user.name}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.admin}}</td>
+        </a>
+      </tr>
+    </tbody>
+  </table>
+</div>

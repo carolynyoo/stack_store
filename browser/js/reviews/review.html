@@ -1,3 +1,4 @@
+<div class="container">
 <form id="filmreview-form" name="filmreviewForm">
 	<div class="row">
 		<div class="col-md-9">
@@ -18,7 +19,7 @@
 
 							  <div class="form-group" ng-class="{ 'has-error': !filmreviewForm.length && filmreviewForm.$dirty }">
 							    <label for="filmComment">Comment</label>
-							    <input type="text" name="filmComment" ng-model="review.comment" id="filmComment" placeholder="Enter Your Review Here (Limit 500 Characters)" ng-maxlength="500">
+							    <textarea name="filmComment" ng-model="review.comment" id="filmComment" placeholder="Enter Your Review Here (Limit 500 Characters)" ng-maxlength="500"></textarea>
 							  </div>
 
 							  <div class="preview">
@@ -42,3 +43,4 @@
 		</div>
 	</div>
 </form>
+</div>

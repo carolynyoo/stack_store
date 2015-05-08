@@ -1,15 +1,24 @@
-<h2>Previous orders</h2>
-<div ng-repeat="order in allOrdersForUser">
-	<h3><i>{{order.datetime}}</i></h3>
-	<p><b>Confirmation number:</b> {{order.confirmationNumber}}</p>
-	<p><b>Order status:</b> {{order.status}}</p>
-	<p><b>Order summary:</b><p>
-	<div ng-repeat="lineItem in order.lineItems" class="clear">
-		<div class="movie-card"><img src={{lineItem.film.photo}} alt="Image Not Found" width="160px" height="240px"></div>
-		<div class="film-title">{{lineItem.film.title}}</div>
-		<p>{{lineItem.film.description}}</p>
-		<p>Price: {{lineItem.film.price | centsToDollars | currency}}</p>
-		<p>Quantity: {{lineItem.quantity}}</p>
-		<button ng-click="writeReviewForFilm(lineItem)" class="btn btn-success">Write A Review</button>
+<div class="container">
+	<h2>Your Orders</h2>
+	<div class="row order" ng-repeat="order in allOrdersForUser | orderBy:'-datetime'">
+			<h4><i>{{order.datetime | amDateFormat: 'ddd, MMM Do YYYY, h:mm a'}}</i></h4>
+			<div class="col-md-4 col-sm-12" ng-repeat="lineItem in order.lineItems" class="clear">
+			<div class="col-md-6 col-sm-12 main">
+				<a ng-href="/products/{{lineItem.film._id}}"><div class="film-title">
+				<h5>
+				{{lineItem.film.title}}
+				</h5>
+				</div>
+					<div class="movie-card">
+					<img src={{lineItem.film.photo}} alt="Image Not Found"></div>
+					</a>
+			</div>
+			<div class="col-md-6 col-sm-12 info"><p><b>Confirmation number:</b> {{order.confirmationNumber}}</p>
+				<p><b>Quantity:</b> {{lineItem.quantity}}</p>
+				<p><b>Price:</b> {{lineItem.film.price | centsToDollars | currency}}</p>
+			<p><b>Total purchase amount:</b> {{order.totalPurchaseAmount | centsToDollars | currency}}</p>
+			<p><b>Order status:</b> {{order.status}}</p></div>
+				<button ng-click="writeReviewForFilm(lineItem)" class="btn btn-success">Write A Review</button>
+			</div>
 	</div>
 </div>
