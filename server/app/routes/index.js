@@ -24,6 +24,7 @@ router.use('/categories', require('./categories'));
 router.use('/checkout', require('./checkout'));
 router.use('/orders', require('./orders'));
 router.use('/review', require('./reviews'));
+router.use('/users', require('./users'));
 router.use('/payment', require('./payment'));
 
 // Make sure this is after all of

@@ -52,7 +52,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       .state('admin.users', {
         url: '/users',
         templateUrl: 'js/admin/templates/users.html',
-        controller: 'NewUserCtrl'
+        controller: 'UserCtrl'
       })
 });
 
