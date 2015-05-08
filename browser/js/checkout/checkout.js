@@ -69,6 +69,8 @@ app.controller('CheckoutCtrl', function($scope, $http, cartInfo, $state) {
         });
     };
     $scope.allLineItemsInCart = cartInfo.lineItems;
+    $scope.total = calculateTotal($scope.allLineItemsInCart);
+
     $scope.billing = {};
     $scope.address = {};
     $scope.error = null;
@@ -100,7 +102,7 @@ app.controller('CheckoutCtrl', function($scope, $http, cartInfo, $state) {
 
             // Make server call to API/charge
             $http.post('/api/payment', {
-                    stripeToken: token
+                    stripeToken: token, total: $scope.total
                 })
                 .then(function(data) {
                     console.log("Payment Successful!");

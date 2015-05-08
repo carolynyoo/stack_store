@@ -9,8 +9,12 @@ router.post('/', function(req, res, next) {
 
     var stripeToken = req.body.stripeToken;
 
+    console.log("This is request", req);
+    var purchaseTotal = req.body.total;
+    console.log("This is purchase total:", purchaseTotal);
+
     var charge = stripe.charges.create({
-        amount: 1000, // amount in cents, again
+        amount: purchaseTotal, // amount in cents, again
         currency: "usd",
         source: stripeToken,
         description: "Example charge"
