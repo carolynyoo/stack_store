@@ -6,6 +6,9 @@ app.config(function ($stateProvider) {
 		url: '/orders',
 		templateUrl: 'js/orders/orders.html',
 		controller: 'OrdersCtrl',
+		data: {
+            authenticate: true
+    }, 
 		resolve: {
 				orderInfo: function (ordersFactory, Session) {
 				var userId = Session.user._id;
