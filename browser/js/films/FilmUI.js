@@ -4,6 +4,7 @@ app.config(function ($stateProvider) {
         url: '/films',
         templateUrl: 'js/films/films.html',
         controller: 'filmsCtrl'
+        // resolve: getMovies()
     });
 });
 

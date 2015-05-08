@@ -1,4 +1,4 @@
-<div ng-repeat="review in film.reviews">
+<div ng-repeat="review in film.reviews | orderBy:'-date' | limitTo: 3" >
   <span class="heading">Review:</span> 
   <span class="text">{{review.comment}}</span>
   <span class="heading">Rating:</span> 

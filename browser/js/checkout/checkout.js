@@ -103,7 +103,4 @@ app.controller('CheckoutCtrl', function($scope, $http, cartInfo, $state) {
     }
 
 
-
-
-
 });

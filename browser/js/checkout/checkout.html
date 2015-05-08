@@ -1,6 +1,6 @@
 <form id="checkout-form" name="checkoutForm" ng-submit="checkout()">
 	<div class="row">
-		<div class="col-md-9">
+		<div class="col-md-8">
 
 				<h1>Checkout</h1>
 					<div class="row">
@@ -53,16 +53,18 @@
 				<p>{{lineItem.film.description}}</p>
 				<p>Price: {{lineItem.film.price | centsToDollars | currency}}</p>
 				<p>Quantity: {{lineItem.quantity}}</p>
-				<button type="button" class="btn btn-danger" ng-click="removeFilmFromCart(lineItem.film)">Delete</button>
-				<button type="button" class="btn btn-info">Edit</button>
 			</div>
+
+			<button type="button" class="btn btn-info" ui-sref="cart">Edit Cart</button>
 
 		</div>
 
-		<div class="col-md-3" >
+		<div class="col-md-4" >
 
 			<p>Order Details</p>
 			<span class="payment-errors"></span>
+			<span class="heading">Total:</span>
+			<span class="text">{{total | centsToDollars | currency}}</span>
 			<button type="submit" class="btn btn-success">Place Order</button>
 
 		</div>
