@@ -30,21 +30,6 @@ app.controller('CheckoutCtrl', function($scope, $http, cartInfo, $state) {
         success(function(data) {
 
 
-            // console.log("This is user info object: ", {
-            //     name: $scope.billing.creditCardName,
-            //     number: $scope.billing.creditCardNumber,
-            //     cvc: $scope.billing.creditCardCVC,
-            //     exp_month: $scope.billing.creditExpiration.month,
-            //     exp_year: $scope.billing.creditExpiration.year,
-            //     name: $scope.billing.creditCardName,
-            //     address_line1: $scope.address.street,
-            //     //        address_line2: '',
-            //     address_city: $scope.address.city,
-            //     address_state: $scope.address.state,
-            //     address_zip: $scope.address.zip,
-            //     //        address_country: 'blah'
-            // });
-
             // Stripe Token Creation
             Stripe.card.createToken(
 
