@@ -96,6 +96,7 @@ router.post('/', function (req, res, next) {
 
         req.session.save(function(err){
     		if(err) throw err;
+    		console.log("ABOUT TO SEND CONFIRMATION NUMBER", confirmationNumber);
 			res.send(confirmationNumber);
         });
     });
