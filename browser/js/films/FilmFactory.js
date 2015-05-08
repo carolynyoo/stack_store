@@ -34,6 +34,7 @@ app.factory('FilmFactory', function ($http) {
 
             function put_it(thingtoput){
                 console.log("put_it FIRED!");
+                console.log("thingtoput: ", thingtoput);
                 return $http.put('/api/films', thingtoput)
                 .then(function(){
                     console.log('success')
