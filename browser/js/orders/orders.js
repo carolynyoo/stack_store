@@ -6,6 +6,9 @@ app.config(function ($stateProvider) {
 		url: '/orders',
 		templateUrl: 'js/orders/orders.html',
 		controller: 'OrdersCtrl',
+		data: {
+            authenticate: true
+    }, 
 		resolve: {
 				orderInfo: function (ordersFactory, Session) {
 				var userId = Session.user._id;
@@ -34,7 +37,7 @@ app.controller('OrdersCtrl', function ($scope, $state, $http, $stateParams, orde
 		var filmid = lineItem.film._id;
 		$state.go('review', {id: filmid, film: lineItem.film});
 
-										};
+	};
 
 });
 

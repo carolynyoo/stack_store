@@ -17,8 +17,6 @@ router.post('/new-user', function(req, res) {
 });
 
 router.use('/home', require('./home'));
-router.use('/tutorial', require('./tutorial'));
-router.use('/members', require('./members'));
 router.use('/films', require('./films'));
 router.use('/products', require('./pdp'));
 router.use('/cart', require('./cart'));
@@ -27,6 +25,7 @@ router.use('/checkout', require('./checkout'));
 router.use('/orders', require('./orders'));
 router.use('/review', require('./reviews'));
 router.use('/users', require('./users'));
+router.use('/payment', require('./payment'));
 
 // Make sure this is after all of
 // the registered routes!
