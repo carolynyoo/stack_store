@@ -5,14 +5,14 @@
     Genres (from db) <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" role="menu">
-    <li><a href="#" ng-repeat="category in categories" ng-click="getMovies(category._id)">{{category.name}}</a></li>
+    <li><a href="#" ng-repeat="category in categories | orderBy: 'name'" ng-click="getMovies(category._id)">{{category.name}}</a></li>
     <li class="divider"></li>
     <li><a href="#" ng-click="getMovies()">All Movies</a></li>
   </ul>
 </div>
 
 <div class="film-area">
-  <div class="film-list col-xs-6 col-md-3 col-lg-3" ng-repeat="film in films">
+  <div class="film-list col-xs-6 col-md-3 col-lg-3" ng-repeat="film in films | orderBy: 'title'">
   	<a ng-href="/products/{{film._id}}">
       <img ng-src="{{film.photo}}" />
       <p id="movie-title">{{film.title}}</p>
