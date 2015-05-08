@@ -12,6 +12,7 @@ var orderSchema = new mongoose.Schema({
 	status: {type: String, required: true, default: "Inactive"},
 	datetime: {type: Date, required: true},
 	confirmationNumber: {type: String, required: true},
+	totalPurchaseAmount: {type: Number, required: true},
 	promoApplied: {type: Boolean, required: true, default: false}, 
 	promoDiscount: {type: Number, required: true, default: 0}
 });

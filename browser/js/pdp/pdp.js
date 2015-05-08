@@ -54,13 +54,14 @@ app.controller('PdpCtrl', function ($scope, $http, $stateParams, $state, pdpInfo
     description: null,
     price: null,
     inventory: null,
-    photo: null,
-    categories: null
+    photo: null
   };
 
     $scope.getCategories = function(){
       CategoryFactory.getCategories()
         .then(function(categoriesfromserver){
+          $scope.categories = categoriesfromserver;
+          // $scope.formData.categories = categoriesfromserver;
           $scope.newData.categories = categoriesfromserver;
         })
         .catch(function(err){
@@ -69,6 +70,10 @@ app.controller('PdpCtrl', function ($scope, $http, $stateParams, $state, pdpInfo
     } // close getCategories
 
     $scope.getCategories();
+
+  $scope.cleanCategories = function (data) {
+    return;
+  }
 
   $scope.add = function () {
     return Product.add($scope.newData);

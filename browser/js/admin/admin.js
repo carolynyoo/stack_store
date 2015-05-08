@@ -34,7 +34,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         templateUrl: 'js/admin/templates/add-product.html',
         controller: 'PdpCtrl',
         resolve: {
-          pdpInfo: null
+          pdpInfo: function () {
+            return null;
+          }
         }
       })
       .state('admin.categories', {
@@ -50,7 +52,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       .state('admin.users', {
         url: '/users',
         templateUrl: 'js/admin/templates/users.html',
-        controller: 'NewUserCtrl'
+        controller: 'UserCtrl'
       })
 });
 

@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 
 var filmSchema = new mongoose.Schema({
 // add film schema here
-  title: {type: String, required: true},
+  title: {type: String, required: true, unique: true},
   categories: [{type:mongoose.Schema.Types.ObjectId, ref: 'Category'}],
   description: String,
   price: {type: Number, required: true},

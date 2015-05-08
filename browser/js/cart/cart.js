@@ -17,16 +17,35 @@ app.config(function ($stateProvider) {
 
 app.controller('CartCtrl', function ($scope, $http, cartInfo, cartFactory) {
 
-	$scope.allLineItemsInCart = cartInfo.lineItems;
+	function calculateSubtotal (allLineItemsInCart) {
+		var subtotal = 0;
+		for (var i = 0; i < allLineItemsInCart.length; i++) {
+			var currentItem = allLineItemsInCart[i];
+			subtotal += (currentItem.quantity * currentItem.film.price);
+		}
+		return subtotal;
+	}
 
+	$scope.allLineItemsInCart = cartInfo.lineItems;
+	$scope.subtotal = calculateSubtotal($scope.allLineItemsInCart);
+
+	$scope.updateQuantity = function(updatedQuantity, index) {
+		$scope.allLineItemsInCart[index].quantity = updatedQuantity;
+		$http.put('/api/cart/updateQuantity', {index: index, updatedQuantity: updatedQuantity}).then(function(response) {
+			console.log("Updated the quantity in the cart!", response.data);
+		    return response.data;
+		})
+		$scope.subtotal = calculateSubtotal($scope.allLineItemsInCart);
+	};
 	// Function to delete an item from the cart
 
 	$scope.removeFilmFromCart = function (film) {
 		var filmId = film._id;
-		$http.put('/api/cart', {filmId: filmId}).
+		$http.put('/api/cart/removeItem', {filmId: filmId}).
 		    success(function(cartInfo) {
 		    	$scope.allLineItemsInCart = cartInfo.lineItems;
 		        console.log("Item removed from Cart!");
+				$scope.subtotal = calculateSubtotal($scope.allLineItemsInCart);
 		    }).
 		    error(function(data) {
 		        console.log("Error removing item from Cart!");
