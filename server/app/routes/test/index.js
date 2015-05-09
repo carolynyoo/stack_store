@@ -5,21 +5,15 @@ module.exports = router;
 var FilmsModel = mongoose.model('Film');
 
 router.get('/', function (req, res) {
+    
+	var search = {};
+	// search.regextitle = 'ar';
+	search.regextitle = req.query.regextitle;
+	console.log(search);
 
-	FilmsModel.getTop(function(err, films){
+	FilmsModel.regexTitle(search.regextitle, function(err, films){
 		if(err){console.log(err)}
 		res.json(films);
-	})
-
-/*	
-FilmsModel.find({})
-	.sort('-purchased')
-	.limit(4)
-	.populate('categories')
-	.exec(function(err, films){
-		if(err) throw err
-		res.json(films);
 	});
-*/
 
 });

@@ -15,6 +15,10 @@ var filmSchema = new mongoose.Schema({
   purchased: {type: Number}
 });
 
+filmSchema.statics.regexTitle = function(title, cb){
+  return this.find({title: new RegExp(title, 'i')}, cb);
+}
+
 filmSchema.statics.getTop = function(cb){
 	return this.find({})
 		.sort('-purchased')

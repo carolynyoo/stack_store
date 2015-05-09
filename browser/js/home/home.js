@@ -7,7 +7,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('homeCtrl', function ($scope, HomeFactory, CategoryFactory) {
+app.controller('homeCtrl', function ($scope, HomeFactory, CategoryFactory, cartFactory) {
 
 	$scope.getTop = function(){
 
@@ -22,6 +22,11 @@ app.controller('homeCtrl', function ($scope, HomeFactory, CategoryFactory) {
 	};
 
 	$scope.getTop();
+
+    $scope.addFilmToCart = function (pid) {
+      // console.log("addFilmToCart FIRED")
+      return cartFactory.addToCart(pid);
+    }
 
 });
 

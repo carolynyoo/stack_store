@@ -33,6 +33,24 @@ app.controller('filmsCtrl', function ($scope, FilmFactory, CategoryFactory, cart
 
   $scope.getMovies();
 
+
+
+  $scope.getRegex = function(){
+    FilmFactory.getRegex($scope.searchstring)
+    .then(function(filmsfromserver){
+      $scope.films = filmsfromserver;
+    })
+    .then(function(){
+      var wipe = "";
+      $scope.searchstring = angular.copy(wipe);
+      $scope.regexsearch.$setPristine();
+    })
+    .catch(function(err){
+      console.log("error! : ",err);
+    }); 
+  };
+
+
   $scope.getCategories = function(){
       CategoryFactory.getCategories()
         .then(function(categoriesfromserver){

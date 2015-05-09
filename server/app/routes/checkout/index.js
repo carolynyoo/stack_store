@@ -1,10 +1,10 @@
 'use strict';
-var mongoose = require('mongoose');
-var cartModel = mongoose.model('Cart');
-var async = require('async');
-
 var router = require('express').Router();
 module.exports = router;
+
+var async = require('async');
+
+var mongoose = require('mongoose');
 
 var cartModel = mongoose.model('Cart');
 var lineItemModel = mongoose.model('LineItem');
@@ -65,6 +65,8 @@ router.post('/', function (req, res, next) {
 	// It should update the status of the cart and save it.
 
 	cartModel.findOne({sessionId: sessionId}).exec(function (err, cart) {
+		// console.log(cart);
+
 		if(err) throw err;
 		cart.closed = true;
 		cart.user = userId;
@@ -74,7 +76,7 @@ router.post('/', function (req, res, next) {
 
 	// It should generate a new session (in order to load a new cart)
 
-	console.log("OLD SESSION ID", req.sessionID);
+	// console.log("OLD SESSION ID", req.sessionID);
 
 	//  Save the current session state before I regenerate the sessionID
     var temp = req.session.passport; // {user: 1}
@@ -83,7 +85,7 @@ router.post('/', function (req, res, next) {
         //req.session.passport is now undefined, so let's reset it
         req.session.passport = temp;
 		var newSessionId = req.sessionID;
-		console.log("NEW SESSION ID", req.sessionID);
+		// console.log("NEW SESSION ID", req.sessionID);
 
         //Create the new cart
         var cart = new cartModel({

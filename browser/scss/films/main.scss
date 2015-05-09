@@ -35,10 +35,12 @@ product-image {
 
 .film-area {
   margin-top: 40px;
+  clear: left;
 }
 
 /* category view */
 .film-list {
+  margin-top: 35px;
   text-align: center;
   height: 400px;
   img {
@@ -58,4 +60,30 @@ product-image {
   font-size: 20px;
   padding-right: 10px;
   vertical-align: middle;
+}
+
+#searchbar {
+  margin-left: auto;
+  margin-right: auto;
+  width: 45%;
+  /*margin-bottom: 20px;*/
+  /*display: inline;*/
+  /*background-color: #b0e0e6;*/ }
+
+#regexfield {
+  width: 300px;
+  float: left; 
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
+#searchbutton {
+  float: left; 
+margin-right: 15px;
+margin-bottom: 5px;
+}
+
+#genresearch { 
+  /*display: inline;*/
+  float: left;
 }
