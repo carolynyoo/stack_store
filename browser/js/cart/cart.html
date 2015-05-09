@@ -2,6 +2,10 @@
 
 <div class="row" id="cart">
 	<div class="col-md-8">
+		<div id="no-films" ng-hide="allLineItemsInCart.length">
+		<i class="fa fa-cart-plus fa-5x"></i>
+		<h3>No films in cart</h3>
+		</div>
 		<div ng-repeat="lineItem in allLineItemsInCart" class="line-item">
 			<div class="col-md-4">
 				<div class="cart-image"><img src={{lineItem.film.photo}} alt="Image Not Found" width="160px" height="240px"></div>
@@ -36,6 +40,6 @@
 	<div class="col-md-4">
 		<span class="heading">Subtotal:</span>
 		<span class="text">{{subtotal | centsToDollars | currency}}</span>
-		<button type="submit" id="checkout-button" class="btn btn-success" ui-sref="checkout">Proceed to Checkout</button>
+		<button type="submit" id="checkout-button" class="btn btn-success" ui-sref="checkout" ng-show="allLineItemsInCart.length">Proceed to Checkout</button>
 	</div>
 <div>
