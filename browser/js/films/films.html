@@ -1,25 +1,28 @@
-<h1>Complete Catalog:</h1>
 
+<div id="searchbar">
 
-<form name="regexsearch" ng-submit="getRegex()">
-  <input id="regexfield" type="text" ng-model="searchstring" class="form-control" id="searchstring" placeholder="Search Movies" required>
-  <button type="submit" class="btn btn-default">SEARCH</button>
-</form>
-<br>
-<!-- <p>
-    Form Pristine: {{regexsearch.$pristine}}
-</p> -->
+  <form name="regexsearch" ng-submit="getRegex()">
+    <input id="regexfield" type="text" ng-model="searchstring" class="form-control" id="searchstring" placeholder="Search Movies" required>
+    <button id="searchbutton" type="submit" class="btn btn-default">SEARCH</button>
+  </form>
 
-<div class="btn-group genres">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-    Genres (from db) <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="#" ng-repeat="category in categories | orderBy: 'name'" ng-click="getMovies(category._id)">{{category.name}}</a></li>
-    <li class="divider"></li>
-    <li><a href="#" ng-click="getMovies()">All Movies</a></li>
-  </ul>
+  <!-- <p>
+      Form Pristine: {{regexsearch.$pristine}}
+  </p> -->
+
+  <div id="genresearch" class="btn-group genres">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+      Genres<span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="#" ng-repeat="category in categories | orderBy: 'name'" ng-click="getMovies(category._id)">{{category.name}}</a></li>
+      <li class="divider"></li>
+      <li><a href="#" ng-click="getMovies()">All Movies</a></li>
+    </ul>
+  </div>
+  
 </div>
+
 
 <div class="film-area">
   <div class="film-list col-xs-6 col-md-3 col-lg-3" ng-repeat="film in films | orderBy: 'title'">
