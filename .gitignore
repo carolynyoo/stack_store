@@ -2,6 +2,5 @@
 node_modules
 bower_components
 npm-debug.log
-public
 seed_review.js
 .DS_Store

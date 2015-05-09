@@ -1,0 +1,285 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Oxygen'; }
+
+fullstack-logo {
+  display: block; }
+  fullstack-logo img {
+    display: block;
+    width: 100%; }
+
+navbar {
+  display: block;
+  background: #4B77BE; }
+  navbar fullstack-logo {
+    padding-top: 10px;
+    margin-right: 20px;
+    width: 30px; }
+  navbar a {
+    color: #ddd; }
+    navbar a:hover {
+      color: #ddd; }
+  navbar .nav > li > a {
+    cursor: pointer; }
+    navbar .nav > li > a.active {
+      color: #fff; }
+    navbar .nav > li > a:hover {
+      transition: color 0.2s;
+      background-color: #89C4F4; }
+    navbar .nav > li > a:focus {
+      color: #fff;
+      background-color: transparent; }
+  navbar .login-button {
+    float: right;
+    margin-top: 8px;
+    background-color: #89C4F4; }
+  navbar .welcome {
+    float: right;
+    margin-top: 12px; }
+    navbar .welcome span {
+      color: white; }
+    navbar .welcome a {
+      color: #ADD8E6;
+      cursor: pointer; }
+
+.nonefound {
+  background-color: blue; }
+
+#home fullstack-logo {
+  padding-top: 30px;
+  width: 150px;
+  margin: 0 auto; }
+#home h1 {
+  margin-top: 40px;
+  text-align: center; }
+
+#about {
+  padding-bottom: 50px; }
+  #about p {
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 50px;
+    text-align: justify;
+    font-size: 25px;
+    font-weight: 300; }
+  #about img {
+    display: block;
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 50px; }
+
+tutorial-section {
+  display: block;
+  width: 90%;
+  margin: 10px auto;
+  padding: 20px 0 60px 0; }
+  tutorial-section > h1 {
+    margin: 20px 0 40px 0;
+    text-align: center;
+    font-weight: bold; }
+
+tutorial-video {
+  display: block;
+  width: 600px;
+  margin: 0 auto; }
+  tutorial-video h1 {
+    font-weight: 300;
+    font-size: 24px;
+    margin-bottom: 15px; }
+  tutorial-video iframe {
+    width: 600px;
+    height: 400px; }
+
+tutorial-section-menu {
+  display: block; }
+  tutorial-section-menu:after {
+    content: "";
+    display: table;
+    clear: both; }
+  tutorial-section-menu ul {
+    margin-left: 23px;
+    list-style-type: none;
+    font-weight: 300; }
+    tutorial-section-menu ul li {
+      float: left;
+      margin-right: 40px;
+      padding: 10px;
+      cursor: pointer; }
+      tutorial-section-menu ul li:hover {
+        background: #f3f3f3; }
+
+#login-form {
+  width: 60%;
+  margin: 0 auto; }
+
+#new-user-form {
+  width: 40%;
+  margin: 0 auto; }
+
+#checkout-form .heading {
+  font-weight: bold;
+  text-transform: uppercase; }
+
+#billing {
+  padding-left: 30px; }
+
+#order-summary {
+  margin-left: 30px;
+  margin-bottom: 10px;
+  border-style: solid;
+  border-left-color: #4B77BE;
+  border-right-color: #FFFFFF;
+  border-top-color: #FFFFFF;
+  border-bottom-color: #FFFFFF;
+  border-left-width: 10px; }
+
+#edit {
+  margin-bottom: 20px;
+  float: right; }
+
+.single-order {
+  margin-left: 10px; }
+
+#total {
+  margin-bottom: 10px; }
+
+#total-heading {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 200%; }
+
+#total-text {
+  font-size: 200%; }
+
+/* pdp view */
+#product .heading {
+  font-weight: bold;
+  text-transform: uppercase;
+  display: block; }
+
+.product-info .text {
+  padding-bottom: 20px;
+  display: block; }
+  .product-info .text.price {
+    font-size: 20px; }
+
+product-image {
+  width: 160px;
+  height: 240px;
+  margin-left: 20px;
+  margin-right: 20px; }
+  product-image img {
+    width: 400px;
+    height: 600px;
+    border-radius: 20px; }
+
+.product-info {
+  margin-top: 20px; }
+
+.film-title {
+  font-weight: bold; }
+
+.film-area {
+  margin-top: 40px; }
+
+/* category view */
+.film-list {
+  text-align: center;
+  height: 400px; }
+  .film-list img {
+    width: 160px;
+    height: 250px; }
+
+#movie-title {
+  padding-top: 5px;
+  font-size: 20px;
+  color: #000; }
+
+#movie-price {
+  color: #888;
+  font-size: 20px;
+  padding-right: 10px;
+  vertical-align: middle; }
+
+#cart select {
+  width: 80px; }
+
+.cart-image img {
+  width: 220px;
+  height: 330px;
+  border-radius: 20px; }
+
+.line-item {
+  padding-bottom: 40px; }
+  .line-item:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+#cart .heading {
+  font-weight: bold;
+  text-transform: uppercase;
+  display: block; }
+
+#delete {
+  margin-top: 20px; }
+
+#checkout-button {
+  margin: 0 auto; }
+
+#cart .text {
+  padding-bottom: 20px;
+  display: block; }
+
+#filmComment {
+  height: 200px;
+  width: 600px; }
+
+.well .nav-header {
+  text-transform: uppercase;
+  font-weight: 700; }
+
+.nav.nav-list li a {
+  padding-top: 5px;
+  padding-bottom: 5px; }
+
+table a.view {
+  color: #26A65B; }
+table a:hover {
+  color: #ccc; }
+
+.order {
+  height: 100%;
+  padding: 20px 10px; }
+  .order button {
+    margin-left: 10px; }
+  .order img {
+    width: 160px;
+    height: 240px; }
+  .order .movie-card {
+    margin-bottom: 10px; }
+  .order .col-md-6.info {
+    margin-top: 35px; }
+  .order h5 {
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #000; }
+  .order a:hover {
+    text-decoration: none; }
+
+.order:nth-of-type(odd) {
+  background: #f1f3f4;
+  border-radius: 15px; }
+
+#confirmation-box {
+  width: 500px;
+  margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center; }
+
+.clear:after {
+  content: "";
+  display: table;
+  clear: both; }
