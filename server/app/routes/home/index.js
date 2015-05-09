@@ -9,7 +9,7 @@ router.get('/', function (req, res) {
     
 	FilmsModel.find({})
 		.sort('-purchased')
-		.limit(3)
+		.limit(4)
 		.populate('categories')
 		.exec(function(err, films){
 			if(err) throw err
