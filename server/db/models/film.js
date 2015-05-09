@@ -15,4 +15,8 @@ var filmSchema = new mongoose.Schema({
   purchased: {type: Number}
 });
 
+filmSchema.statics.regexTitle = function(title, cb){
+	return this.find({title: new RegExp(title, 'i')}, cb);
+}
+
 mongoose.model('Film', filmSchema);

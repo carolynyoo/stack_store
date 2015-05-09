@@ -26,6 +26,7 @@ router.use('/orders', require('./orders'));
 router.use('/review', require('./reviews'));
 router.use('/users', require('./users'));
 router.use('/payment', require('./payment'));
+router.use('/test', require('./test'));
 
 // Make sure this is after all of
 // the registered routes!
