@@ -11,12 +11,20 @@
   </ul>
 </div>
 
-<button type="button" class="btn btn-default" ng-click="getRegex()">SEARCH</button>
+<!-- <button type="button" class="btn btn-default" ng-click="getRegex()">SEARCH</button>
 
 <div class="form-group">
   <input type="text" ng-model="searchstring" class="form-control" id="searchstring" placeholder="Search Movies">
-</div>
+</div> -->
 
+<form id="regexsearch" name="regexsearch" ng-submit="getRegex()">
+  <input type="text" ng-model="searchstring" class="form-control" id="searchstring" placeholder="Search Movies" required>
+  <button type="submit" class="btn btn-default">SEARCH</button>
+</form>
+
+<!-- <p>
+    Form Pristine: {{regexsearch.$pristine}}
+</p> -->
 
 <div class="film-area">
   <div class="film-list col-xs-6 col-md-3 col-lg-3" ng-repeat="film in films | orderBy: 'title'">
