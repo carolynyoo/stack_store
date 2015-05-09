@@ -19,9 +19,32 @@ app.config(function($stateProvider) {
     });
 });
 
-// Set up the Checkout controller
 
-app.controller('CheckoutCtrl', function($scope, $http, cartInfo, $state) {
+app.controller('CheckoutCtrl', function ($scope, $http, FilmFactory, cartInfo, $state) {
+
+	// var purchasestats = {};
+
+	var cartItems = cartInfo.lineItems; 
+	// console.log("cartItems-Checkout-type", typeof cartItems);
+	// console.log("cartItems: ",cartItems);
+	// var l = cartItems.length;
+	// console.log("l", l);
+
+	// for(var i=0; i<l; i++){
+	// 	var filmstat = {}
+	// 	filmstat._id = purchases[i].film._id;
+	// 	filmstat.count = purchases[i].quantity
+	// 	purchasestats[i] = filmstat
+	// }
+
+	// console.log(typeof purchasestats);		
+	// console.log("purchasestats: ",purchasestats);
+
+	$scope.putStats = function () {
+		console.log("cartItems-2: ",cartItems);
+		FilmFactory.putStats(cartItems);
+		// FilmFactory.putStats(purchasestats);
+	}
 
 
     function calculateTotal (allLineItemsInCart) {
@@ -32,8 +55,6 @@ app.controller('CheckoutCtrl', function($scope, $http, cartInfo, $state) {
         }
         return total;
     }
-
-
 
     $scope.checkout = function() {
         $http.post('/api/checkout', {
@@ -111,8 +132,6 @@ app.controller('CheckoutCtrl', function($scope, $http, cartInfo, $state) {
                     console.log("Payment Error!");
                 });
                 
-
-
         }
     }
 
