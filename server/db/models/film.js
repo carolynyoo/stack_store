@@ -15,4 +15,14 @@ var filmSchema = new mongoose.Schema({
   purchased: {type: Number}
 });
 
+
+// filmSchema.statics.getTop = function(){
+// +	return this.find({})
+// 		.sort('-purchased')
+// 		.limit(3)
+// 		.populate('categories')
+// +}
+
+
+
 mongoose.model('Film', filmSchema);
