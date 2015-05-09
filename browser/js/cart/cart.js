@@ -84,4 +84,4 @@ app.filter("centsToDollars", function() {
 	return function (amountInCents) {
 		return (amountInCents/100).toFixed(2);
 	}
-})
+});
