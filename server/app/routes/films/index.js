@@ -1,4 +1,5 @@
 
+var async = require('async');
 var mongoose = require('mongoose');
 var router = require('express').Router();
 module.exports = router;
@@ -28,15 +29,23 @@ router.put('/', function (req, res) {
 	// console.log(typeof purchasestats);		
 	// console.log("purchasestats: ",purchasestats);
 
-	for(var movie in req.body){
-	
-		FilmsModel.update({ _id: req.body[movie]._id}, { $inc: { purchased: req.body[movie].count}})
+	var putLoop = function (reqbody){
+		FilmsModel.update({ _id: reqbody[movie]._id}, { $inc: { purchased: reqbody[movie].count}})
 			.exec(function(err, results){
 				if(err){console.log(err)}
 				console.log(results)
-			});
+		});
 	}
-	
+
+	async.eachSeries(
+			req.body,
+			putLoop,
+			function(err) {
+				console.log("stats updated");
+				res.status(200).end();
+			}
+	)
+
 });
 
 // , inventory: -purchasestats[movie].count }
