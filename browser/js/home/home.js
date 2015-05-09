@@ -25,8 +25,6 @@ app.controller('homeCtrl', function ($scope, HomeFactory, CategoryFactory) {
 
 });
 
-
-
 app.factory('HomeFactory', function ($http) {
 	return {
 		getFilms: function(category){
