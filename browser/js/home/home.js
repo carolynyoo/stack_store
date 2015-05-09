@@ -30,8 +30,6 @@ app.controller('homeCtrl', function ($scope, HomeFactory, CategoryFactory, cartF
 
 });
 
-
-
 app.factory('HomeFactory', function ($http) {
 	return {
 		getFilms: function(category){

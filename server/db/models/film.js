@@ -16,7 +16,15 @@ var filmSchema = new mongoose.Schema({
 });
 
 filmSchema.statics.regexTitle = function(title, cb){
-	return this.find({title: new RegExp(title, 'i')}, cb);
+  return this.find({title: new RegExp(title, 'i')}, cb);
+}
+
+filmSchema.statics.getTop = function(cb){
+	return this.find({})
+		.sort('-purchased')
+		.limit(4)
+		.populate('categories')
+		.exec(cb);
 }
 
 mongoose.model('Film', filmSchema);
