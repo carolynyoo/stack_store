@@ -9,9 +9,9 @@ var filmSchema = new mongoose.Schema({
   title: {type: String, required: true, unique: true},
   categories: [{type:mongoose.Schema.Types.ObjectId, ref: 'Category'}],
   description: String,
-  price: {type: Number, required: true},
+  price: {type: Number, required: true, min: 0},
   photo: {type: String, default: 'http://placehold.it/200x300'},
-  inventory: {type: Number, required: true},
+  inventory: {type: Number, required: true, min: 0},
   purchased: {type: Number}
 });
 
